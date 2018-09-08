@@ -1,5 +1,5 @@
 # Auswendig
-!This project is a work-in-process, I would like feedback! 
+!This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!
 
  Information -
 Auswendig is memorisation software built using Netbeans and written in Java. It is inspired from Quizlet and Anki. 
