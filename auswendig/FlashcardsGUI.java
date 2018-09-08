@@ -15,6 +15,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     String selectedItem = selectedItemSet1;
     boolean showDefLEARN = false;
     boolean showDefLEITNER = false;
+    boolean showDefSTARRED = false;
     int maxCards;
     long startTime = System.nanoTime();
     int cardNumLeitner;
@@ -37,7 +38,12 @@ public class FlashcardsGUI extends javax.swing.JFrame
             Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
             
+            String selectedItemNOTXT = selectedItem.replace(".txt", "");
+            Path pathStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt");
+            List<String> linesStarred = Files.readAllLines(pathStarred, StandardCharsets.UTF_8);
+            
             sliderCards.setMaximum(lines.size()-2);
+            sliderCardsSTARRED.setMaximum(linesStarred.size());
             maxCards = lines.size()-2;
         }
         catch(Exception e)
@@ -67,7 +73,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         btnShowDef = new javax.swing.JToggleButton();
         btnStarCard = new javax.swing.JToggleButton();
         STARREDPANEL = new javax.swing.JPanel();
-        sliderCards1 = new javax.swing.JSlider();
+        sliderCardsSTARRED = new javax.swing.JSlider();
         lblCardCountSTARRED = new javax.swing.JLabel();
         tfTermSTARRED = new javax.swing.JTextField();
         tfExampleSTARRED = new javax.swing.JTextField();
@@ -268,14 +274,14 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         STARREDPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
-        sliderCards1.setBackground(new java.awt.Color(255, 255, 255));
-        sliderCards1.setMajorTickSpacing(10);
-        sliderCards1.setMaximum(200);
-        sliderCards1.setPaintTicks(true);
-        sliderCards1.setValue(0);
-        sliderCards1.addChangeListener(new javax.swing.event.ChangeListener() {
+        sliderCardsSTARRED.setBackground(new java.awt.Color(255, 255, 255));
+        sliderCardsSTARRED.setMajorTickSpacing(10);
+        sliderCardsSTARRED.setMaximum(200);
+        sliderCardsSTARRED.setPaintTicks(true);
+        sliderCardsSTARRED.setValue(0);
+        sliderCardsSTARRED.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderCards1StateChanged(evt);
+                sliderCardsSTARREDStateChanged(evt);
             }
         });
 
@@ -332,7 +338,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                                 .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCardCountSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderCards1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(STARREDPANELLayout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(btnShowDefSTARRED)))
@@ -344,7 +350,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGap(34, 34, 34)
                 .addComponent(lblCardCountSTARRED)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sliderCards1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTermSTARRED)
@@ -1010,16 +1016,85 @@ public class FlashcardsGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnShowDefLEITNERActionPerformed
 
     private void btnShowDefSTARREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDefSTARREDActionPerformed
-        // TODO add your handling code here:
+        System.out.println("btnShowDefSTARRED pressed");
+        if (btnShowDefSTARRED.isSelected())
+        {
+            System.out.println("button selected");
+            btnShowDefSTARRED.setText("       Hide       ");
+            showDefSTARRED = true;
+            String definition = tfDefinitionSTARRED.getText();
+            if(definition.isEmpty()) //if def field is empty, load the def by switching to the next or previous card and back
+            {
+                int sliderValue = sliderCardsSTARRED.getValue();
+                int max = sliderCardsSTARRED.getMaximum();
+                int min = sliderCardsSTARRED.getMinimum();
+                //avoid null pointer errors
+                if(sliderValue==max || sliderValue>min+1)
+                {
+                    sliderCardsSTARRED.setValue(sliderValue-1);
+                }
+                else if(sliderValue==min)
+                {
+                    sliderCardsSTARRED.setValue(sliderValue+1);
+                }
+                sliderCardsSTARRED.setValue(sliderValue);
+            }
+        }
+        else
+        {
+            System.out.println("button not selected");
+            btnShowDefSTARRED.setText("       Show       ");
+            tfDefinitionSTARRED.setText("");
+            showDefSTARRED = false;
+        }
     }//GEN-LAST:event_btnShowDefSTARREDActionPerformed
 
-    private void sliderCards1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCards1StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sliderCards1StateChanged
+    private void sliderCardsSTARREDStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCardsSTARREDStateChanged
+        System.out.println("sliderCardsSTARRED button pressed");
+        int sliderValue = sliderCardsSTARRED.getValue();
+        System.out.println("Slider value: "+sliderValue);
+        lblCardCountSTARRED.setText("Card: "+sliderValue);
+        flashcards.readCardSTARRED(selectedItem, sliderValue);
+
+        if(sliderValue==0)
+        {
+            sliderValue = sliderValue+1;
+            sliderCardsSTARRED.setValue(1);
+            sliderCardsSTARRED.setMinimum(1);
+            lblCardCountSTARRED.setText("Card: "+sliderValue);
+        }
+        else
+        {
+            String cardvalues1[] = flashcards.cardvalues;
+            
+            for(int i=0; i<cardvalues1.length; i++)
+            {
+                if(i==1)
+                {
+                    tfTermSTARRED.setText(cardvalues1[i]);
+                }
+                else if(i==2)
+                {
+                    tfExampleSTARRED.setText(cardvalues1[i]);
+                }
+                else if(i==3)
+                {
+                    tfTagsSTARRED.setText(cardvalues1[i]);
+                }
+                else if(i==4)
+                {
+                    if(showDefSTARRED==true)
+                    {
+                        tfDefinitionSTARRED.setText(cardvalues1[i]);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_sliderCardsSTARREDStateChanged
 
     private void btnStarCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStarCardActionPerformed
         System.out.println("btnStarCard pressed");
-        boolean flag = false;
+        boolean flag = false; //only allow a card to be starred if the definition is shown
         int sliderValue = sliderCards.getValue();
         String term = tfTerm.getText();
         String example = tfExample.getText();
@@ -1390,7 +1465,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSaveCard;
     private javax.swing.JSlider sliderCards;
-    private javax.swing.JSlider sliderCards1;
+    private javax.swing.JSlider sliderCardsSTARRED;
     private javax.swing.JTextField tfDefinition;
     private javax.swing.JTextField tfDefinitionLEITNER;
     private javax.swing.JTextField tfDefinitionLISTEN;

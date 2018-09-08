@@ -92,6 +92,42 @@ public class Flashcards
         }
     }
     
+    public void readCardSTARRED(String selectedItem, int sliderValue)
+    {
+        String selectedItemNOTXT = selectedItem.replace(".txt", "");
+        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt";
+			
+        try
+        {
+            String line = null; //the read line is null
+            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
+            
+            while((line = rdr.readLine()) != null) //while there are lines to read
+            {
+              for(int z=1; z<sliderValue+1; z++)
+              {
+                  int linenumber = rdr.getLineNumber();
+                  System.out.println("LINE NUMBER: "+linenumber);
+                  //cardvalues = line.split(","); //split data in file by commas
+                  //System.out.println("NEW LINE "+cardvalues); //output the splitted data
+                  if(linenumber==sliderValue)
+                  {
+                      cardvalues = line.split(",");
+                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
+                  }
+               }
+            }
+            rdr.close();
+        }
+            
+        catch(Exception exc) //catch errors
+        {
+            System.out.println("ERROR READING SETS FILE");
+            System.out.println(exc);
+        }
+    }
+    
+    
     public void AddCard(int sliderValue, String selectedItem, String term, String example, String tags, String definition)
     {
         try
@@ -192,39 +228,21 @@ public class Flashcards
             String sliderValue2 = sliderValue+"";
             while((line = br.readLine()) != null) //while there are lines to read
             {
-              int flag4contains = 0;
-              for(int z=1; z<sliderValue+1; z++)
-              {
-                  String value = "";
-                  //int linenumber = rdr.getLineNumber();
-                  // ONLY LAST CARD SEEMS TO BE RECOGNISED / PASS IF TEST
-                  values2 = line.split(",");
-                  value = Arrays.toString(values2);
-                  System.out.println("LINE READ: "+value);
-                  
-                  if(value.contains(sliderValue2)==true && value.contains("1"+sliderValue)==false)
-                  {
-                      flag4contains = flag4contains+1;
-                      System.out.println("READ LINE CONTAINS "+sliderValue2);
-                      System.out.println("CARD IS STARRED, IT IS IN THE FILE");
-                      starred=true;
-                      if(starred==true)
-                      {
-                          System.out.println("starred=true");
-                      }
-                  }
-                 
-                  else
-                  {
-                      starred = false;
-                      if(starred==false)
-                      {
-                          System.out.println("starred=false");
-                          System.out.println("CARD IS NOT STARRED, IT IS NOT IN THE FILE");
-                      }
-                  }
-               }
-              System.out.println(flag4contains+" lines contain "+sliderValue);
+                String cardvalues5[] = line.split(",");
+                String cardvalueString = Arrays.toString(cardvalues5);
+                char cardvalueChars[] = cardvalueString.toCharArray();
+                char cardValueChar = cardvalueChars[1];
+                int cardNum = Character.getNumericValue(cardValueChar);
+                System.out.println("CARD NUM: "+cardNum);
+                if(cardNum==sliderValue)
+                {
+                    System.out.println("cardNum "+cardNum+" is the same as slider Value "+sliderValue);
+                    starred=true;
+                }
+                else
+                {
+                    starred=false;
+                }
             }
             br.close();
         }
