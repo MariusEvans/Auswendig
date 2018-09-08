@@ -1,0 +1,64 @@
+1,Befinden,german,No example,To reside
+2,Protzig,german,No example,Pretentious
+3,Riskant,german,No example,Risky
+4,Gegensatz,german,No example,Unlike
+5,Verbreiten,german,No example,To spread
+6,Schließen/Zumachen,german,No example,To close
+7,Verknallen,german,No example,To fall for
+8,Eher,german,No example,Rather/most likely
+9,Geschminkt,german,No example,Makeup
+10,Beurteilen,german,No example,To judge, access
+11,Bestehen,german,No example,To pass (a test)
+12,Schneiden,german,No example,To cut (food)
+13,Zusätzlich,german,No example,Additionally
+14,Ungeduldig,german,No example,Impatient
+15,Betrügen,german,No example,To cheat
+16,Bezeichnen,german,No example,To label (something)
+17,Übrigens,german,No example,By the way
+18,Leihen,german,No example,To borrow
+19,Mindestens,german,No example,At least
+20,Täuschen,german,No example,To fool
+21,Ansprechen,german,No example,To speak to
+22,Quatschen,german,No example,To chat
+23,Ehrenamt,german,No example,Volunteering
+24,Retten,german,No example,To rescue
+25,Angefasst,german,No example,Touched
+26,Begriff,german,No example,Term/notion/concept
+27,Ausfallen,german,No example,To be cancelled
+28,Ertragen,german,No example,To endure
+29,Bisher,german,No example,So far
+30,Regelmäßig,german,No example,Regularly
+31,Anziehen,german,No example,To get dressed
+32,Überwinden,german,No example,To overcome
+33,Verwirrt,german,No example,To be confused
+34,Aufräumen,german,No example,To clean up
+35,Basteln,german,No example,To tinker/craft
+36,Schal,german,No example,Scarf
+37,Vermeiden,german,No example,To avoid
+38,Erschreckt,german,No example,To be frightened
+39,Trachten,german,No example,Gossip
+40,Erhalten,german,No example,To receive
+41,Schließlich,german,No example,Eventually
+42,Vorbereiten,german,No example,To prepare (seperable verb)
+43,Erwarten,german,No example,To expect
+44,Abholen,german,No example,To pick up
+45,Übertragen,german,No example,To transfer
+46,Verdienen,german,No example,To earn
+47,Hinsichten,german,No example,Respects
+48,Gleichzeitig,german,No example,Simultaneously
+49,Statt,german,No example,Instead of
+50,Irgendwie,german,No example,Somehow
+51,Irgendwo,german,No example,Somewhere
+52,Irgendwann,german,No example,Sometime
+53,Beleidigend,german,No example,Offensive/insulting
+54,Zuversichtlich,german,No example,Confident/optimistic
+55,Zuverlässig,german,No example,Reliable
+56,Abbrechen,german,No example,To abort/stop/call off
+57,Veranstaltung,german,No example,Event
+58,Anstatt,german,No example,Rather than
+59,Vermuten,german,No example,To guess
+60,Versuchung,german,No example,Temptation
+61,Schmerzhaft,german,No example,Painful
+62,Stürzen,german,No example,To plunge/pounce
+16:25:25
+This is a set I imported

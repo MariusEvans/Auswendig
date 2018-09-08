@@ -1,0 +1,5 @@
+1,Kunde,Er ist keine Kunde,german,Customer
+2,Irgendwie,Ich muss es irgendwie machen,german,Somehow
+3,Gegensatz,Gegensatz Frauen,german,Unlike
+Tue Jul 24 18:06:17 BST 2018
+this is the sixth set which I have created

@@ -1,0 +1,2 @@
+1,Verpassen,Ich habe mein Bus verpasst,german/hard,To miss
+1,term1,example,tags,definition
