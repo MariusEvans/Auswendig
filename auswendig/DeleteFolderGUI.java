@@ -1,3 +1,9 @@
+/* Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved
+ * This file is part of project Auswendig
+ * Reproduction, sale and commerical distribution of this material is strictly forbidden unless prior written permission is obtained from Marius Evans
+ * Written by Marius Evans (mariusevans@outlook.com)
+ */
+
 package auswendig;
 
 import javax.swing.JOptionPane;
