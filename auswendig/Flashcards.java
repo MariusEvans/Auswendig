@@ -92,6 +92,39 @@ public class Flashcards
         }
     }
     
+    public void readCardWRITE(String selectedItem, int cardNumWrite)
+    {
+        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
+			
+        try
+        {
+            String line = null; //the read line is null
+            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
+            
+            while((line = rdr.readLine()) != null) //while there are lines to read
+            {
+              for(int z=1; z<cardNumWrite+1; z++)
+              {
+                  int linenumber = rdr.getLineNumber();
+                  System.out.println("LINE NUMBER: "+linenumber);
+
+                  if(linenumber==cardNumWrite)
+                  {
+                      cardvalues = line.split(",");
+                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
+                  }
+               }
+            }
+            rdr.close();
+        }
+            
+        catch(Exception exc) //catch errors
+        {
+            System.out.println("ERROR READING SETS FILE");
+            System.out.println(exc);
+        }
+    }
+    
     public void readCardSTARRED(String selectedItem, int sliderValue)
     {
         String selectedItemNOTXT = selectedItem.replace(".txt", "");

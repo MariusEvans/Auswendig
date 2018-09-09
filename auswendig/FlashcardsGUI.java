@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -16,9 +19,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
     boolean showDefLEARN = false;
     boolean showDefLEITNER = false;
     boolean showDefSTARRED = false;
+    boolean swapTandD = false;
     int maxCards;
     long startTime = System.nanoTime();
     int cardNumLeitner;
+    int cardNumWrite;
     
     public FlashcardsGUI() 
     {
@@ -115,8 +120,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
         tfExampleWRITE = new javax.swing.JTextField();
         lblTagsWRITE = new javax.swing.JLabel();
         tfTagsWRITE = new javax.swing.JTextField();
-        btnNextCardWRITE = new javax.swing.JButton();
+        btnSkipCardWRITE = new javax.swing.JButton();
         btnSwap = new javax.swing.JToggleButton();
+        btnCheckCard = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cbTrue = new javax.swing.JCheckBox();
         cbFalse = new javax.swing.JCheckBox();
@@ -584,9 +590,26 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         tfTagsWRITE.setEditable(false);
 
-        btnNextCardWRITE.setText("Next Card");
+        btnSkipCardWRITE.setText("START");
+        btnSkipCardWRITE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkipCardWRITEActionPerformed(evt);
+            }
+        });
 
         btnSwap.setText("Swap Term and Definition");
+        btnSwap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSwapActionPerformed(evt);
+            }
+        });
+
+        btnCheckCard.setText("Check Card");
+        btnCheckCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckCardActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -599,25 +622,26 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         .addComponent(btnSwap))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(lblTermWRITE)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(tfTermWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblTagsWRITE)
-                                        .addComponent(lblExampleWRITE)
-                                        .addComponent(lblDefinitionWRITE))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTagsWRITE)
-                                        .addComponent(tfExampleWRITE)
-                                        .addComponent(tfDefinitionWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(btnNextCardWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblTermWRITE)
+                                .addGap(30, 30, 30)
+                                .addComponent(tfTermWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTagsWRITE)
+                                    .addComponent(lblExampleWRITE)
+                                    .addComponent(lblDefinitionWRITE))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfTagsWRITE)
+                                    .addComponent(tfExampleWRITE)
+                                    .addComponent(tfDefinitionWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSkipCardWRITE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCheckCard, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -639,9 +663,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinitionWRITE)
                     .addComponent(tfDefinitionWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCheckCard)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNextCardWRITE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(btnSkipCardWRITE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(btnSwap)
                 .addContainerGap())
         );
@@ -1256,6 +1282,33 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
     }
     
+    public void showCardWrite()
+    {
+        String cardvalues1[] = flashcards.cardvalues;
+
+        for(int i=0; i<cardvalues1.length; i++)
+        {
+            if(i==1 && swapTandD==false)
+            {
+                tfTermWRITE.setText(cardvalues1[i]);
+                tfDefinitionWRITE.setText("");
+            }
+            else if(i==2)
+            {
+                tfExampleWRITE.setText(cardvalues1[i]);
+            }
+            else if(i==3)
+            {
+                tfTagsWRITE.setText(cardvalues1[i]);
+            }
+            else if(i==4 && swapTandD==true)
+            {
+                tfDefinitionWRITE.setText(cardvalues1[i]);
+                tfTermWRITE.setText("");
+            }
+        }
+    }
+    
     private void btnExcellentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcellentActionPerformed
         System.out.println("btnExcellent pressed.");
         String daysTillReview = "*5"; //5,3,2,1,0
@@ -1371,8 +1424,103 @@ public class FlashcardsGUI extends javax.swing.JFrame
         //flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         showCardLeitner();
+        cardNumWrite=0;
+        flashcards.readCardWRITE(selectedItem, cardNumWrite);
+        showCardWrite();
+        cardNumWrite+=1;
         System.out.println(estimatedTime);
     }//GEN-LAST:event_LEITNERPANELComponentShown
+
+    private void btnSkipCardWRITEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipCardWRITEActionPerformed
+        System.out.println("btnSkipCardWRITE pressed");
+        btnSkipCardWRITE.setText("    Skip Card    ");
+        if(cardNumWrite>maxCards-1)
+        {
+            cardNumWrite=0;
+        }
+        else 
+        {
+           cardNumWrite+=1; 
+        }
+        flashcards.readCardWRITE(selectedItem, cardNumWrite);
+        showCardWrite();
+    }//GEN-LAST:event_btnSkipCardWRITEActionPerformed
+
+    private void btnCheckCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckCardActionPerformed
+        System.out.println("btnCheckCard pressed");
+        String term = tfTermWRITE.getText();
+        String definition = tfDefinitionWRITE.getText();
+  
+        String cardvalues1[] = flashcards.cardvalues;
+
+        for(int i=0; i<cardvalues1.length; i++)
+        {
+            if(swapTandD==false && i==1)
+            {
+                if(cardvalues1[4].equalsIgnoreCase(definition))
+                {
+                    tfDefinitionWRITE.setText("Correct");
+                    try 
+                    {
+                        TimeUnit.MILLISECONDS.sleep(50);
+                    } 
+                    catch (InterruptedException ex) 
+                    {
+                        Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cardNumWrite+=1;
+                    flashcards.readCardWRITE(selectedItem, cardNumWrite);
+                    showCardWrite(); 
+                }
+                else
+                {
+                    tfDefinitionWRITE.setText("False");
+                }
+            }
+            
+            if(swapTandD==true && i==4)
+            {
+                if(cardvalues1[1].equalsIgnoreCase(term))
+                {
+                    tfTermWRITE.setText("Correct");
+                    try 
+                    {
+                        TimeUnit.MILLISECONDS.sleep(50);
+                    } 
+                    catch (InterruptedException ex) 
+                    {
+                        Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cardNumWrite+=1;
+                    flashcards.readCardWRITE(selectedItem, cardNumWrite);
+                    showCardWrite();
+                }
+                else
+                {
+                    tfTermWRITE.setText("False");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnCheckCardActionPerformed
+
+    private void btnSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapActionPerformed
+        System.out.println("btnSwap pressed");
+        if (btnSwap.isSelected())
+        {
+            swapTandD = true;
+            showCardWrite();
+            tfExampleWRITE.setText("Hidden to prevent cheating");
+            tfTermWRITE.setEditable(true);
+            tfDefinitionWRITE.setEditable(false);
+        }
+        else
+        {
+            swapTandD=false;
+            showCardWrite();
+            tfTermWRITE.setEditable(false);
+            tfDefinitionWRITE.setEditable(true);
+        }
+    }//GEN-LAST:event_btnSwapActionPerformed
 
     
     /**
@@ -1406,18 +1554,19 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JPanel STYLEPANEL;
     private javax.swing.JTabbedPane TABBEDPANE;
     private javax.swing.JPanel TITLEPANEL;
+    private javax.swing.JButton btnCheckCard;
     private javax.swing.JButton btnExcellent;
     private javax.swing.JButton btnGood;
     private javax.swing.JButton btnHorrible;
     private javax.swing.JButton btnListen;
     private javax.swing.JButton btnNextCardLISTEN;
     private javax.swing.JButton btnNextCardTF;
-    private javax.swing.JButton btnNextCardWRITE;
     private javax.swing.JButton btnOkay;
     private javax.swing.JButton btnPoor;
     private javax.swing.JToggleButton btnShowDef;
     private javax.swing.JToggleButton btnShowDefLEITNER;
     private javax.swing.JToggleButton btnShowDefSTARRED;
+    private javax.swing.JButton btnSkipCardWRITE;
     private javax.swing.JToggleButton btnStarCard;
     private javax.swing.JToggleButton btnSwap;
     private javax.swing.JCheckBox cbFalse;

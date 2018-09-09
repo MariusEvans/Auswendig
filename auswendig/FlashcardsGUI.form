@@ -900,31 +900,32 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lblTermWRITE" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                              <Component id="tfTermWRITE" min="-2" pref="248" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblTermWRITE" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="tfTermWRITE" min="-2" pref="248" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblTagsWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblExampleWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblDefinitionWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="lblTagsWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblExampleWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblDefinitionWRITE" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="tfTagsWRITE" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tfExampleWRITE" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tfDefinitionWRITE" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
-                                              </Group>
+                                          <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="tfTagsWRITE" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tfExampleWRITE" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tfDefinitionWRITE" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                          <Component id="btnNextCardWRITE" min="-2" pref="105" max="-2" attributes="0"/>
-                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnSkipCardWRITE" max="32767" attributes="0"/>
+                                      <Component id="btnCheckCard" min="-2" pref="105" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -955,9 +956,11 @@
                               <Component id="lblDefinitionWRITE" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfDefinitionWRITE" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnCheckCard" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnNextCardWRITE" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                          <Component id="btnSkipCardWRITE" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="64" max="32767" attributes="0"/>
                           <Component id="btnSwap" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1011,15 +1014,29 @@
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnNextCardWRITE">
+                <Component class="javax.swing.JButton" name="btnSkipCardWRITE">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Next Card"/>
+                    <Property name="text" type="java.lang.String" value="START"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkipCardWRITEActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="btnSwap">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Swap Term and Definition"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSwapActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnCheckCard">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Check Card"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckCardActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
