@@ -1,5 +1,5 @@
 # Auswendig
-!This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!
+**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!**
 
 ## Information
 <br />
@@ -8,21 +8,21 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 
 ## Context
 <br />
-1. A set containing cards can be created, edited, deleted and opened (for activities).
-2. A folder containing sets can be created, edited, deleted and opened (for activites).
-3. A card does not have a "front" or "back" like a physical flashcard, it has fields, this avoids flipping cards constantly.
-4. One card contains a card number, term, example, tag(s) and definition.
-5. One set contains multiple cards (a maximum of 200 so far).
-6. Multiple sets can be placed in a "folder".
-7. Cards can be rated on familarity - making cards appear a set amount of days after review.
+1. A set containing cards can be created, edited, deleted and opened (for activities). <br />
+2. A folder containing sets can be created, edited, deleted and opened (for activites). <br />
+3. A card does not have a "front" or "back" like a physical flashcard, it has fields, this avoids flipping cards constantly. <br />
+4. One card contains a card number, term, example, tag(s) and definition. <br />
+5. One set contains multiple cards (a maximum of 200 so far). <br />
+6. Multiple sets can be placed in a "folder". <br />
+7. Cards can be rated on familarity - making cards appear a set amount of days after review. <br />
 8. Cards can be starred.
 
 ## Folders
 <br />
-1. Creating a set places that set within a "Sets" folder.
-2. Creating a folder (technically a set containing multiple sets) places that folder within a "Folder" folder.
-3. Starring a card creates a starred set of the original in the "Starred" folder.
-4. Rating cards with the Leitner system creates a Leitner set of the original in the "Leitner" folder.
+1. Creating a set places that set within a "Sets" folder. <br />
+2. Creating a folder (technically a set containing multiple sets) places that folder within a "Folder" folder. <br />
+3. Starring a card creates a starred set of the original in the "Starred" folder. <br />
+4. Rating cards with the Leitner system creates a Leitner set of the original in the "Leitner" folder. <br />
 5. The "res" (resources) folder contains icons used in drop-down menus.
 
 ## Notes
