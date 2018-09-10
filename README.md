@@ -3,7 +3,7 @@
 
 Information -
 Auswendig is memorisation software built using Netbeans and written in Java. It is inspired from Quizlet and Anki. 
-I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with     multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a    user's   familiarity with them), Listen (a user must write what they hear), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
+I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Listen (a user must write what they hear), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
 
 Context -
 A set containing cards can be created, edited, deleted and opened (for activities).
@@ -27,3 +27,11 @@ Currently directories for saving and reading files are hard-coded only for my di
 Optimisation for reading files will be done, the way I have done it makes reading many cards slow.
 
 *Leitner System: https://en.wikipedia.org/wiki/Leitner_system
+
+Screenshots -
+![create set GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/createSet.png)
+![edit set GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/editSet.png)
+!["Learn" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/learnActivity.png)
+!["Leitner" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/leitnerActivity.png)
+!["Starred" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/starredActivity.png)
+!["Write" activity activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/writeActivity.png)
