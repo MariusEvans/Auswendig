@@ -1165,7 +1165,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             {
                 //btnStarCard.setText(" Unstar Card ");
                 System.out.println("btnStarCard not selected");
-                flashcards.UnstarCard(sliderValue);
+                flashcards.UnstarCard(selectedItem,sliderValue);
             }
         }
     }//GEN-LAST:event_btnStarCardActionPerformed
@@ -1299,7 +1299,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 tfTermWRITE.setText(cardvalues1[i]);
                 tfDefinitionWRITE.setText("");
             }
-            else if(i==2)
+            else if(i==2 && swapTandD==false) //only show example when person is writing out term
             {
                 tfExampleWRITE.setText(cardvalues1[i]);
             }

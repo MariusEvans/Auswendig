@@ -259,24 +259,54 @@ public class Flashcards
         String selectedItemNOTXT = selectedItem.replace(".txt","");
         String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred"+".txt";
 	boolean starred = false;		
+        boolean DONOTREADAGAIN = false;
         try
         {
             BufferedReader br = new BufferedReader(new FileReader(filename)); //for reading data
             String line = null; //the read line is null
             String[] values2 = null;
-            String sliderValue2 = sliderValue+"";
-            while((line = br.readLine()) != null) //while there are lines to read
+            int cardNum=0;
+            while((line = br.readLine()) != null && DONOTREADAGAIN==false) //while there are lines to read
             {
                 String cardvalues5[] = line.split(",");
                 String cardvalueString = Arrays.toString(cardvalues5);
                 char cardvalueChars[] = cardvalueString.toCharArray();
-                char cardValueChar = cardvalueChars[1];
-                int cardNum = Character.getNumericValue(cardValueChar);
+                char cardValueChar = cardvalueChars[1]; //card num within range of 0-9
+                char possibleComma = cardvalueChars[2];
+                char possibleComma2 = cardvalueChars[3];
+                String possibleCommaString = possibleComma+"";//card num within range of 10-99
+                String possibleComma2String = possibleComma2+"";//card num within range of 100-200
+                if(possibleCommaString.equals(",")) //0-9 cardNum
+                {
+                   cardNum = Character.getNumericValue(cardValueChar);
+                }
+                else
+                {
+                    if(possibleComma2String.equals(",")) //10-99 card number
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append(cardValueChar);
+                        sb.append(possibleComma);
+                        String cardNum10to99 = sb.toString();
+                        cardNum = Integer.parseInt(cardNum10to99);
+                    }
+                    else //100-200 card number
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append(cardValueChar);
+                        sb.append(possibleComma);
+                        sb.append(possibleComma2);
+                        String cardNum10to99 = sb.toString();
+                        cardNum = Integer.parseInt(cardNum10to99);
+                    }
+                }
+                
                 System.out.println("CARD NUM: "+cardNum);
                 if(cardNum==sliderValue)
                 {
                     System.out.println("cardNum "+cardNum+" is the same as slider Value "+sliderValue);
                     starred=true;
+                    DONOTREADAGAIN=true;
                 }
                 else
                 {
@@ -318,15 +348,65 @@ public class Flashcards
         StarCard(sliderValue, selectedItem, term, example, tags, definition);
     }
     
-    public void UnstarCard(int sliderValue)
+    public void UnstarCard(String selectedItem, int sliderValue)
     {
+        boolean DONOTREADAGAIN = false;
         String selectedItemNOTXT = selectedItem.replace(".txt","");
         try
         {
             Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred"+".txt");
+            String pathString = path.toString();
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
             
-            lines.remove(sliderValue-1);
+            LineNumberReader rdr = new LineNumberReader(new FileReader(pathString)); //for reading data
+            String line = null; //the read line is null
+            String[] values2 = null;
+            int cardNum=0;
+            //CARD NUMBERS ARE STORED SERIALLY, FIND THE LINE A CARD NUMBER IS ON, THEN REMOVE THAT LINE
+            while((line = rdr.readLine()) != null && DONOTREADAGAIN==false) //while there are lines to read
+            {
+                int linenumber = rdr.getLineNumber();
+                String cardvalues5[] = line.split(",");
+                String cardvalueString = Arrays.toString(cardvalues5);
+                char cardvalueChars[] = cardvalueString.toCharArray();
+                char cardValueChar = cardvalueChars[1]; //card num within range of 0-9
+                char possibleComma = cardvalueChars[2];
+                char possibleComma2 = cardvalueChars[3];
+                String possibleCommaString = possibleComma+"";//card num within range of 10-99
+                String possibleComma2String = possibleComma2+"";//card num within range of 100-200
+                if(possibleCommaString.equals(",")) //0-9 cardNum
+                {
+                   cardNum = Character.getNumericValue(cardValueChar);
+                }
+                else
+                {
+                    if(possibleComma2String.equals(",")) //10-99 card number
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append(cardValueChar);
+                        sb.append(possibleComma);
+                        String cardNum10to99 = sb.toString();
+                        cardNum = Integer.parseInt(cardNum10to99);
+                    }
+                    else //100-200 card number
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append(cardValueChar);
+                        sb.append(possibleComma);
+                        sb.append(possibleComma2);
+                        String cardNum10to99 = sb.toString();
+                        cardNum = Integer.parseInt(cardNum10to99);
+                    }
+                }
+                
+                if(cardNum==sliderValue)
+                {
+                    lines.remove(linenumber-1);
+                    System.out.println("cardNum "+cardNum+" is the on line "+linenumber);
+                    DONOTREADAGAIN=true;
+                }
+            }
+            rdr.close();
             Files.write(path, lines, StandardCharsets.UTF_8);
         }
             
