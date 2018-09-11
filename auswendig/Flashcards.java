@@ -638,35 +638,6 @@ public class Flashcards
         }
     }
     
-    /*public void readCardLEITNERdaysTilLReview0(int linenumberDYSTORW, int sliderValue, String selectedItem)
-    {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
-        try
-        {
-            String line = null; //the read line is null
-            LineNumberReader rdr1 = new LineNumberReader(new FileReader(filename));
-
-            while((line = rdr1.readLine()) != null) //while there are lines to read
-            {
-              for(int z=1; z<sliderValue+1; z++)
-              {
-                  if(linenumberDYSTORW==sliderValue)
-                  {
-                      cardvalues = line.split(",");
-                      //JOptionPane.showMessageDialog(null,"DAYS TILL REVIEW 0 = "+cardvalues);
-                  }
-               }
-            }
-            rdr1.close();
-        }
-
-        catch(Exception exc) //catch errors
-        {
-            System.out.println("ERROR READING SETS FILE");
-            System.out.println(exc);
-        }
-    }*/
-    
     public Flashcards(String selectedItem)
     {
         System.out.println("Flashcards running.");

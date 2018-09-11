@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,14 +23,20 @@ public class FlashcardsGUI extends javax.swing.JFrame
     Flashcards flashcards;
     String selectedItemSet1 = OpenSetGUI.selectedItemSet;
     String selectedItem = selectedItemSet1;
+    Random random = new Random();
     boolean showDefLEARN = false;
     boolean showDefLEITNER = false;
     boolean showDefSTARRED = false;
     boolean swapTandD = false;
+    boolean isTrue = false;
+    boolean isFalse = false;
+    int randomDef=1;
+    int randomNum1;
     int maxCards;
     long startTime = System.nanoTime();
     int cardNumLeitner;
     int cardNumWrite;
+    int cardNumTF;
     
     public FlashcardsGUI() 
     {
@@ -141,7 +148,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblDefinitionTF = new javax.swing.JLabel();
         tfDefinitionTF = new javax.swing.JTextField();
         lblMeans = new javax.swing.JLabel();
-        btnNextCardTF = new javax.swing.JButton();
+        btnCheckCardTF = new javax.swing.JButton();
+        btnSkipCardTF = new javax.swing.JButton();
         TITLEPANEL = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         tfDescription = new javax.swing.JTextField();
@@ -684,9 +692,19 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         cbTrue.setBackground(new java.awt.Color(255, 255, 255));
         cbTrue.setText("True");
+        cbTrue.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTrueItemStateChanged(evt);
+            }
+        });
 
         cbFalse.setBackground(new java.awt.Color(255, 255, 255));
         cbFalse.setText("False");
+        cbFalse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbFalseItemStateChanged(evt);
+            }
+        });
 
         lblTermTF.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTermTF.setText("Term:");
@@ -709,43 +727,59 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         lblMeans.setText("means");
 
-        btnNextCardTF.setText("Next Card");
+        btnCheckCardTF.setText("Check Card");
+        btnCheckCardTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckCardTFActionPerformed(evt);
+            }
+        });
+
+        btnSkipCardTF.setText("START");
+        btnSkipCardTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkipCardTFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(lblTermTF)
-                            .addGap(30, 30, 30)
-                            .addComponent(tfTermTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblTagsTF)
-                                .addComponent(lblExampleTF))
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfTagsTF)
-                                .addComponent(tfExampleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(lblDefinitionTF)
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(cbTrue)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cbFalse))
-                                .addComponent(tfDefinitionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(lblMeans))
+                        .addGap(101, 101, 101)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lblTermTF)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(tfTermTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblTagsTF)
+                                        .addComponent(lblExampleTF))
+                                    .addGap(30, 30, 30)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfTagsTF)
+                                        .addComponent(tfExampleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lblDefinitionTF)
+                                    .addGap(30, 30, 30)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                            .addComponent(cbTrue)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(cbFalse))
+                                        .addComponent(tfDefinitionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(178, 178, 178)
+                                .addComponent(lblMeans))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(btnNextCardTF)))
+                        .addGap(246, 246, 246)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSkipCardTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCheckCardTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -774,8 +808,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
                     .addComponent(cbFalse)
                     .addComponent(cbTrue))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNextCardTF)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addComponent(btnCheckCardTF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSkipCardTF)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         TABBEDPANE.addTab("True/False", jPanel3);
@@ -998,20 +1034,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         this.setVisible(false);
         HomeGUI.editFolderGUI.setVisible(true);
     }//GEN-LAST:event_miEditFolderActionPerformed
-
-    private void miEditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCardActionPerformed
-        System.out.println("miEditCard pressed.");
-        tfTerm.setEditable(true);
-        tfExample.setEditable(true);
-        tfTags.setEditable(true);
-    }//GEN-LAST:event_miEditCardActionPerformed
-
-    private void miSaveCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSaveCardActionPerformed
-        System.out.println("miSaveCard pressed.");
-        tfTerm.setEditable(false);
-        tfExample.setEditable(false);
-        tfTags.setEditable(false);
-    }//GEN-LAST:event_miSaveCardActionPerformed
 
     private void btnShowDefLEITNERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDefLEITNERActionPerformed
         if (btnShowDefLEITNER.isSelected())
@@ -1315,6 +1337,55 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
     }
     
+    public void showCardTrueOrFalse()
+    {
+        String cardvalues1[] = flashcards.cardvalues;
+        randomDef +=1;
+        int randomNum = random.nextInt(maxCards);
+        int cardNumTF1 = cardNumTF;
+        for(int i=0; i<cardvalues1.length; i++)
+        {
+            if(randomDef%2==0) //if this is the first time reading the card, read all fields EXCEPT the def
+            {
+                if(i==1)
+                {
+                    tfTermTF.setText(cardvalues1[i]);
+                }
+                else if(i==2)
+                {
+                    tfExampleTF.setText(cardvalues1[i]);
+                }
+                else if(i==3)
+                {
+                    tfTagsTF.setText(cardvalues1[i]);
+                }
+                else if(i==4)
+                {
+                    //tfDefinitionTF.setText(cardvalues1[i]);
+                    if(cardNumTF>maxCards-1)
+                    {
+                        cardNumTF=0;
+                    }
+                    else 
+                    {
+                       cardNumTF+=randomNum;
+                       randomNum1 = cardNumTF;
+                    }
+                    flashcards.readCard(selectedItem, cardNumTF);
+                    showCardTrueOrFalse();
+                    cardNumTF = cardNumTF1; //set card num back to original
+                }
+            }
+            else //then read a random def
+            {
+                if(i==4)
+                {
+                    tfDefinitionTF.setText(cardvalues1[i]);
+                }
+            }
+        }
+    }
+    
     private void btnExcellentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcellentActionPerformed
         System.out.println("btnExcellent pressed.");
         String daysTillReview = "*5"; //5,3,2,1,0
@@ -1434,6 +1505,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
         flashcards.readCardWRITE(selectedItem, cardNumWrite);
         showCardWrite();
         cardNumWrite+=1;
+        cardNumTF=0;
+        flashcards.readCard(selectedItem, cardNumTF);
+        cardNumTF+=1;
         System.out.println(estimatedTime);
     }//GEN-LAST:event_LEITNERPANELComponentShown
 
@@ -1528,6 +1602,131 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnSwapActionPerformed
 
+    private void btnCheckCardTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckCardTFActionPerformed
+        if(isTrue==false && isFalse==false)
+        {
+            JOptionPane.showMessageDialog(null,"Select either true or false");
+        }
+        else
+        {
+            flashcards.readCard(selectedItem, randomNum1);
+            String cardvalues1[] = flashcards.cardvalues;
+            String definition = tfDefinitionTF.getText();
+            
+            for(int i=0; i<cardvalues1.length; i++)
+            {
+                if(i==4)
+                {
+                    System.out.println(definition);
+                    System.out.println(cardvalues1[i]);
+                    if(definition.equals(cardvalues1[i])==true && isTrue==true)
+                    {
+                        if(cardNumTF>maxCards-1)
+                        {
+                            cardNumTF=0;
+                        }
+                        else 
+                        {
+                           cardNumTF+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(selectedItem, cardNumWrite);
+                        showCardTrueOrFalse();
+                    }
+                    
+                    if(definition.equals(cardvalues1[i])==false && isFalse==true)
+                    {
+                        if(cardNumTF>maxCards-1)
+                        {
+                            cardNumTF=0;
+                        }
+                        else 
+                        {
+                           cardNumTF+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(selectedItem, cardNumWrite);
+                        showCardTrueOrFalse();
+                    }
+                    
+                }
+            }
+        }
+    }//GEN-LAST:event_btnCheckCardTFActionPerformed
+
+    private void btnSkipCardTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipCardTFActionPerformed
+        System.out.println("btnSkipCardTF pressed");
+        btnSkipCardTF.setText("    Skip Card    ");
+        System.out.println("cardNumTF "+cardNumTF);
+        if(cardNumTF>maxCards-1)
+        {
+            cardNumTF=0;
+        }
+        else 
+        {
+           cardNumTF+=1; 
+        }
+        System.out.println("cardNumTF "+cardNumTF);
+        flashcards.readCard(selectedItem, cardNumTF);
+        showCardTrueOrFalse();
+    }//GEN-LAST:event_btnSkipCardTFActionPerformed
+
+    private void miSaveCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSaveCardActionPerformed
+        System.out.println("miSaveCard pressed.");
+        tfTerm.setEditable(false);
+        tfExample.setEditable(false);
+        tfTags.setEditable(false);
+    }//GEN-LAST:event_miSaveCardActionPerformed
+
+    private void miEditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCardActionPerformed
+        System.out.println("miEditCard pressed.");
+        tfTerm.setEditable(true);
+        tfExample.setEditable(true);
+        tfTags.setEditable(true);
+    }//GEN-LAST:event_miEditCardActionPerformed
+
+    private void cbTrueItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTrueItemStateChanged
+        System.out.println("cbTrue presssed");
+        if(isTrue==true)
+        {
+            isTrue=false;
+            cbFalse.setEnabled(true);
+        }
+        else if(isTrue==false)
+        {
+           isTrue = true; 
+           cbFalse.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbTrueItemStateChanged
+
+    private void cbFalseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFalseItemStateChanged
+        System.out.println("cbFalse presssed");
+        if(isFalse==true)
+        {
+            isFalse=false;
+            cbTrue.setEnabled(true);
+        }
+        else if(isFalse==false)
+        {
+           isFalse = true; 
+           cbTrue.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbFalseItemStateChanged
+
     
     /**
      * @param args the command line arguments
@@ -1561,17 +1760,18 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JTabbedPane TABBEDPANE;
     private javax.swing.JPanel TITLEPANEL;
     private javax.swing.JButton btnCheckCard;
+    private javax.swing.JButton btnCheckCardTF;
     private javax.swing.JButton btnExcellent;
     private javax.swing.JButton btnGood;
     private javax.swing.JButton btnHorrible;
     private javax.swing.JButton btnListen;
     private javax.swing.JButton btnNextCardLISTEN;
-    private javax.swing.JButton btnNextCardTF;
     private javax.swing.JButton btnOkay;
     private javax.swing.JButton btnPoor;
     private javax.swing.JToggleButton btnShowDef;
     private javax.swing.JToggleButton btnShowDefLEITNER;
     private javax.swing.JToggleButton btnShowDefSTARRED;
+    private javax.swing.JButton btnSkipCardTF;
     private javax.swing.JButton btnSkipCardWRITE;
     private javax.swing.JToggleButton btnStarCard;
     private javax.swing.JToggleButton btnSwap;

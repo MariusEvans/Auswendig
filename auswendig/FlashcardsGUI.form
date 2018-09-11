@@ -1057,46 +1057,53 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblTermTF" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="tfTermTF" min="-2" pref="248" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblTagsTF" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblExampleTF" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfTagsTF" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfExampleTF" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblDefinitionTF" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="cbTrue" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cbFalse" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblTermTF" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="tfTermTF" min="-2" pref="248" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="tfDefinitionTF" min="-2" pref="248" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="lblTagsTF" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblExampleTF" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="tfTagsTF" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="tfExampleTF" alignment="0" min="-2" pref="248" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblDefinitionTF" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="cbTrue" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="cbFalse" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="tfDefinitionTF" min="-2" pref="248" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                                          <Component id="lblMeans" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                                  <Component id="lblMeans" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                                  <Component id="btnNextCardTF" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnSkipCardTF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnCheckCardTF" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="170" max="32767" attributes="0"/>
@@ -1134,8 +1141,10 @@
                               <Component id="cbTrue" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnNextCardTF" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="98" max="32767" attributes="0"/>
+                          <Component id="btnCheckCardTF" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnSkipCardTF" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="66" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1148,6 +1157,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="True"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbTrueItemStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="cbFalse">
                   <Properties>
@@ -1156,6 +1168,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="False"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbFalseItemStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblTermTF">
                   <Properties>
@@ -1211,10 +1226,21 @@
                     <Property name="text" type="java.lang.String" value="means"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnNextCardTF">
+                <Component class="javax.swing.JButton" name="btnCheckCardTF">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Next Card"/>
+                    <Property name="text" type="java.lang.String" value="Check Card"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckCardTFActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnSkipCardTF">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="START"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkipCardTFActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
