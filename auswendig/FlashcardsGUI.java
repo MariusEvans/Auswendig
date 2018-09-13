@@ -30,6 +30,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     boolean swapTandD = false;
     boolean isTrue = false;
     boolean isFalse = false;
+    int triesLeft=3;
     int randomDef=1;
     int randomNum1;
     int maxCards;
@@ -43,7 +44,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("Running FlashcardsGUI.");
         initComponents();
         flashcards = new Flashcards(selectedItem);
-        System.out.println("FLASHCARDSGUI SELECTED ITEM"+selectedItem);
+        System.out.println("FLASHCARDSGUI SELECTED ITEM: "+selectedItem);
         this.selectedItem = selectedItem;
         lblTitle.setText(selectedItem.replace(".txt", ""));
         flashcards.readDescription(selectedItem);
@@ -1176,6 +1177,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             System.out.println("btnStarCard selected");
             //btnStarCard.setText(" Star Card ");
             flashcards.StarCard(sliderValue, selectedItem, term, example, tags, definition);
+            JOptionPane.showMessageDialog(null, "Starred card. You may have to reload to see changes.");
         }
         else
         {
@@ -1554,7 +1556,16 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 }
                 else
                 {
-                    tfDefinitionWRITE.setText("False");
+                    triesLeft=triesLeft-1;
+                    if(triesLeft>0)
+                    {
+                      tfDefinitionWRITE.setText("False, "+triesLeft+" try/tries left.");  
+                    }
+                    else
+                    {
+                        tfDefinitionWRITE.setText(cardvalues1[4]); 
+                        triesLeft=3;
+                    }
                 }
             }
             
@@ -1577,7 +1588,16 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 }
                 else
                 {
-                    tfTermWRITE.setText("False");
+                    triesLeft=triesLeft-1;
+                    if(triesLeft>0)
+                    {
+                      tfTermWRITE.setText("False, "+triesLeft+" try/tries left.");  
+                    }
+                    else
+                    {
+                        tfTermWRITE.setText(cardvalues1[1]);
+                        triesLeft=3;
+                    }
                 }
             }
         }
@@ -1603,22 +1623,27 @@ public class FlashcardsGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnSwapActionPerformed
 
     private void btnCheckCardTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckCardTFActionPerformed
+        String term = tfTermTF.getText();
+        String definition = tfDefinitionTF.getText();
         if(isTrue==false && isFalse==false)
         {
             JOptionPane.showMessageDialog(null,"Select either true or false");
         }
         else
         {
-            flashcards.readCard(selectedItem, randomNum1);
+            
+            flashcards.readCard(selectedItem, cardNumTF);
             String cardvalues1[] = flashcards.cardvalues;
-            String definition = tfDefinitionTF.getText();
             
             for(int i=0; i<cardvalues1.length; i++)
             {
                 if(i==4)
                 {
-                    System.out.println(definition);
-                    System.out.println(cardvalues1[i]);
+                    System.out.println("Card Number: "+cardNumTF);
+                    System.out.println("Term: "+term);
+                    System.out.println("Actual Def: "+cardvalues1[i]);
+                    System.out.println("Tf Def: "+definition);
+             
                     if(definition.equals(cardvalues1[i])==true && isTrue==true)
                     {
                         if(cardNumTF>maxCards-1)
@@ -1639,6 +1664,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         }
                         flashcards.readCard(selectedItem, cardNumWrite);
                         showCardTrueOrFalse();
+                    }
+                    else if(definition.equals(cardvalues1[i])==true && isTrue==false)
+                    {
+                        cbTrue.setEnabled(false);
+                        cbFalse.setEnabled(true);
                     }
                     
                     if(definition.equals(cardvalues1[i])==false && isFalse==true)
@@ -1661,6 +1691,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         }
                         flashcards.readCard(selectedItem, cardNumWrite);
                         showCardTrueOrFalse();
+                    }
+                    else if(definition.equals(cardvalues1[i])==true && isFalse==false)
+                    {
+                        cbTrue.setEnabled(true);
+                        cbFalse.setEnabled(false);
                     }
                     
                 }
