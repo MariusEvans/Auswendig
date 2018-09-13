@@ -242,6 +242,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfFolderName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spaces must be separted with &quot;_&quot;"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfSets">
           <Properties>

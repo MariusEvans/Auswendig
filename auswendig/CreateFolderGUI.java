@@ -6,6 +6,7 @@
 
 package auswendig;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class CreateFolderGUI extends javax.swing.JFrame 
@@ -63,6 +64,8 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         lblDescription.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblDescription.setText("Description:");
+
+        tfFolderName.setText("Spaces must be separted with \"_\"");
 
         tfSets.setText("Separate sets with \"/\"");
 
@@ -249,6 +252,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         System.out.println("Sets: "+sets);
         
         createFolder.makeFolder(folderName, description, sets);
+        JOptionPane.showMessageDialog(null,"Successfully created folder");
     }//GEN-LAST:event_btnCreateFolderActionPerformed
 
     private void miEditFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditFolderActionPerformed
