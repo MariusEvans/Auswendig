@@ -69,18 +69,48 @@ public class CreateSet
         System.out.println("Attempting to create set.");
         try
         {
-                FileWriter fw = new FileWriter(filename, true);
-                BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
+            FileWriter fw = new FileWriter(filename, true);
+            BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
 
-                bw.write("" + calendar.getTime()); //write the current data/time
-                bw.write("\r\n"+description); //new line
+            bw.write("" + calendar.getTime()); //write the current data/time
+            bw.write("\r\n"+description); //new line
 
-                bw.close(); //close buffered writer
-                System.out.println("Successfully created set.");
+            bw.close(); //close buffered writer
+            System.out.println("Successfully created set.");
         } 
         catch(Exception exc)
         {
                 System.out.println("Error creating set.");
+                System.out.println(exc);
+        } 
+    }
+    
+    public void createStarredSet() //add 1 line to a starred set if not created, prevents errors
+    {
+        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+        File filenameStarred = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+setName+"Starred.txt");
+        //AMEND RECEIPT DATA TO FILE
+        System.out.println("Attempting to create empty starred set.");
+        try
+        {
+            if(filenameStarred.exists()==true) //do nothing if starred set exists
+            {
+                
+            }
+            else if(filenameStarred.exists()==false) //created starred set to prevent errors
+            {
+                FileWriter fw = new FileWriter(filenameStarred, true);
+                BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
+
+                bw.write("");
+
+                bw.close(); //close buffered writer
+                System.out.println("Successfully created empty starred set.");
+            }
+        } 
+        catch(Exception exc)
+        {
+                System.out.println("Error creating empty starred set.");
                 System.out.println(exc);
         } 
     }

@@ -93,6 +93,8 @@ public class CreateSetGUI extends javax.swing.JFrame
         lblName.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblName.setText("Name:");
 
+        tfSetName.setText("Spaces must be separted with \"_\"");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -331,7 +333,9 @@ public class CreateSetGUI extends javax.swing.JFrame
         System.out.println("Description: "+description);
         
         createSet.makeSet();
+        createSet.createStarredSet();
         tfSetName.setEditable(false);
+        JOptionPane.showMessageDialog(null, "Set successfully created");
     }//GEN-LAST:event_btnCreateSetActionPerformed
 
     private void miEditFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditFolderActionPerformed
