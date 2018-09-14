@@ -11,6 +11,15 @@
 Auswendig is memorisation software built using Netbeans and written in Java. It is inspired from Quizlet and Anki. 
 I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Listen (a user must write what they hear), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
 
+### Why Auswendig and not Quizlet, Anki or Memorise?
+<br />
+1. Auswendig can be accessed offline and has greater ease of use than Quizlet; Auswendig does not feature a "front" or "back" of a card and uses fields instead, therefore, avoiding the repetitive task of flipping cards. Any card can be skipped to in a set as well as accessed serially (one by one). <br />
+2. Auswendig's "Write" activity enables a user to write the definition of a term for a card, or alternatively switch the definition and term and write the term for the definition of a card. <br />
+3. Auswendig enables a user to record their own audio for playback on the "Listen" activity (not yet finished). <br />
+4. Auswendig features more activites than Anki. <br />
+5. Auswendig includes a "Leitner" activity, unlike Quizlet.
+
+
 ## Context
 <br />
 1. A set containing cards can be created, edited, deleted and opened (for activities). <br />
@@ -22,7 +31,7 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 7. Cards can be rated on familarity - making cards appear a set amount of days after review. <br />
 8. Cards can be starred.
 
-## Folders
+### Folders in repository explained
 <br />
 1. Creating a set places that set within a "Sets" folder. <br />
 2. Creating a folder (technically a set containing multiple sets) places that folder within a "Folder" folder. <br />
@@ -30,7 +39,7 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 4. Rating cards with the Leitner system creates a Leitner set of the original in the "Leitner" folder. <br />
 5. The "res" (resources) folder contains icons used in drop-down menus.
 
-## Notes
+### Notes and other information
 <br />
 Currently directories for saving and reading files are hard-coded only for my directory, this will be changed.
 
