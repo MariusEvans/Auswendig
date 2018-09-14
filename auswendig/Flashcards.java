@@ -25,6 +25,9 @@ import javax.swing.JOptionPane;
 
 public class Flashcards 
 {
+    List<String> linesSelectedItem;
+    List<String> linesStarred;
+    
     int cardNumber = 0;
     public File[] listOfFiles;
     public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 sets supported
@@ -64,105 +67,53 @@ public class Flashcards
         }
     }
     
-    public void readCard(String selectedItem, int sliderValue)
+    public void readCard(int sliderValue) //read regular set, not starred
     {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
-			
+        String readLine = "";
+        System.out.println("Card Number: "+sliderValue);
         try
         {
-            String line = null; //the read line is null
-            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
-            
-            while((line = rdr.readLine()) != null) //while there are lines to read
+            if(sliderValue>0)
             {
-              for(int z=1; z<sliderValue+1; z++)
-              {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("LINE NUMBER: "+linenumber);
-                  //cardvalues = line.split(","); //split data in file by commas
-                  //System.out.println("NEW LINE "+cardvalues); //output the splitted data
-                  if(linenumber==sliderValue)
-                  {
-                      cardvalues = line.split(",");
-                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
-                  }
-               }
+                readLine = linesSelectedItem.get(sliderValue-1);
             }
-            rdr.close();
+            else
+            {
+                readLine = linesSelectedItem.get(sliderValue);
+            }
+            cardvalues = readLine.split(",");
+            System.out.println(""+readLine);
         }
-            
-        catch(Exception exc) //catch errors
+        catch(Exception exc)
         {
-            System.out.println("ERROR READING SETS FILE");
+            System.out.println("Error reading card.");
             System.out.println(exc);
+            exc.printStackTrace();
         }
     }
     
-    public void readCardWRITE(String selectedItem, int cardNumWrite)
+    public void readCardSTARRED(int sliderValue)
     {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
-			
+        String readLine = "";
+        System.out.println("Card Number: "+sliderValue);
         try
         {
-            String line = null; //the read line is null
-            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
-            
-            while((line = rdr.readLine()) != null) //while there are lines to read
+            if(sliderValue>0)
             {
-              for(int z=1; z<cardNumWrite+1; z++)
-              {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("LINE NUMBER: "+linenumber);
-
-                  if(linenumber==cardNumWrite)
-                  {
-                      cardvalues = line.split(",");
-                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
-                  }
-               }
+                readLine = linesStarred.get(sliderValue-1);
             }
-            rdr.close();
-        }
-            
-        catch(Exception exc) //catch errors
-        {
-            System.out.println("ERROR READING SETS FILE");
-            System.out.println(exc);
-        }
-    }
-    
-    public void readCardSTARRED(String selectedItem, int sliderValue)
-    {
-        String selectedItemNOTXT = selectedItem.replace(".txt", "");
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt";
-			
-        try
-        {
-            String line = null; //the read line is null
-            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
-            
-            while((line = rdr.readLine()) != null) //while there are lines to read
+            else
             {
-              for(int z=1; z<sliderValue+1; z++)
-              {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("LINE NUMBER: "+linenumber);
-                  //cardvalues = line.split(","); //split data in file by commas
-                  //System.out.println("NEW LINE "+cardvalues); //output the splitted data
-                  if(linenumber==sliderValue)
-                  {
-                      cardvalues = line.split(",");
-                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
-                  }
-               }
+                readLine = linesStarred.get(sliderValue);
             }
-            rdr.close();
+            cardvalues = readLine.split(",");
+            System.out.println(""+readLine);
         }
-            
-        catch(Exception exc) //catch errors
+        catch(Exception exc)
         {
-            System.out.println("ERROR READING SETS FILE");
+            System.out.println("Error reading card.");
             System.out.println(exc);
+            exc.printStackTrace();
         }
     }
     
@@ -247,10 +198,10 @@ public class Flashcards
         }
         catch(Exception exc)
         {
-                System.out.println("Error creating card.");
-                System.out.println(exc);
-                File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred"+".txt");
-                createStarredSet(filename, sliderValue, selectedItem, term, example, tags, definition);
+            System.out.println("Error creating card.");
+            System.out.println(exc);
+            File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred"+".txt");
+            //createStarredSet(filename, sliderValue, selectedItem, term, example, tags, definition);
         }
     }
     
@@ -325,7 +276,7 @@ public class Flashcards
         return starred;
     }
     
-    public void createStarredSet(File filename, int sliderValue, String selectedItem, String term, String example, String tags, String definition)
+    /*public void createStarredSet(File filename, int sliderValue, String selectedItem, String term, String example, String tags, String definition)
     {
         //create starred set by simply writing "" to a new file
         //AMEND DATA TO FILE
@@ -346,7 +297,7 @@ public class Flashcards
                 exc.printStackTrace();
         } 
         StarCard(sliderValue, selectedItem, term, example, tags, definition);
-    }
+    }*/
     
     public void UnstarCard(String selectedItem, int sliderValue)
     {
@@ -638,9 +589,27 @@ public class Flashcards
         }
     }
     
+    public void readLines(String selectedItem) //read all lines of files only once, this optimises reading files
+    {
+        String selectedItemNOTXT = selectedItem.replace(".txt", "");
+        try
+        {
+            Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            Path pathStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItemNOTXT+"Starred.txt");
+            linesSelectedItem = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
+            linesStarred = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error creating file.");
+            System.out.println(exc);
+        }
+    }
+    
     public Flashcards(String selectedItem)
     {
         System.out.println("Flashcards running.");
         System.out.println("SELECTED ITEM PASSED: "+selectedItem);
+        readLines(selectedItem);
     }
 }

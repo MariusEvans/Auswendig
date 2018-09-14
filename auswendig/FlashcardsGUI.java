@@ -1109,7 +1109,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         int sliderValue = sliderCardsSTARRED.getValue();
         System.out.println("Slider value: "+sliderValue);
         lblCardCountSTARRED.setText("Card: "+sliderValue);
-        flashcards.readCardSTARRED(selectedItem, sliderValue);
+        flashcards.readCardSTARRED(sliderValue);
 
         if(sliderValue==0)
         {
@@ -1232,7 +1232,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         int sliderValue = sliderCards.getValue();
         System.out.println("Slider value: "+sliderValue);
         lblCardCount.setText("Card: "+sliderValue);
-        flashcards.readCard(selectedItem, sliderValue);
+        flashcards.readCard(sliderValue);
         //flashcards.checkStarred(selectedItem, sliderValue);
         
         boolean starred1 = flashcards.checkStarred(selectedItem, sliderValue);
@@ -1373,7 +1373,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                        cardNumTF+=randomNum;
                        randomNum1 = cardNumTF;
                     }
-                    flashcards.readCard(selectedItem, cardNumTF);
+                    flashcards.readCard(cardNumTF);
                     showCardTrueOrFalse();
                     cardNumTF = cardNumTF1; //set card num back to original
                 }
@@ -1504,11 +1504,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         showCardLeitner();
         cardNumWrite=0;
-        flashcards.readCardWRITE(selectedItem, cardNumWrite);
+        flashcards.readCard(cardNumWrite);
         showCardWrite();
         cardNumWrite+=1;
         cardNumTF=0;
-        flashcards.readCard(selectedItem, cardNumTF);
+        flashcards.readCard(cardNumTF);
         cardNumTF+=1;
         System.out.println(estimatedTime);
     }//GEN-LAST:event_LEITNERPANELComponentShown
@@ -1524,7 +1524,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         {
            cardNumWrite+=1; 
         }
-        flashcards.readCardWRITE(selectedItem, cardNumWrite);
+        flashcards.readCard(cardNumWrite);
         showCardWrite();
     }//GEN-LAST:event_btnSkipCardWRITEActionPerformed
 
@@ -1541,7 +1541,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             {
                 if(cardvalues1[4].equalsIgnoreCase(definition))
                 {
-                    tfDefinitionWRITE.setText("Correct");
+                    tfDefinitionWRITE.setText("Correct, press skip card");
                     try 
                     {
                         TimeUnit.MILLISECONDS.sleep(50);
@@ -1551,7 +1551,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     cardNumWrite+=1;
-                    flashcards.readCardWRITE(selectedItem, cardNumWrite);
+                    flashcards.readCard(cardNumWrite);
                     showCardWrite(); 
                 }
                 else
@@ -1573,7 +1573,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             {
                 if(cardvalues1[1].equalsIgnoreCase(term))
                 {
-                    tfTermWRITE.setText("Correct");
+                    tfTermWRITE.setText("Correct, press skip card");
                     try 
                     {
                         TimeUnit.MILLISECONDS.sleep(50);
@@ -1583,7 +1583,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     cardNumWrite+=1;
-                    flashcards.readCardWRITE(selectedItem, cardNumWrite);
+                    flashcards.readCard(cardNumWrite);
                     showCardWrite();
                 }
                 else
@@ -1632,7 +1632,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         else
         {
             
-            flashcards.readCard(selectedItem, cardNumTF);
+            flashcards.readCard(cardNumTF);
             String cardvalues1[] = flashcards.cardvalues;
             
             for(int i=0; i<cardvalues1.length; i++)
@@ -1662,7 +1662,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         {
                             Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        flashcards.readCard(selectedItem, cardNumWrite);
+                        flashcards.readCard(cardNumWrite);
                         showCardTrueOrFalse();
                     }
                     else if(definition.equals(cardvalues1[i])==true && isTrue==false)
@@ -1689,7 +1689,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         {
                             Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        flashcards.readCard(selectedItem, cardNumWrite);
+                        flashcards.readCard(cardNumWrite);
                         showCardTrueOrFalse();
                     }
                     else if(definition.equals(cardvalues1[i])==true && isFalse==false)
@@ -1716,7 +1716,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
            cardNumTF+=1; 
         }
         System.out.println("cardNumTF "+cardNumTF);
-        flashcards.readCard(selectedItem, cardNumTF);
+        flashcards.readCard(cardNumTF);
         showCardTrueOrFalse();
     }//GEN-LAST:event_btnSkipCardTFActionPerformed
 
