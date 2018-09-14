@@ -28,7 +28,6 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 ## Notes
 <br />
 Currently directories for saving and reading files are hard-coded only for my directory, this will be changed.
-Optimisation for reading files will be done, the way I have done it makes reading many cards slow.
 
 *Leitner System: https://en.wikipedia.org/wiki/Leitner_system*
 
