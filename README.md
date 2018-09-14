@@ -37,7 +37,7 @@ Currently directories for saving and reading files are hard-coded only for my di
 *Leitner System: https://en.wikipedia.org/wiki/Leitner_system*
 
 ## Screenshots
-<br />
+
 ![create set GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/createSet.png)
 ![edit set GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/editSet.png)
 !["Learn" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/learnActivity.png)
