@@ -1,5 +1,10 @@
+
+![GitHub (Pre-)Release Date](https://img.shields.io/badge/release%20date-november-brightgreen.svg?style=flat-square)
+![GitHub Licence](https://img.shields.io/badge/licence-copyright-red.svg?style=flat-square)
+![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
+
 # Auswendig
-**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!**
+**This project is a work-in-process, I would like feedback and pull requests. All source code is within the "auswendig" folder!**
 
 ## Information
 <br />
