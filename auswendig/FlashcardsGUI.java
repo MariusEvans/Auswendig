@@ -38,6 +38,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     int cardNumLeitner;
     int cardNumWrite;
     int cardNumTF;
+    int cardNumListen;
     
     public FlashcardsGUI() 
     {
@@ -120,11 +121,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
         btnHorrible = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnListen = new javax.swing.JButton();
-        tfTermLISTEN = new javax.swing.JTextField();
-        lblTermLISTEN = new javax.swing.JLabel();
         lblDefinitionLISTEN = new javax.swing.JLabel();
         tfDefinitionLISTEN = new javax.swing.JTextField();
-        btnNextCardLISTEN = new javax.swing.JButton();
+        btnRecordTerm = new javax.swing.JButton();
+        btnCheckDefinitionLISTEN = new javax.swing.JButton();
+        btnSkipCardLISTEN = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tfDefinitionWRITE = new javax.swing.JTextField();
         lblDefinitionWRITE = new javax.swing.JLabel();
@@ -195,7 +196,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTerm.setText("Term:");
 
         sliderCards.setBackground(new java.awt.Color(255, 255, 255));
-        sliderCards.setMajorTickSpacing(10);
         sliderCards.setMaximum(200);
         sliderCards.setPaintTicks(true);
         sliderCards.setValue(0);
@@ -296,7 +296,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         STARREDPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
         sliderCardsSTARRED.setBackground(new java.awt.Color(255, 255, 255));
-        sliderCardsSTARRED.setMajorTickSpacing(10);
         sliderCardsSTARRED.setMaximum(200);
         sliderCardsSTARRED.setPaintTicks(true);
         sliderCardsSTARRED.setValue(0);
@@ -538,50 +537,67 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnListen.setText("Listen");
-
-        lblTermLISTEN.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        lblTermLISTEN.setText("Term:");
+        btnListen.setText("Listen to Term");
 
         lblDefinitionLISTEN.setText("Definition:");
 
-        btnNextCardLISTEN.setText("Next Card");
+        btnRecordTerm.setText("Record Term (10s)");
+        btnRecordTerm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecordTermActionPerformed(evt);
+            }
+        });
+
+        btnCheckDefinitionLISTEN.setText("Check Definition");
+        btnCheckDefinitionLISTEN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckDefinitionLISTENActionPerformed(evt);
+            }
+        });
+
+        btnSkipCardLISTEN.setText("START");
+        btnSkipCardLISTEN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkipCardLISTENActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTermLISTEN)
-                        .addGap(30, 30, 30)
-                        .addComponent(tfTermLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btnRecordTerm))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
                         .addComponent(lblDefinitionLISTEN)
                         .addGap(30, 30, 30)
-                        .addComponent(tfDefinitionLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNextCardLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfDefinitionLISTEN, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(btnListen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCheckDefinitionLISTEN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSkipCardLISTEN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTermLISTEN)
-                    .addComponent(tfTermLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(94, 94, 94)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinitionLISTEN)
-                    .addComponent(tfDefinitionLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNextCardLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addComponent(tfDefinitionLISTEN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCheckDefinitionLISTEN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSkipCardLISTEN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(btnRecordTerm)
+                .addContainerGap())
         );
 
         TABBEDPANE.addTab("Listen", jPanel1);
@@ -1639,11 +1655,13 @@ public class FlashcardsGUI extends javax.swing.JFrame
             {
                 if(i==4)
                 {
+                    System.out.println("");
                     System.out.println("Card Number: "+cardNumTF);
                     System.out.println("Term: "+term);
-                    System.out.println("Actual Def: "+cardvalues1[i]);
+                    System.out.println("Actual Def: "+cardvalues1[4]);
                     System.out.println("Tf Def: "+definition);
-             
+                    System.out.println("");
+                    
                     if(definition.equals(cardvalues1[i])==true && isTrue==true)
                     {
                         if(cardNumTF>maxCards-1)
@@ -1662,7 +1680,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         {
                             Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        flashcards.readCard(cardNumWrite);
+                        flashcards.readCard(cardNumTF);
                         showCardTrueOrFalse();
                     }
                     else if(definition.equals(cardvalues1[i])==true && isTrue==false)
@@ -1689,7 +1707,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         {
                             Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        flashcards.readCard(cardNumWrite);
+                        flashcards.readCard(cardNumTF);
                         showCardTrueOrFalse();
                     }
                     else if(definition.equals(cardvalues1[i])==true && isFalse==false)
@@ -1762,6 +1780,18 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_cbFalseItemStateChanged
 
+    private void btnCheckDefinitionLISTENActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckDefinitionLISTENActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCheckDefinitionLISTENActionPerformed
+
+    private void btnSkipCardLISTENActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipCardLISTENActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSkipCardLISTENActionPerformed
+
+    private void btnRecordTermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordTermActionPerformed
+        SoundRecorder soundrecorder = new SoundRecorder();
+    }//GEN-LAST:event_btnRecordTermActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -1796,16 +1826,18 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JPanel TITLEPANEL;
     private javax.swing.JButton btnCheckCard;
     private javax.swing.JButton btnCheckCardTF;
+    private javax.swing.JButton btnCheckDefinitionLISTEN;
     private javax.swing.JButton btnExcellent;
     private javax.swing.JButton btnGood;
     private javax.swing.JButton btnHorrible;
     private javax.swing.JButton btnListen;
-    private javax.swing.JButton btnNextCardLISTEN;
     private javax.swing.JButton btnOkay;
     private javax.swing.JButton btnPoor;
+    private javax.swing.JButton btnRecordTerm;
     private javax.swing.JToggleButton btnShowDef;
     private javax.swing.JToggleButton btnShowDefLEITNER;
     private javax.swing.JToggleButton btnShowDefSTARRED;
+    private javax.swing.JButton btnSkipCardLISTEN;
     private javax.swing.JButton btnSkipCardTF;
     private javax.swing.JButton btnSkipCardWRITE;
     private javax.swing.JToggleButton btnStarCard;
@@ -1836,7 +1868,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JLabel lblTagsWRITE;
     private javax.swing.JLabel lblTerm;
     private javax.swing.JLabel lblTermLEITNER;
-    private javax.swing.JLabel lblTermLISTEN;
     private javax.swing.JLabel lblTermSTARRED;
     private javax.swing.JLabel lblTermTF;
     private javax.swing.JLabel lblTermWRITE;
@@ -1875,7 +1906,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JTextField tfTagsWRITE;
     private javax.swing.JTextField tfTerm;
     private javax.swing.JTextField tfTermLEITNER;
-    private javax.swing.JTextField tfTermLISTEN;
     private javax.swing.JTextField tfTermSTARRED;
     private javax.swing.JTextField tfTermTF;
     private javax.swing.JTextField tfTermWRITE;
