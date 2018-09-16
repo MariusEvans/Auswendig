@@ -22,18 +22,46 @@ public class DeleteSet
     
     public void delete(String selectedItem)
     {
+        String selectedItemNOTXT = selectedItem.replace(".txt","");
         try
         {
-            File file = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
-
-            if(file.delete())
+            File set = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            File starredSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt");
+            File leitnerSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+            System.out.println(set);
+            System.out.println(starredSet);
+            System.out.println(leitnerSet);
+            //DELETE SET, STARRED SET AND LEITNER SET
+            if(set.delete())
             {
-                System.out.println(file.getName() + " is deleted!");
-                JOptionPane.showMessageDialog(null,"Deleted "+selectedItem);
+                System.out.println(set.getName() + " is deleted!");
             }
             else
             {
                 System.out.println("Delete operation is failed.");
+            }
+            
+            if(starredSet.delete())
+            {
+                System.out.println(starredSet.getName() + " is deleted!");
+            }
+            else
+            {
+                System.out.println("Delete operation is failed.");
+            }
+            
+            if(leitnerSet.delete() && leitnerSet.exists()==true) //if a leitner set exists, delete it
+            {
+                System.out.println(leitnerSet.getName() + " is deleted!");
+            }
+            else
+            {
+                System.out.println("Delete operation is failed.");
+            }
+            
+            if(set.exists()==false && starredSet.exists()==false && leitnerSet.exists()==false) //message to say deleted
+            {
+                JOptionPane.showMessageDialog(null,"Deleted "+selectedItem);
             }
     	}
         catch(Exception e)
