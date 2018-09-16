@@ -297,6 +297,7 @@ public class CreateSetGUI extends javax.swing.JFrame
 
     private void btnAddCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCardActionPerformed
         System.out.println("btnAddCard pressed.");
+        boolean validated = false;
         tfSetName.setEditable(false);
         tfDescription.setEditable(false);
         
@@ -304,22 +305,49 @@ public class CreateSetGUI extends javax.swing.JFrame
         String description = tfDescription.getText();
         
         String term = tfTerm.getText();
+        if(term.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Term field cannot be longer than 32 characters, try again");
+        }
         String example = tfExample.getText();
+        if(example.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Example field cannot be longer than 32 characters, try again");
+        }
         String tags = tfTags.getText();
+        if(tags.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags field cannot be longer than 32 characters, try again");
+        }
+        if(tags.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags cannot be contain or be separated by ',', try again");
+        }
         String definition = tfDefinition.getText();
-                
+        if(definition.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Definition field cannot be longer than 32 characters, try again");
+        }
         System.out.println("//--- New Card");
         System.out.println("Term: "+term);
         System.out.println("Example: "+example);
         System.out.println("Tags: "+tags);
         System.out.println("Definition: "+definition);
         
-        createSet.AddCard(setName, description, term, example, tags, definition);
-        
-        //CLEAR CARD
-        tfTerm.setText("");
-        tfExample.setText("");
-        tfDefinition.setText("");
+        if(validated==false)
+        {
+            createSet.AddCard(setName, description, term, example, tags, definition);
+
+            //CLEAR CARD
+            tfTerm.setText("");
+            tfExample.setText("");
+            tfDefinition.setText("");
+        }
     }//GEN-LAST:event_btnAddCardActionPerformed
 
     private void btnCreateSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSetActionPerformed
