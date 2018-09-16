@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class EditSetGUI extends javax.swing.JFrame 
@@ -24,9 +25,14 @@ public class EditSetGUI extends javax.swing.JFrame
         initComponents();
         editSet.readFileNames();
         String[] listOfFileNames1 = editSet.listOfFileNames;
+        String[] listOfFileNamesStarred1 = editSet.listOfFileNamesStarred;
         for(int i = 0; i<listOfFileNames1.length; i++)
         {
             cbxLoadSet.addItem(""+listOfFileNames1[i]);
+        }
+        for(int z=0; z<listOfFileNamesStarred1.length; z++)
+        {
+            cbxLoadSet.addItem(""+listOfFileNamesStarred1[z]);
         }
         sliderCards.setEnabled(false);
         btnAddCard.setEnabled(false);
@@ -77,6 +83,11 @@ public class EditSetGUI extends javax.swing.JFrame
         setBackground(new java.awt.Color(153, 153, 255));
 
         STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
+        STYLEPANEL.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                STYLEPANELComponentShown(evt);
+            }
+        });
 
         lblName.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblName.setText("Name:");
@@ -138,6 +149,8 @@ public class EditSetGUI extends javax.swing.JFrame
                 btnLoadSetActionPerformed(evt);
             }
         });
+
+        cbxLoadSet.setMaximumRowCount(20);
 
         btnSaveCard.setText("Save Card");
         btnSaveCard.addActionListener(new java.awt.event.ActionListener() {
@@ -370,6 +383,7 @@ public class EditSetGUI extends javax.swing.JFrame
 
     private void btnLoadSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadSetActionPerformed
         System.out.println("btnLoadSet pressed.");
+        boolean starred;
         String selectedItem = cbxLoadSet.getSelectedItem().toString();
         System.out.println("selected item: "+selectedItem);
         cbxLoadSet.setEnabled(false);
@@ -379,9 +393,24 @@ public class EditSetGUI extends javax.swing.JFrame
         btnDeleteCard.setEnabled(true);
         btnSaveSet.setEnabled(true);
         btnSaveCard.setEnabled(true);
-        editSet.readSet(selectedItem);
-        editSet.readDescription(selectedItem);
-        String[] values1 = editSet.values;
+        if(selectedItem.contains("Starred"))
+        {
+            starred = true;
+            editSet.readLines(selectedItem, true);
+            tfDescription.setEditable(false);
+            tfDescription.setText("No description for starred sets");
+        }
+        else
+        {
+            starred = false;
+            editSet.readLines(selectedItem, false);
+            editSet.readDescription(selectedItem);
+        }
+        
+        editSet.readCard(0, starred);
+        String[] cardvalues1 = editSet.cardvalues;
+        sliderCards.setValue(sliderCards.getValue()+1); //swap cards to show first card
+        sliderCards.setValue(sliderCards.getValue()-1);
         
         if(selectedItem.contains(".txt"))
         {
@@ -393,23 +422,23 @@ public class EditSetGUI extends javax.swing.JFrame
             tfSetName.setText(""+selectedItem);
         }
         
-        for(int i=0; i<values1.length; i++)
+        for(int i=0; i<cardvalues1.length; i++)
         {
             if(i==1)
             {
-               tfTerm.setText(values1[i]);
+               tfTerm.setText(cardvalues1[i]);
             }
             if(i==2)
             {
-               tfExample.setText(values1[i]);
+               tfExample.setText(cardvalues1[i]);
             }
             if(i==3)
             {
-               tfTags.setText(values1[i]);
+               tfTags.setText(cardvalues1[i]);
             }
             if(i==4)
             {
-               tfDefinition.setText(values1[i]);
+               tfDefinition.setText(cardvalues1[i]);
             }
         }
         
@@ -429,13 +458,32 @@ public class EditSetGUI extends javax.swing.JFrame
         String selectedItem = cbxLoadSet.getSelectedItem().toString();
         System.out.println("Slider value: "+sliderValue);
         lblCardCount.setText("Card: "+sliderValue+" / 200");
-        editSet.readCard(selectedItem, sliderValue);
+        if(selectedItem.contains("Starred"))
+        {
+           editSet.readCard(sliderValue, true); 
+        }
+        else
+        {
+            editSet.readCard(sliderValue, false); 
+        }
+        
         
         try
         {
-            Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            Path path;
+            int ifStarred=0;
+            if(selectedItem.contains("Starred"))
+            {
+                path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItem);
+            }
+            else
+            {
+                path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+                ifStarred=ifStarred-2;
+            }
+            System.out.println("path chosen: "+path.toString());
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-            if(lines.size()-2<sliderValue)
+            if(lines.size()-ifStarred<sliderValue)
             {
                tfTerm.setText("");
                tfExample.setText("");
@@ -449,32 +497,25 @@ public class EditSetGUI extends javax.swing.JFrame
             System.out.println(""+e);
         }
         
-        if(sliderValue==0)
+        String cardvalues1[] = editSet.cardvalues;
+        for(int i=0; i<cardvalues1.length; i++)
         {
-           
-        }
-        else
-        {
-            String cardvalues1[] = editSet.cardvalues;
-            for(int i=0; i<cardvalues1.length; i++)
-            {
-               if(i==1)
-               {
-                   tfTerm.setText(cardvalues1[i]);
-               }
-               else if(i==2)
-               {
-                 tfExample.setText(cardvalues1[i]);  
-               }
-               else if(i==3)
-               {
-                   tfTags.setText(cardvalues1[i]);
-               }
-               else if(i==4)
-               {
-                  tfDefinition.setText(cardvalues1[i]); 
-               }
-            }
+           if(i==1)
+           {
+               tfTerm.setText(cardvalues1[i]);
+           }
+           else if(i==2)
+           {
+             tfExample.setText(cardvalues1[i]);  
+           }
+           else if(i==3)
+           {
+               tfTags.setText(cardvalues1[i]);
+           }
+           else if(i==4)
+           {
+              tfDefinition.setText(cardvalues1[i]); 
+           }
         }
             
     }//GEN-LAST:event_sliderCardsStateChanged
@@ -516,6 +557,7 @@ public class EditSetGUI extends javax.swing.JFrame
 
     private void btnAddCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCardActionPerformed
         System.out.println("btnAddCard pressed.");
+        boolean validated=false;
         tfSetName.setEditable(false);
         tfDescription.setEditable(false);
         
@@ -523,9 +565,34 @@ public class EditSetGUI extends javax.swing.JFrame
         String selectedItem = cbxLoadSet.getSelectedItem().toString();
         
         String term = tfTerm.getText();
+        if(term.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Term field cannot be longer than 32 characters, try again");
+        }
         String example = tfExample.getText();
+        if(example.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Example field cannot be longer than 32 characters, try again");
+        }
         String tags = tfTags.getText();
+        if(tags.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags field cannot be longer than 32 characters, try again");
+        }
+        if(tags.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags cannot be contain or be separated by ',', try again");
+        }
         String definition = tfDefinition.getText();
+        if(definition.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Definition field cannot be longer than 32 characters, try again");
+        }
                 
         System.out.println("//--- New Card");
         System.out.println("Term: "+term);
@@ -533,16 +600,28 @@ public class EditSetGUI extends javax.swing.JFrame
         System.out.println("Tags: "+tags);
         System.out.println("Definition: "+definition);
         
-        editSet.AddCard(sliderValue, selectedItem, term, example, tags, definition);
-        
-        //CLEAR CARD
-        tfTerm.setText("");
-        tfExample.setText("");
-        tfDefinition.setText("");
+        System.out.println("validated ="+validated);
+        if(validated==false)
+        {
+            boolean starred2;
+            if(selectedItem.contains("Starred"))
+            {
+                starred2=true;
+            }
+            else
+            {
+                starred2=false;
+            }
+            editSet.AddCard(sliderValue, selectedItem, term, example, tags, definition, starred2);
+            editSet.readLines(selectedItem, starred2);
+            JOptionPane.showMessageDialog(null,"Card successfully added");
+            sliderCards.setValue(sliderCards.getValue()+1);
+        }
     }//GEN-LAST:event_btnAddCardActionPerformed
 
     private void btnSaveCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCardActionPerformed
         System.out.println("btnSaveCard pressed.");
+        boolean validated=false;
         tfSetName.setEditable(false);
         tfDescription.setEditable(false);
         
@@ -550,9 +629,34 @@ public class EditSetGUI extends javax.swing.JFrame
         String selectedItem = cbxLoadSet.getSelectedItem().toString();
         
         String term = tfTerm.getText();
+        if(term.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Term field cannot be longer than 32 characters, try again");
+        }
         String example = tfExample.getText();
+        if(example.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Example field cannot be longer than 32 characters, try again");
+        }
         String tags = tfTags.getText();
+        if(tags.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags field cannot be longer than 32 characters, try again");
+        }
+        if(tags.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Tags cannot be contain or be separated by ',', try again");
+        }
         String definition = tfDefinition.getText();
+        if(definition.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Definition field cannot be longer than 32 characters, try again");
+        }
                 
         System.out.println("//--- Edited Card");
         System.out.println("Term: "+term);
@@ -560,8 +664,16 @@ public class EditSetGUI extends javax.swing.JFrame
         System.out.println("Tags: "+tags);
         System.out.println("Definition: "+definition);
         
-        editSet.SaveCard(selectedItem, sliderValue, term, example, tags, definition);
+        if(validated==false)
+        {
+            editSet.SaveCard(selectedItem, sliderValue, term, example, tags, definition);
+            JOptionPane.showMessageDialog(null,"Card successfully saved");
+        }
     }//GEN-LAST:event_btnSaveCardActionPerformed
+
+    private void STYLEPANELComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_STYLEPANELComponentShown
+        JOptionPane.showMessageDialog(null,"Please not that editing a set will not automatically change cards in the corresponding starred or leitner set");
+    }//GEN-LAST:event_STYLEPANELComponentShown
 
     /**
      * @param args the command line arguments

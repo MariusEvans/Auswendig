@@ -23,11 +23,15 @@ import java.util.Calendar;
 
 public class EditSet 
 {
+    List<String> linesSelectedItem;
+    List<String> linesStarred;
+    boolean starredSet = false;
     int cardNumber = 0;
     public File[] listOfFiles;
-    public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 sets supported
+    public File[] listOfFilesStarred;
+    public String[] listOfFileNamesStarred = {"","","","","","","","","",""}; //10 sets supported;
+    public String[] listOfFileNames = {"","","","","","","","","",""}; //10 sets supported
     String readLine[] = new String[6]; //array for read lines
-    String[] values;
     String[] cardvalues;
     Calendar calendar = Calendar.getInstance(); //varaible for the current time/date
     public String descriptionGLOBAL;
@@ -35,7 +39,8 @@ public class EditSet
     public void readFileNames()
     {
         File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");
-		
+	File folderStarred = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\");	
+        
 	if(folder.isDirectory())
         {
             if(folder.list().length>0)
@@ -61,81 +66,84 @@ public class EditSet
         {	
             System.out.println("This is not a directory");	
 	}
-    }
-    
-    public void readSet(String selectedItem)
-    {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
         
-        try
+        if(folderStarred.isDirectory())
         {
-            BufferedReader br = new BufferedReader(new FileReader(filename)); //for reading data
-            String line = null; //the read line is null
-
-            while((line = br.readLine()) != null) //while there are lines to read
+            if(folderStarred.list().length>0)
             {
-              values = line.split(","); //split data in file by commas
-              System.out.println("NEW LINE "+values); //output the splitted data
+		System.out.println("Directory is not empty!");
+                File[] listOfFilesStarred = folderStarred.listFiles();
 
-              for(int i=0; i<Array.getLength(values); i++) //loop for the array of read lines
-              {
-                System.out.println("Value:"+values[i]); //output the array value for the loop
-              }
-              br.close(); //called once, it stops all reading to the file
-           }
-         }
-        catch(Exception exc) //catch errors
-        {
-            System.out.println("ERROR READING SETS FILE");
-            System.out.println(exc);
-        }
-    }
-    
-    public void readCard(String selectedItem, int sliderValue)
-    {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
-			
-        try
-        {
-            //BufferedReader br = new BufferedReader(new FileReader(filename)); //for reading data
-            String line = null; //the read line is null
-            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
-            
-            while((line = rdr.readLine()) != null) //while there are lines to read
-            {
-              for(int z=1; z<sliderValue+1; z++)
-              {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("LINE NUMBER: "+linenumber);
-                  //cardvalues = line.split(","); //split data in file by commas
-                  //System.out.println("NEW LINE "+cardvalues); //output the splitted data
-                  if(linenumber==sliderValue)
+                for (int i = 0; i < listOfFilesStarred.length; i++) 
+                {
+                  if (listOfFilesStarred[i].isFile()) 
                   {
-                      cardvalues = line.split(",");
-                      System.out.println("**** LINE NUMBER SPLIT: "+cardvalues); //output the splitted data;
-                  }
-               }
-              /*for(int i=0; i<Array.getLength(cardvalues); i++) //loop for the array of read lines
-              {
-                System.out.println("Value:"+cardvalues[i]); //output the array value for the loop
-              }*/
+                    System.out.println("File " + listOfFilesStarred[i].getName());
+                    listOfFileNamesStarred[i] = listOfFilesStarred[i].getName();
+                  } 
+                }
             }
-            //br.close(); //called once, it stops all reading to the file
-            rdr.close();
-        }
-            
-        catch(Exception exc) //catch errors
+            else
+            {
+                System.out.println("Directory is empty!");		
+            }	
+	}
+        else
+        {	
+            System.out.println("This is not a directory");	
+	}
+    }
+    
+    public void readCard(int sliderValue, boolean starredSet1)
+    {	
+        String readLine = "";
+        System.out.println("starredSet = "+starredSet1);
+        System.out.println("Card Number: "+sliderValue);
+        try
         {
-            System.out.println("ERROR READING SETS FILE");
+            if(sliderValue>0 && starredSet1==true)
+            {
+                readLine = linesStarred.get(sliderValue-1);
+            }
+            else if(sliderValue<0 && starredSet1==true)
+            {
+                readLine = linesStarred.get(sliderValue);
+            }
+            
+            if(sliderValue>0 && starredSet1==false)
+            {
+                readLine = linesSelectedItem.get(sliderValue-1);
+            }
+            else if(sliderValue<0 && starredSet1==false)
+            {
+                readLine = linesSelectedItem.get(sliderValue);
+            }
+             
+            cardvalues = readLine.split(",");
+            System.out.println(""+readLine);
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error reading card.");
             System.out.println(exc);
+            exc.printStackTrace();
         }
     }
     
-    public void AddCard(int sliderValue, String selectedItem, String term, String example, String tags, String definition)
+    public void AddCard(int sliderValue, String selectedItem, String term, String example, String tags, String definition, boolean starred2)
     {
         try
         {
-            Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            Path path;
+            if(starred2==true)
+            {
+                path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItem);
+            }
+            else
+            {
+                path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            }
+            
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
             int position = sliderValue-1;
@@ -218,7 +226,16 @@ public class EditSet
         try
         {
             Path originalPath = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
-            Path newPath = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+            Path newPath;
+            if(selectedItem.contains("Starred"))
+            {
+                 newPath = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+setName+"Starred.txt");
+            }
+            else
+            {
+                newPath = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+            }
+            newPath = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
             List<String> lines = Files.readAllLines(originalPath, StandardCharsets.UTF_8);
             int lastline = lines.size();
             int position = lastline-1;
@@ -268,34 +285,40 @@ public class EditSet
     
     public void readDescription(String selectedItem)
     {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem;
-			
+        Path filename = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+	Path filenameStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItem);	
         try
-        {
-            //BufferedReader br = new BufferedReader(new FileReader(filename)); //for reading data
-            String line = null; //the read line is null
-            LineNumberReader rdr = new LineNumberReader(new FileReader(filename));
-            Path filenameLineSizes = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
-            List<String> lines = Files.readAllLines(filenameLineSizes, StandardCharsets.UTF_8);
+        {   
+            List<String> lines = Files.readAllLines(filename, StandardCharsets.UTF_8);
             int linesize = lines.size();
-            
-            while((line = rdr.readLine()) != null) //while there are lines to read
-            {
-              for(int z=1; z<linesize-2; z++)
-              {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("LINE NUMBER: "+linenumber);
-  
-                  if(linenumber==linesize)
-                  {
-                      descriptionGLOBAL = line;
-                  }
-               }
-            }
-            rdr.close();
+            descriptionGLOBAL = lines.get(linesize-1); 
         }
         catch(Exception exc)
         {
+            System.out.println(exc);
+        }
+    }
+    
+    public void readLines(String selectedItem, boolean starredSet)
+    {
+        try
+        {
+            if(starredSet==true)
+            {
+                Path pathStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItem);
+                linesStarred = Files.readAllLines(pathStarred, StandardCharsets.UTF_8);
+                starredSet=true;
+            }
+            else
+            {
+                Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+                linesSelectedItem = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
+            }
+     
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error creating file.");
             System.out.println(exc);
         }
     }
