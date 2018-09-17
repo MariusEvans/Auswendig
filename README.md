@@ -6,7 +6,7 @@
 # Auswendig
 **Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. Project Auswendig is property of and written by Marius Evans (mariusevans@outlook.com). Reproduction, sale and commerical distribution of this material is strictly forbidden unless prior written permission is obtained from Marius Evans. See LICENECE.md for more details.**
 
-**This project is a work-in-process, I would like feedback and pull requests. All source code is within the "auswendig" folder!**
+**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!**
 
 ## Information
 <br />
