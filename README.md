@@ -54,3 +54,5 @@ Notes: Currently directories for saving and reading files are hard-coded only fo
 !["Leitner" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/leitnerActivity.png)
 !["Starred" activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/starredActivity.png)
 !["Write" activity activity GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/writeActivity.png)
+
+https://github.com/MariusEvans/Auswendig
