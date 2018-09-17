@@ -4,6 +4,8 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
+**Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. Project Auswendig is property of and written by Marius Evans (mariusevans@outlook.com). Reproduction, sale and commerical distribution of this material is strictly forbidden unless prior written permission is obtained from Marius Evans. See LICENECE.md for more details.**
+
 **This project is a work-in-process, I would like feedback and pull requests. All source code is within the "auswendig" folder!**
 
 ## Information
@@ -39,12 +41,10 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 4. Rating cards with the Leitner system creates a Leitner set of the original in the "Leitner" folder. <br />
 5. The "res" (resources) folder contains icons used in drop-down menus.
 
-### Notes, licence and other information
+### Notes and other information
 <br />
 Notes: Currently directories for saving and reading files are hard-coded only for my directory, this will be changed.
 *Leitner System: https://en.wikipedia.org/wiki/Leitner_system
-
-**Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. Project Auswendig is property of and written by Marius Evans (mariusevans@outlook.com). Reproduction, sale and commerical distribution of this material is strictly forbidden unless prior written permission is obtained from Marius Evans.**
 
 ## Screenshots
 
