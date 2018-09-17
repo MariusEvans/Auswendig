@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -27,7 +28,9 @@ public class Flashcards
 {
     List<String> linesSelectedItem;
     List<String> linesStarred;
+    List<String> linesDaysPast;
     
+    int daysPast1;
     int cardNumber = 0;
     public File[] listOfFiles;
     public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 sets supported
@@ -596,8 +599,10 @@ public class Flashcards
         {
             Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
             Path pathStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItemNOTXT+"Starred.txt");
+            Path pathDaysPast = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\auswendig\\daysPast.txt");
             linesSelectedItem = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
             linesStarred = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
+            linesDaysPast = Files.readAllLines(pathDaysPast, StandardCharsets.UTF_8);
         }
         catch(Exception exc)
         {
@@ -606,10 +611,73 @@ public class Flashcards
         }
     }
     
+    public int daysPast()
+    {
+        LocalDate now = LocalDate.now();
+        String readLine = "";
+        int daysPastInt = 0;
+        //check days past
+        try
+        {
+            readLine = linesDaysPast.get(0);
+            if(readLine.equals(now)) //if the current date is equal to the read date daysPastInt=0
+            {
+                daysPastInt=0;
+            }
+            else
+            {
+                String[] cardvalues00 = readLine.split("-");
+                System.out.println(""+cardvalues00);
+                String daysString = "";
+                for(int i=0; i<3; i++)
+                {
+                   daysString = cardvalues00[i]; 
+                }
+
+                System.out.println("days String: "+daysString);
+                int daysInt = Integer.parseInt(daysString);
+                LocalDate daysPastDate = now.minusDays(daysInt);
+                String daysPastString = daysPastDate+"";
+                String[] daysPastArray = daysPastString.split("-");
+
+                String daysPast = "";
+                for(int z=0; z<3; z++)
+                {
+                    daysPast = daysPastArray[z];   
+                    daysPastInt = Integer.parseInt(daysPast);
+                }
+                System.out.println("days Past: "+daysPastInt);
+            }
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error reading date.");
+            System.out.println(exc);
+            exc.printStackTrace();
+        }
+        
+        //store new date
+        try
+        {
+            Path pathDaysPast = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\auswendig\\daysPast.txt");
+            linesDaysPast.remove(0);
+            linesDaysPast.add(0, now+"");
+            Files.write(pathDaysPast, linesDaysPast, StandardCharsets.UTF_8);
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error writing date.");
+            System.out.println(exc);
+            exc.printStackTrace();
+        }
+        return daysPastInt;
+    }
+    
     public Flashcards(String selectedItem)
     {
         System.out.println("Flashcards running.");
         System.out.println("SELECTED ITEM PASSED: "+selectedItem);
         readLines(selectedItem);
+        daysPast1 = daysPast(); //gets the days past since last opened flashcards, writes new date in daysPast.txt file
     }
 }

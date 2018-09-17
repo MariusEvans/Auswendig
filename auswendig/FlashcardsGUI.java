@@ -34,7 +34,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     int randomDef=1;
     int randomNum1;
     int maxCards;
-    long startTime = System.nanoTime();
     int cardNumLeitner;
     int cardNumWrite;
     int cardNumTF;
@@ -166,9 +165,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         miCreateSet = new javax.swing.JMenuItem();
         miEditSet = new javax.swing.JMenuItem();
         miDeleteSet = new javax.swing.JMenuItem();
-        menuEdit = new javax.swing.JMenu();
-        miEditCard = new javax.swing.JMenuItem();
-        miSaveCard = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -965,29 +961,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
-        menuEdit.setText("Edit");
-        menuEdit.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-
-        miEditCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
-        miEditCard.setText("Edit Card");
-        miEditCard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miEditCardActionPerformed(evt);
-            }
-        });
-        menuEdit.add(miEditCard);
-
-        miSaveCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
-        miSaveCard.setText("Save Card");
-        miSaveCard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSaveCardActionPerformed(evt);
-            }
-        });
-        menuEdit.add(miSaveCard);
-
-        MenuBar.add(menuEdit);
-
         setJMenuBar(MenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1513,7 +1486,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnHorribleActionPerformed
 
     private void LEITNERPANELComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_LEITNERPANELComponentShown
-        long estimatedTime = System.nanoTime() - startTime;
         cardNumLeitner = 0;
         //String daysTillReview = "*0"; //5,3,2,1,0
         //flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
@@ -1526,7 +1498,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         cardNumTF=0;
         flashcards.readCard(cardNumTF);
         cardNumTF+=1;
-        System.out.println(estimatedTime);
     }//GEN-LAST:event_LEITNERPANELComponentShown
 
     private void btnSkipCardWRITEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipCardWRITEActionPerformed
@@ -1738,20 +1709,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         showCardTrueOrFalse();
     }//GEN-LAST:event_btnSkipCardTFActionPerformed
 
-    private void miSaveCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSaveCardActionPerformed
-        System.out.println("miSaveCard pressed.");
-        tfTerm.setEditable(false);
-        tfExample.setEditable(false);
-        tfTags.setEditable(false);
-    }//GEN-LAST:event_miSaveCardActionPerformed
-
-    private void miEditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCardActionPerformed
-        System.out.println("miEditCard pressed.");
-        tfTerm.setEditable(true);
-        tfExample.setEditable(true);
-        tfTags.setEditable(true);
-    }//GEN-LAST:event_miEditCardActionPerformed
-
     private void cbTrueItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTrueItemStateChanged
         System.out.println("cbTrue presssed");
         if(isTrue==true)
@@ -1872,19 +1829,16 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JLabel lblTermTF;
     private javax.swing.JLabel lblTermWRITE;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFolders;
     private javax.swing.JMenu menuSets;
     private javax.swing.JMenuItem miCreateFolder;
     private javax.swing.JMenuItem miCreateSet;
     private javax.swing.JMenuItem miDeleteFolder;
     private javax.swing.JMenuItem miDeleteSet;
-    private javax.swing.JMenuItem miEditCard;
     private javax.swing.JMenuItem miEditFolder;
     private javax.swing.JMenuItem miEditSet;
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
-    private javax.swing.JMenuItem miSaveCard;
     private javax.swing.JSlider sliderCards;
     private javax.swing.JSlider sliderCardsSTARRED;
     private javax.swing.JTextField tfDefinition;
