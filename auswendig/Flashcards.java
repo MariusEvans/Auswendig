@@ -405,41 +405,6 @@ public class Flashcards
         }
     }
     
-    public void createSetOrAddCardLeitner(String selectedItem, int maxCards, int sliderValue, String daysTillReview)
-    {
-        String selectedItemNOTXT = selectedItem.replace(".txt","");
-        Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner"+".txt");
-        File filename = path.toFile();
-        String path1 = path.toString();
-        try
-        {
-            if(filename.exists()==true) //if file exists, amend the line of the current card
-            {
-                SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
-            }
-            else if(filename.exists()==false) //create blank set with daysTilLReview = 0
-            {
-                FileWriter fw1 = new FileWriter(path1, true);
-                BufferedWriter bw1 = new BufferedWriter(fw1); //temporary store for data
-                System.out.println("does not exist");
-                System.out.println("----- New Leitner Set");
-                for(int i=0; i<maxCards+1; i++)
-                {
-                   bw1.write(i+","+"*0"); 
-                   bw1.write("\r\n");
-                   System.out.println(i+","+"*0");
-                }
-                bw1.close(); //close buffered writer
-            }
-        }
-        catch(Exception exc)
-        {
-                System.out.println("Error creating card.");
-                System.out.println(exc);
-               
-        }
-    }
-    
     public void SaveCardLEITNER(String selectedItem, int sliderValue, String daysTillReview)
     {
         String selectedItemNOTXT = selectedItem.replace(".txt","");
@@ -611,6 +576,81 @@ public class Flashcards
         }
     }
     
+    public void minusDaysPast(String selectedItem, int daysPast1)
+    {
+        String daysTillReview = "";
+        int daysLeft = 0;
+        int daysTillReviewFINAL;
+        String selectedItemNOTXT = selectedItem.replace(".txt","");
+        int maxCards = 0;
+        List<String> linesLeitner = null;
+        
+        if(daysPast1>0)
+        {
+            try //get size of deck (number of cards)
+            {
+                Path pathLeitner = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+                linesLeitner = Files.readAllLines(pathLeitner, StandardCharsets.UTF_8);
+                maxCards = linesLeitner.size();
+            }
+            catch(Exception exc)
+            {
+                System.out.println("Error getting size of deck.");
+                System.out.println(exc);
+            }
+
+            for(int i=0; i<maxCards; i++)
+            {
+                String readLine = linesLeitner.get(i);
+                System.out.println("Leitner read line: "+readLine);
+                String[] splitValues = readLine.split(",");
+                String cardvalueString = Arrays.toString(splitValues);
+                char cardvalueChars[] = cardvalueString.toCharArray();
+                char cardValueChar = cardvalueChars[5];
+                String cardValueString = cardValueChar+"";
+                if(cardValueString.contains("*"))
+                {
+                    cardValueChar = cardvalueChars[6];
+                    cardValueString = cardValueChar+"";
+                    if(cardValueString.contains("*"))
+                    {
+                        cardValueChar = cardvalueChars[6];
+                    }
+                }
+                int daysTillReviewCard = Character.getNumericValue(cardValueChar);
+                System.out.println("daysTillReviewCard: "+daysTillReviewCard+". Read line: "+readLine);
+                if(daysPast1==daysTillReviewCard || daysPast1>daysTillReviewCard) //set days till review as 0 if more days past then days till review
+                {
+                    daysTillReviewFINAL=0;
+                }
+                else
+                {
+                    daysTillReviewFINAL = daysTillReviewCard-daysPast1;
+                }
+                //REMOVE OLD CARD
+                try
+                {
+                    Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+                    List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+                    System.out.println("VALUES AT CARD TO DELETE: "+lines.get(i));
+                    lines.remove(i);
+                    int position = i;
+                    String extraLine = i+",*"+daysTillReviewFINAL;
+                    System.out.println("ADDED NEW LINE: "+extraLine);
+                    lines.add(i, extraLine);
+                    Files.write(path, lines, StandardCharsets.UTF_8);
+                }
+
+                catch(Exception exc) //catch errors
+                {
+                    System.out.println("ERROR READING SETS FILE");
+                    System.out.println(exc);
+                }
+            }
+        }
+    }
+    
     public int daysPast()
     {
         LocalDate now = LocalDate.now();
@@ -679,5 +719,7 @@ public class Flashcards
         System.out.println("SELECTED ITEM PASSED: "+selectedItem);
         readLines(selectedItem);
         daysPast1 = daysPast(); //gets the days past since last opened flashcards, writes new date in daysPast.txt file
+        System.out.println("Days past since last opened flashcards: "+daysPast1);
+        minusDaysPast(selectedItem, daysPast1);
     }
 }

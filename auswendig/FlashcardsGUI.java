@@ -1384,14 +1384,14 @@ public class FlashcardsGUI extends javax.swing.JFrame
         if(cardNumLeitner==0)
         {
             flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
-            flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+            flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
             cardNumLeitner +=1;
         }
         else if(cardNumLeitner>0)
         {
             cardNumLeitner +=1;
             flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
-            flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+            flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         if(cardNumLeitner>maxCards)
         {
@@ -1421,7 +1421,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnGood pressed.");
         String daysTillReview = "*3"; //5,3,2,1,0
         
-        flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
         
@@ -1438,7 +1438,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnOkay pressed.");
         String daysTillReview = "*2"; //5,3,2,1,0
         
-        flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
      
@@ -1455,7 +1455,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnPoor pressed.");
         String daysTillReview = "*1"; //5,3,2,1,0
         
-        flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
         
@@ -1472,7 +1472,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnHorrible pressed.");
         String daysTillReview = "*0"; //5,3,2,1,0
         
-        flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
       
