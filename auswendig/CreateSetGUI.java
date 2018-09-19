@@ -362,8 +362,9 @@ public class CreateSetGUI extends javax.swing.JFrame
         
         createSet.makeSet();
         createSet.createStarredSet();
+        createSet.createLeitnerSet();
         tfSetName.setEditable(false);
-        JOptionPane.showMessageDialog(null, "Set successfully created");
+        JOptionPane.showMessageDialog(null, "Set successfully created, reload Auswendig to open set");
     }//GEN-LAST:event_btnCreateSetActionPerformed
 
     private void miEditFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditFolderActionPerformed

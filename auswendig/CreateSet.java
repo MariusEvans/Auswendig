@@ -10,7 +10,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Calendar;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class CreateSet
@@ -113,5 +118,46 @@ public class CreateSet
                 System.out.println("Error creating empty starred set.");
                 System.out.println(exc);
         } 
+    }
+    
+    public void createLeitnerSet()
+    {
+        Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+setName+"Leitner.txt");
+        File filename = path.toFile();
+        String pathLeitner = path.toString();
+        
+        int maxCards = 0;
+        try //get size of deck (number of cards)
+        {
+            Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+            List<String> linesLeitner = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
+            maxCards = linesLeitner.size()-2;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error getting size of deck.");
+            System.out.println(exc);
+        }
+        
+        try
+        {
+            FileWriter fw1 = new FileWriter(pathLeitner, true);
+            BufferedWriter bw1 = new BufferedWriter(fw1); //temporary store for data
+            System.out.println("does not exist");
+            System.out.println("----- New Leitner Set");
+            for(int i=0; i<maxCards+1; i++)
+            {
+               bw1.write(i+","+"*0"); 
+               bw1.write("\r\n");
+               System.out.println(i+","+"*0");
+            }
+            bw1.close(); //close buffered writer
+        }
+        catch(Exception exc)
+        {
+                System.out.println("Error creating card.");
+                System.out.println(exc);
+               
+        }
     }
 }
