@@ -1380,19 +1380,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private void btnExcellentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcellentActionPerformed
         System.out.println("btnExcellent pressed.");
         String daysTillReview = "*5"; //5,3,2,1,0
+
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         cardNumLeitner +=1;
-        if(cardNumLeitner==0)
-        {
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
-            flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-            cardNumLeitner +=1;
-        }
-        else if(cardNumLeitner>0)
-        {
-            cardNumLeitner +=1;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
-            flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        }
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
+
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
@@ -1400,20 +1392,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
         //int sliderValue = sliderCardsLEITNER.getValue();
         
-        int lineNumbers0[] = flashcards.lineNumbers0;
-        System.out.println(cardNumLeitner);
-        for(int x = cardNumLeitner; x<lineNumbers0.length; x++)
-        {
-            System.out.println("daysTo0 on line "+lineNumbers0[x]);
-            
-            if(x+1<lineNumbers0.length)
-            {
-               int difference = lineNumbers0[x+1]-lineNumbers0[x];
-               cardNumLeitner = lineNumbers0[x]+difference; 
-               System.out.println("1. Line Num: "+lineNumbers0[x]+" 2. Line Num: "+lineNumbers0[x+1]);
-            }
-        }
-        System.out.println("Next line with daysToReview 0 is card Number: "+cardNumLeitner);
         showCardLeitner();
     }//GEN-LAST:event_btnExcellentActionPerformed
 
@@ -1422,8 +1400,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
         String daysTillReview = "*3"; //5,3,2,1,0
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         
         if(cardNumLeitner>maxCards)
         {
@@ -1456,13 +1434,14 @@ public class FlashcardsGUI extends javax.swing.JFrame
         String daysTillReview = "*1"; //5,3,2,1,0
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
-        cardNumLeitner +=1;
+        cardNumLeitner +=1;  
+        flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
+ 
         
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
+            flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
         }
         
         showCardLeitner();
@@ -1473,13 +1452,13 @@ public class FlashcardsGUI extends javax.swing.JFrame
         String daysTillReview = "*0"; //5,3,2,1,0
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         cardNumLeitner +=1;
+        flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
       
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
+            flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
         }
         
         showCardLeitner();
@@ -1491,6 +1470,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         //flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
         flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         showCardLeitner();
+        cardNumLeitner+=1;
         cardNumWrite=0;
         flashcards.readCard(cardNumWrite);
         showCardWrite();

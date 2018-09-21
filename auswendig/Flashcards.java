@@ -40,7 +40,6 @@ public class Flashcards
     Calendar calendar = Calendar.getInstance(); //varaible for the current time/date
     String selectedItem;
     public String descriptionGLOBAL;
-    public int[] lineNumbers0 = new int[15]; //*!!!! CHANGE SIZE TO MAX CARDS
     
     public void readSet(String selectedItem)
     {
@@ -532,16 +531,19 @@ public class Flashcards
                       char cardvalueChars[] = cardvalueString.toCharArray();
                       char cardValueChar = cardvalueChars[5];
                       int daysTillReviewCard = Character.getNumericValue(cardValueChar);
+                      System.out.println("");
+                      System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
                       if(daysTillReviewCard==0)
                       {
-                          lineNumbers0[z] = linenumber;
-                          int linenumberDYSTORW = linenumber;
-                          System.out.println("");
-                          System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
                           cardvalues = line1.split(",");
                           String cardvalueString1 = Arrays.toString(cardvalues);
                           System.out.println("Arrays.toString "+cardvalueString1);
-                          //readCardLEITNERdaysTilLReview0(linenumberDYSTORW, sliderValue, selectedItem);
+                      }
+                      else
+                      {
+                          System.out.println("line number: "+linenumber+"daysTillReview is not 0");
+                          sliderValue+=1;
+                          readCardLEITNER(selectedItem, sliderValue);
                       }
                       flag=true;
                   }
@@ -573,6 +575,61 @@ public class Flashcards
         {
             System.out.println("Error creating file.");
             System.out.println(exc);
+        }
+    }
+    
+    public void readCardLeiter1(String selectedItem, int cardNum)
+    {
+        boolean timeToReview = false;
+        boolean flag = false;
+        String selectedItemNOTXT=selectedItem.replace(".txt", "");
+        List<String> linesLeitner = null;
+        int maxCards = 0;
+        try //get size of deck (number of cards)
+        {
+            Path pathLeitner = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+            linesLeitner = Files.readAllLines(pathLeitner, StandardCharsets.UTF_8);
+            maxCards = linesLeitner.size();
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Error getting size of deck.");
+            System.out.println(exc);
+        }
+        while(timeToReview==false || cardNum<=maxCards)
+        {
+            String readLine1 = linesLeitner.get(cardNum);
+            System.out.println("Leitner read line: "+readLine1);
+            String[] splitValues = readLine1.split(",");
+            String cardvalueString = Arrays.toString(splitValues);
+            char cardvalueChars[] = cardvalueString.toCharArray();
+            char cardValueChar = cardvalueChars[5];
+            String cardValueString = cardValueChar+"";
+            if(cardValueString.contains("*"))
+            {
+                cardValueChar = cardvalueChars[6];
+                cardValueString = cardValueChar+"";
+                if(cardValueString.contains("*"))
+                {
+                    cardValueChar = cardvalueChars[6];
+                }
+            }
+            int daysTillReviewCard = Character.getNumericValue(cardValueChar);
+            
+            System.out.println("");
+            if(daysTillReviewCard==0 && flag==false)
+            {
+                cardvalues = readLine1.split(",");
+                System.out.println("contains 0: "+cardvalues.toString());
+                timeToReview=true;
+                flag=true;
+            }
+            else
+            {
+                timeToReview=false;
+            }
+            System.out.println("daysTillReviewCard: "+daysTillReviewCard+". Read line: "+readLine);
+            cardNum+=1;
         }
     }
     
@@ -660,7 +717,7 @@ public class Flashcards
         try
         {
             readLine = linesDaysPast.get(0);
-            if(readLine.equals(now)) //if the current date is equal to the read date daysPastInt=0
+            if(readLine.equals(now) || readLine.matches(now+"") || readLine.contains(now+"")) //if the current date is equal to the read date daysPastInt=0
             {
                 daysPastInt=0;
             }
