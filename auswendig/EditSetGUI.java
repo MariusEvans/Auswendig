@@ -524,11 +524,24 @@ public class EditSetGUI extends javax.swing.JFrame
         System.out.println("btnSaveSet pressed.");
         cbxLoadSet.setEnabled(true);
         btnLoadSet.setEnabled(true);
+        sliderCards.setEnabled(false);
+        sliderCards.setValue(1);
+        btnAddCard.setEnabled(false);
+        btnDeleteCard.setEnabled(false);
+        btnSaveSet.setEnabled(false);
+        btnSaveCard.setEnabled(false);
         
         String setName = tfSetName.getText();
         String description = tfDescription.getText();
         String selectedItem = cbxLoadSet.getSelectedItem().toString();
         editSet.saveSet(selectedItem, setName, description);
+        
+        tfSetName.setText("");
+        tfDescription.setText("");
+        tfTerm.setText("");
+        tfExample.setText("");
+        tfTags.setText("");
+        tfDefinition.setText("");
     }//GEN-LAST:event_btnSaveSetActionPerformed
 
     private void btnDeleteCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCardActionPerformed
@@ -672,7 +685,7 @@ public class EditSetGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnSaveCardActionPerformed
 
     private void STYLEPANELComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_STYLEPANELComponentShown
-        JOptionPane.showMessageDialog(null,"Please not that editing a set will not automatically change cards in the corresponding starred or leitner set");
+        JOptionPane.showMessageDialog(null,"Please note that editing a set will not automatically change cards in the corresponding starred or leitner set");
     }//GEN-LAST:event_STYLEPANELComponentShown
 
     /**
