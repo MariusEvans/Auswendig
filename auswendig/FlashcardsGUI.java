@@ -24,16 +24,21 @@ public class FlashcardsGUI extends javax.swing.JFrame
     String selectedItemSet1 = OpenSetGUI.selectedItemSet;
     String selectedItem = selectedItemSet1;
     Random random = new Random();
+    
     boolean showDefLEARN = false;
     boolean showDefLEITNER = false;
     boolean showDefSTARRED = false;
     boolean swapTandD = false;
     boolean isTrue = false;
     boolean isFalse = false;
+    boolean shuffleCards = false;
+    boolean shuffleCardsSTARRED = false;
+    
     int triesLeft=3;
     int randomDef=1;
     int randomNum1;
     int maxCards;
+    int maxCardsSTARRED;
     int cardNumLeitner;
     int cardNumWrite;
     int cardNumTF;
@@ -64,6 +69,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             sliderCards.setMaximum(lines.size()-2);
             sliderCardsSTARRED.setMaximum(linesStarred.size());
             maxCards = lines.size()-2;
+            maxCardsSTARRED = linesStarred.size();
         }
         catch(Exception e)
         {
@@ -91,6 +97,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         tfDefinition = new javax.swing.JTextField();
         btnShowDef = new javax.swing.JToggleButton();
         btnStarCard = new javax.swing.JToggleButton();
+        btnShuffleCards = new javax.swing.JToggleButton();
         STARREDPANEL = new javax.swing.JPanel();
         sliderCardsSTARRED = new javax.swing.JSlider();
         lblCardCountSTARRED = new javax.swing.JLabel();
@@ -103,6 +110,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTagsSTARRED = new javax.swing.JLabel();
         lblExampleSTARRED = new javax.swing.JLabel();
         lblTermSTARRED = new javax.swing.JLabel();
+        btnShuffleCardsSTARRED = new javax.swing.JToggleButton();
         LEITNERPANEL = new javax.swing.JPanel();
         lblTermLEITNER = new javax.swing.JLabel();
         lblExampleLEITNER = new javax.swing.JLabel();
@@ -222,6 +230,13 @@ public class FlashcardsGUI extends javax.swing.JFrame
             }
         });
 
+        btnShuffleCards.setText("Shuffle Cards");
+        btnShuffleCards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShuffleCardsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LEARNPANELLayout = new javax.swing.GroupLayout(LEARNPANEL);
         LEARNPANEL.setLayout(LEARNPANELLayout);
         LEARNPANELLayout.setHorizontalGroup(
@@ -230,7 +245,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LEARNPANELLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnStarCard))
+                        .addComponent(btnStarCard)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnShuffleCards))
                     .addGroup(LEARNPANELLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +300,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
                     .addComponent(lblDefinition)
                     .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(btnStarCard)
+                .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStarCard)
+                    .addComponent(btnShuffleCards))
                 .addContainerGap())
         );
 
@@ -330,34 +349,46 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTermSTARRED.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTermSTARRED.setText("Term:");
 
+        btnShuffleCardsSTARRED.setText("Shuffle Cards");
+        btnShuffleCardsSTARRED.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShuffleCardsSTARREDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout STARREDPANELLayout = new javax.swing.GroupLayout(STARREDPANEL);
         STARREDPANEL.setLayout(STARREDPANELLayout);
         STARREDPANELLayout.setHorizontalGroup(
             STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STARREDPANELLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(STARREDPANELLayout.createSequentialGroup()
-                            .addComponent(lblTermSTARRED)
-                            .addGap(30, 30, 30)
-                            .addComponent(tfTermSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(STARREDPANELLayout.createSequentialGroup()
-                            .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblTagsSTARRED)
-                                .addComponent(lblExampleSTARRED)
-                                .addComponent(lblDefinitionSTARRED))
-                            .addGap(30, 30, 30)
-                            .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfTagsSTARRED)
-                                .addComponent(tfExampleSTARRED)
-                                .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCardCountSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(STARREDPANELLayout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnShowDefSTARRED)))
+                        .addGap(89, 89, 89)
+                        .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(STARREDPANELLayout.createSequentialGroup()
+                                    .addComponent(lblTermSTARRED)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(tfTermSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(STARREDPANELLayout.createSequentialGroup()
+                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblTagsSTARRED)
+                                        .addComponent(lblExampleSTARRED)
+                                        .addComponent(lblDefinitionSTARRED))
+                                    .addGap(30, 30, 30)
+                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfTagsSTARRED)
+                                        .addComponent(tfExampleSTARRED)
+                                        .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCardCountSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(STARREDPANELLayout.createSequentialGroup()
+                                .addGap(145, 145, 145)
+                                .addComponent(btnShowDefSTARRED))))
+                    .addGroup(STARREDPANELLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnShuffleCardsSTARRED)))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
         STARREDPANELLayout.setVerticalGroup(
@@ -385,7 +416,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinitionSTARRED)
                     .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(btnShuffleCardsSTARRED)
+                .addContainerGap())
         );
 
         TABBEDPANE.addTab("Starred", STARREDPANEL);
@@ -1096,6 +1129,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private void sliderCardsSTARREDStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCardsSTARREDStateChanged
         System.out.println("sliderCardsSTARRED button pressed");
         int sliderValue = sliderCardsSTARRED.getValue();
+        if(shuffleCardsSTARRED==true)
+        {
+            sliderValue = random.nextInt(maxCardsSTARRED);
+        }
         System.out.println("Slider value: "+sliderValue);
         lblCardCountSTARRED.setText("Card: "+sliderValue);
         flashcards.readCardSTARRED(sliderValue);
@@ -1219,6 +1256,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private void sliderCardsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCardsStateChanged
         System.out.println("sliderCards changed.");
         int sliderValue = sliderCards.getValue();
+        if(shuffleCards==true)
+        {
+            sliderValue = random.nextInt(maxCards);
+        }
         System.out.println("Slider value: "+sliderValue);
         lblCardCount.setText("Card: "+sliderValue);
         flashcards.readCard(sliderValue);
@@ -1729,6 +1770,30 @@ public class FlashcardsGUI extends javax.swing.JFrame
         SoundRecorder soundrecorder = new SoundRecorder();
     }//GEN-LAST:event_btnRecordTermActionPerformed
 
+    private void btnShuffleCardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShuffleCardsActionPerformed
+        System.out.println("btnShuffleCards pressed");
+        if (btnShuffleCards.isSelected())
+        {
+            shuffleCards=true;
+        }
+        else
+        {
+            shuffleCards=false;
+        }
+    }//GEN-LAST:event_btnShuffleCardsActionPerformed
+
+    private void btnShuffleCardsSTARREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShuffleCardsSTARREDActionPerformed
+        System.out.println("btnShuffleCardsSTARRED pressed");
+        if (btnShuffleCards.isSelected())
+        {
+            shuffleCardsSTARRED=true;
+        }
+        else
+        {
+            shuffleCardsSTARRED=false;
+        }
+    }//GEN-LAST:event_btnShuffleCardsSTARREDActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -1774,6 +1839,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JToggleButton btnShowDef;
     private javax.swing.JToggleButton btnShowDefLEITNER;
     private javax.swing.JToggleButton btnShowDefSTARRED;
+    private javax.swing.JToggleButton btnShuffleCards;
+    private javax.swing.JToggleButton btnShuffleCardsSTARRED;
     private javax.swing.JButton btnSkipCardLISTEN;
     private javax.swing.JButton btnSkipCardTF;
     private javax.swing.JButton btnSkipCardWRITE;
