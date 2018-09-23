@@ -517,24 +517,36 @@ public class Flashcards
            LineNumberReader rdr1 = new LineNumberReader(new FileReader(filenameOrig));
            boolean flag = false;
            
-            while((line = rdr.readLine()) != null) //while there are lines to read
+            while((line = rdr.readLine()) != null && flag==false) //while there are lines to read
             {
               String line1 = rdr1.readLine();
               for(int z=1; z<sliderValue+1; z++)
               {
                   int linenumber = rdr.getLineNumber();
-                  
+                  System.out.println("CARD NUM: "+z);
                   if(linenumber==sliderValue+1 && flag==false)
                   {
                       String cardvalues4[] = line.split(",");
                       String cardvalueString = Arrays.toString(cardvalues4);
                       char cardvalueChars[] = cardvalueString.toCharArray();
                       char cardValueChar = cardvalueChars[5];
+                      String cardValueString = cardValueChar+"";
+                      if(cardValueString.contains("*"))
+                      {
+                        cardValueChar = cardvalueChars[6];
+                        cardValueString = cardValueChar+"";
+                        if(cardValueString.contains("*"))
+                        {
+                            cardValueChar = cardvalueChars[6];
+                        }
+                      }
+                      
                       int daysTillReviewCard = Character.getNumericValue(cardValueChar);
                       System.out.println("");
                       System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
                       if(daysTillReviewCard==0)
                       {
+                          System.out.println("FOUND 0. CARD NUM: "+z);
                           cardvalues = line1.split(",");
                           String cardvalueString1 = Arrays.toString(cardvalues);
                           System.out.println("Arrays.toString "+cardvalueString1);
@@ -551,6 +563,10 @@ public class Flashcards
             }
             rdr.close();
             rdr1.close();
+            if(flag==false && sliderValue>0)
+            {
+                JOptionPane.showMessageDialog(null, "All cards have been reviewed for today.");
+            }
         }
         catch(Exception exc)
         {

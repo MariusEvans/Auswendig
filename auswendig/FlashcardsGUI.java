@@ -43,6 +43,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
     int cardNumWrite;
     int cardNumTF;
     int cardNumListen;
+    int randomCardNum;
+    int randomCardNumSTARRED;
     
     public FlashcardsGUI() 
     {
@@ -1115,6 +1117,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
                     sliderCardsSTARRED.setValue(sliderValue+1);
                 }
                 sliderCardsSTARRED.setValue(sliderValue);
+                if(shuffleCardsSTARRED==true) //go back to original card
+                {
+                    sliderCardsSTARRED.setValue(randomCardNumSTARRED);
+                }
             }
         }
         else
@@ -1132,6 +1138,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         if(shuffleCardsSTARRED==true)
         {
             sliderValue = random.nextInt(maxCardsSTARRED);
+            randomCardNumSTARRED = sliderValue;
         }
         System.out.println("Slider value: "+sliderValue);
         lblCardCountSTARRED.setText("Card: "+sliderValue);
@@ -1242,6 +1249,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
                     sliderCards.setValue(sliderValue+1);
                 }
                 sliderCards.setValue(sliderValue);
+                if(shuffleCards==true) //go back to original card
+                {
+                    sliderCards.setValue(randomCardNum);
+                }
             }
         }
         else
@@ -1259,6 +1270,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         if(shuffleCards==true)
         {
             sliderValue = random.nextInt(maxCards);
+            randomCardNum = sliderValue;
         }
         System.out.println("Slider value: "+sliderValue);
         lblCardCount.setText("Card: "+sliderValue);
@@ -1476,13 +1488,13 @@ public class FlashcardsGUI extends javax.swing.JFrame
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         cardNumLeitner +=1;  
-        flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
  
         
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
+            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);;
         }
         
         showCardLeitner();
@@ -1494,7 +1506,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         cardNumLeitner +=1;
-        flashcards.readCardLeiter1(selectedItem, cardNumLeitner);
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
       
         if(cardNumLeitner>maxCards)
         {
@@ -1784,7 +1796,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
     private void btnShuffleCardsSTARREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShuffleCardsSTARREDActionPerformed
         System.out.println("btnShuffleCardsSTARRED pressed");
-        if (btnShuffleCards.isSelected())
+        if (btnShuffleCardsSTARRED.isSelected())
         {
             shuffleCardsSTARRED=true;
         }
