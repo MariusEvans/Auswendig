@@ -6,7 +6,8 @@
 # Auswendig
 **Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
 
-**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!**
+**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!** <br />
+**Auswendig is to be released in November 2018.**
 
 ## Information
 <br />
