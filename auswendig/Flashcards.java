@@ -32,6 +32,8 @@ public class Flashcards
     
     int daysPast1;
     int cardNumber = 0;
+    int lastLineNum = 1;
+    
     public File[] listOfFiles;
     public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 sets supported
     String readLine[] = new String[6]; //array for read lines
@@ -278,29 +280,6 @@ public class Flashcards
         return starred;
     }
     
-    /*public void createStarredSet(File filename, int sliderValue, String selectedItem, String term, String example, String tags, String definition)
-    {
-        //create starred set by simply writing "" to a new file
-        //AMEND DATA TO FILE
-        System.out.println("Attempting to create card.");
-        try
-        {
-                FileWriter fw = new FileWriter(filename, true);
-                BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
-                
-                bw.write("");
-
-                bw.close(); //close buffered writer
-        } 
-        catch(Exception exc)
-        {
-                System.out.println("Error creating set.");
-                System.out.println(exc);
-                exc.printStackTrace();
-        } 
-        StarCard(sliderValue, selectedItem, term, example, tags, definition);
-    }*/
-    
     public void UnstarCard(String selectedItem, int sliderValue)
     {
         boolean DONOTREADAGAIN = false;
@@ -503,7 +482,7 @@ public class Flashcards
         }
     }
     
-    public void readCardLEITNER(String selectedItem, int sliderValue) 
+    public void readCardLEITNER(String selectedItem, int sliderValue, String daysTillReview) 
     {
         String selectedItemNOTXT = selectedItem.replace(".txt","");
         //GET LEITNER CARDS WITH A DAYSTILLREVIEW OF 0, ONLY DISPLAY THESE CARDS
@@ -519,59 +498,69 @@ public class Flashcards
            
             while((line = rdr.readLine()) != null && flag==false) //while there are lines to read
             {
-              String line1 = rdr1.readLine();
-              for(int z=1; z<sliderValue+1; z++)
+              if(flag==false)
               {
-                  int linenumber = rdr.getLineNumber();
-                  System.out.println("CARD NUM: "+z);
-                  if(linenumber==sliderValue+1 && flag==false)
+                  String line1 = rdr1.readLine();
+                  for(int z=lastLineNum; z<sliderValue+1; z++)
                   {
-                      String cardvalues4[] = line.split(",");
-                      String cardvalueString = Arrays.toString(cardvalues4);
-                      char cardvalueChars[] = cardvalueString.toCharArray();
-                      char cardValueChar = cardvalueChars[5];
-                      String cardValueString = cardValueChar+"";
-                      if(cardValueString.contains("*"))
+                      int linenumber = rdr.getLineNumber();
+                      System.out.println("CARD NUM: "+z);
+                      if(linenumber==sliderValue+1 && flag==false)
                       {
-                        cardValueChar = cardvalueChars[6];
-                        cardValueString = cardValueChar+"";
-                        if(cardValueString.contains("*"))
-                        {
+                          String cardvalues4[] = line.split(",");
+                          String cardvalueString = Arrays.toString(cardvalues4);
+                          char cardvalueChars[] = cardvalueString.toCharArray();
+                          char cardValueChar = cardvalueChars[5];
+                          String cardValueString = cardValueChar+"";
+                          if(cardValueString.contains("*"))
+                          {
                             cardValueChar = cardvalueChars[6];
-                        }
+                            cardValueString = cardValueChar+"";
+                            if(cardValueString.contains("*"))
+                            {
+                                cardValueChar = cardvalueChars[6];
+                            }
+                          }
+
+                          int daysTillReviewCard = Character.getNumericValue(cardValueChar);
+                          System.out.println("");
+                          System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
+                          if(daysTillReviewCard==0)
+                          {
+                              System.out.println("FOUND 0. CARD NUM: "+z);
+                              String readLineSelectedItem = linesSelectedItem.get(z-1);
+                              cardvalues = readLineSelectedItem.split(",");
+                              String cardvalueString1 = Arrays.toString(cardvalues);
+                              System.out.println("Arrays.toString "+cardvalueString1);
+                              lastLineNum=sliderValue;
+                              SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
+                          }
+                          else
+                          {
+                              System.out.println("line number: "+linenumber+"daysTillReview is not 0");
+                              sliderValue+=1;
+                              lastLineNum=sliderValue;
+                              readCardLEITNER(selectedItem, sliderValue, daysTillReview);
+                          }
+                          flag=true;
+
                       }
-                      
-                      int daysTillReviewCard = Character.getNumericValue(cardValueChar);
-                      System.out.println("");
-                      System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
-                      if(daysTillReviewCard==0)
-                      {
-                          System.out.println("FOUND 0. CARD NUM: "+z);
-                          cardvalues = line1.split(",");
-                          String cardvalueString1 = Arrays.toString(cardvalues);
-                          System.out.println("Arrays.toString "+cardvalueString1);
-                      }
-                      else
-                      {
-                          System.out.println("line number: "+linenumber+"daysTillReview is not 0");
-                          sliderValue+=1;
-                          readCardLEITNER(selectedItem, sliderValue);
-                      }
-                      flag=true;
-                  }
-               }
-            }
-            rdr.close();
-            rdr1.close();
-            if(flag==false && sliderValue>0)
+                   }
+                }
+                
+              }
+              rdr.close();
+              rdr1.close();    
+            /*if(flag==false && sliderValue>0)
             {
                 JOptionPane.showMessageDialog(null, "All cards have been reviewed for today.");
-            }
+            }*/
         }
         catch(Exception exc)
         {
             System.out.println("ERROR READING SETS FILE");
             System.out.println(exc);
+            exc.printStackTrace();
         }
     }
     
