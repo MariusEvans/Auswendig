@@ -4,7 +4,7 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-**Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. Project Auswendig is property of and written by Marius Evans (mariusevans@outlook.com). Reproduction, sale and commerical distribution of this material is strictly forbidden unless prior written permission is obtained from Marius Evans. See LICENECE.md for more details.**
+**Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
 
 **This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!**
 
@@ -19,8 +19,8 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 2. Auswendig's "Write" activity enables a user to write the definition of a term for a card, or alternatively switch the definition and term and write the term for the definition of a card. <br />
 3. Auswendig enables a user to record their own audio for playback on the "Listen" activity (not yet finished). <br />
 4. Auswendig features more activites than Anki. <br />
-5. Auswendig includes a "Leitner" activity, unlike Quizlet.
-
+5. Auswendig includes a "Leitner" activity, unlike Quizlet. <br />
+6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki.
 
 ## Context
 <br />
