@@ -533,7 +533,7 @@ public class Flashcards
                               String cardvalueString1 = Arrays.toString(cardvalues);
                               System.out.println("Arrays.toString "+cardvalueString1);
                               lastLineNum=sliderValue;
-                              SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
+                              //SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
                           }
                           else
                           {
