@@ -12,13 +12,13 @@
 ## Information
 <br />
 Auswendig is memorisation software built using Netbeans and written in Java. It is inspired from Quizlet and Anki. 
-I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Listen (a user must write what they hear), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
+I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Multi-Choice (a user has to select the correct term/definition for a card out of four choices), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
 
 ### Why Auswendig and not Quizlet, Anki or Memorise?
 <br />
 1. Auswendig can be accessed offline and has greater ease of use than Quizlet; Auswendig does not feature a "front" or "back" of a card and uses fields instead, therefore, avoiding the repetitive task of flipping cards. Any card can be skipped to in a set as well as accessed serially (one by one). <br />
 2. Auswendig's "Write" activity enables a user to write the definition of a term for a card, or alternatively switch the definition and term and write the term for the definition of a card. <br />
-3. Auswendig enables a user to record their own audio for playback on the "Listen" activity (not yet finished). <br />
+3. Auswendig features a "Multi-Choice" activity, unlike Anki. <br />
 4. Auswendig features more activites than Anki. <br />
 5. Auswendig includes a "Leitner" activity, unlike Quizlet. <br />
 6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki.
