@@ -6,6 +6,7 @@
 
 package auswendig;
 
+import static auswendig.OpenSetGUI.flashcardsGUI;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -482,7 +483,7 @@ public class Flashcards
         }
     }
     
-    public void readCardLEITNER(String selectedItem, int sliderValue, String daysTillReview) 
+    public void readCardLEITNER(String selectedItem, int sliderValue) 
     {
         String selectedItemNOTXT = selectedItem.replace(".txt","");
         //GET LEITNER CARDS WITH A DAYSTILLREVIEW OF 0, ONLY DISPLAY THESE CARDS
@@ -533,6 +534,7 @@ public class Flashcards
                               String cardvalueString1 = Arrays.toString(cardvalues);
                               System.out.println("Arrays.toString "+cardvalueString1);
                               lastLineNum=sliderValue;
+                              OpenSetGUI.flashcardsGUI.cardNumLeitner = sliderValue;
                               //SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
                           }
                           else
@@ -540,7 +542,7 @@ public class Flashcards
                               System.out.println("line number: "+linenumber+"daysTillReview is not 0");
                               sliderValue+=1;
                               lastLineNum=sliderValue;
-                              readCardLEITNER(selectedItem, sliderValue, daysTillReview);
+                              readCardLEITNER(selectedItem, sliderValue);
                           }
                           flag=true;
 

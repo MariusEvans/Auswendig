@@ -40,7 +40,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     int randomNum1;
     int maxCards;
     int maxCardsSTARRED;
-    int cardNumLeitner;
+    public int cardNumLeitner;
     int cardNumWrite;
     int cardNumTF;
     int cardNumListen;
@@ -1435,61 +1435,51 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnExcellent pressed.");
         String daysTillReview = "*5"; //5,3,2,1,0
 
-        //flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
         
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         else
         {
             cardNumLeitner +=1;
         }
-        //int sliderValue = sliderCardsLEITNER.getValue();
-        
-        showCardLeitner();
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
     }//GEN-LAST:event_btnExcellentActionPerformed
 
     private void btnGoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoodActionPerformed
         System.out.println("btnGood pressed.");
         String daysTillReview = "*3"; //5,3,2,1,0
         
-        //flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
         
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         else
         {
             cardNumLeitner +=1;
         }
- 
-        showCardLeitner();
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
     }//GEN-LAST:event_btnGoodActionPerformed
 
     private void btnOkayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkayActionPerformed
         System.out.println("btnOkay pressed.");
         String daysTillReview = "*2"; //5,3,2,1,0
         
-        //flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-     
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
+        
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         else
         {
             cardNumLeitner +=1;
         }
-        
-        showCardLeitner();
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
     }//GEN-LAST:event_btnOkayActionPerformed
 
     private void btnPoorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoorActionPerformed
@@ -1497,18 +1487,16 @@ public class FlashcardsGUI extends javax.swing.JFrame
         String daysTillReview = "*1"; //5,3,2,1,0
         
         flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
- 
+        
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         else
         {
             cardNumLeitner +=1;
         }
-        
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
         showCardLeitner();
     }//GEN-LAST:event_btnPoorActionPerformed
 
@@ -1516,29 +1504,26 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnHorrible pressed.");
         String daysTillReview = "*0"; //5,3,2,1,0
         
-        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-        flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
-      
+        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
+        
         if(cardNumLeitner>maxCards)
         {
             cardNumLeitner=0;
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, daysTillReview);
         }
         else
         {
             cardNumLeitner +=1;
         }
-        
-        showCardLeitner();
+        flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
     }//GEN-LAST:event_btnHorribleActionPerformed
 
     private void LEITNERPANELComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_LEITNERPANELComponentShown
         if(ifOpened==false)
         {
-            cardNumLeitner = 0;
+            cardNumLeitner = 1;
             //String daysTillReview = "*0"; //5,3,2,1,0
             //flashcards.createSetOrAddCardLeitner(selectedItem, maxCards, cardNumLeitner, daysTillReview);
-            flashcards.readCardLEITNER(selectedItem, cardNumLeitner, "*0");
+            flashcards.readCardLEITNER(selectedItem, cardNumLeitner);
             showCardLeitner();
             cardNumLeitner+=1;
             cardNumWrite=0;
