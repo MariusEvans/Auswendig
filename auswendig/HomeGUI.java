@@ -6,7 +6,14 @@
 
 package auswendig;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class HomeGUI extends javax.swing.JFrame 
@@ -25,6 +32,9 @@ public class HomeGUI extends javax.swing.JFrame
     public HomeGUI() 
     {
         System.out.println("Running HomeGUI.");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString(); //get current directory
+        String destAddressSRC = destAddress+"\\src\\auswendig\\";
+        System.out.println(destAddress);
         initComponents();
     }
 
@@ -49,6 +59,11 @@ public class HomeGUI extends javax.swing.JFrame
         miCreateSet = new javax.swing.JMenuItem();
         miEditSet = new javax.swing.JMenuItem();
         miDeleteSet = new javax.swing.JMenuItem();
+        menuSets1 = new javax.swing.JMenu();
+        miOpenSet1 = new javax.swing.JMenuItem();
+        miCreateSet1 = new javax.swing.JMenuItem();
+        miEditSet1 = new javax.swing.JMenuItem();
+        miDeleteSet1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -74,7 +89,8 @@ public class HomeGUI extends javax.swing.JFrame
         jTextArea1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Auswendig is software written by Marius Evans in July 2018, as a replacement for Quizlet and Anki.\n\nAll code has been created by Marius Evans and for software documentation and help, please see ____.");
+        jTextArea1.setText("Auswendig has been written and created by Marius Evans. ");
+        jTextArea1.setAutoscrolls(false);
         jTextArea1.setBorder(null);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -205,6 +221,47 @@ public class HomeGUI extends javax.swing.JFrame
 
         menu.add(menuSets);
 
+        menuSets1.setText("Other");
+        menuSets1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+
+        miOpenSet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
+        miOpenSet1.setText("Merge Folders");
+        miOpenSet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miOpenSet1ActionPerformed(evt);
+            }
+        });
+        menuSets1.add(miOpenSet1);
+
+        miCreateSet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
+        miCreateSet1.setText("Merge Sets");
+        miCreateSet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCreateSet1ActionPerformed(evt);
+            }
+        });
+        menuSets1.add(miCreateSet1);
+
+        miEditSet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
+        miEditSet1.setText("Search by Tag");
+        miEditSet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEditSet1ActionPerformed(evt);
+            }
+        });
+        menuSets1.add(miEditSet1);
+
+        miDeleteSet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
+        miDeleteSet1.setText("Settings");
+        miDeleteSet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDeleteSet1ActionPerformed(evt);
+            }
+        });
+        menuSets1.add(miDeleteSet1);
+
+        menu.add(menuSets1);
+
         setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -273,6 +330,22 @@ public class HomeGUI extends javax.swing.JFrame
         editFolderGUI.setVisible(true);
     }//GEN-LAST:event_miEditFolderActionPerformed
 
+    private void miOpenSet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miOpenSet1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miOpenSet1ActionPerformed
+
+    private void miCreateSet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateSet1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miCreateSet1ActionPerformed
+
+    private void miEditSet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditSet1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miEditSet1ActionPerformed
+
+    private void miDeleteSet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDeleteSet1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miDeleteSet1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -306,13 +379,18 @@ public class HomeGUI extends javax.swing.JFrame
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuFolders;
     private javax.swing.JMenu menuSets;
+    private javax.swing.JMenu menuSets1;
     private javax.swing.JMenuItem miCreateFolder;
     private javax.swing.JMenuItem miCreateSet;
+    private javax.swing.JMenuItem miCreateSet1;
     private javax.swing.JMenuItem miDeleteFolder;
     private javax.swing.JMenuItem miDeleteSet;
+    private javax.swing.JMenuItem miDeleteSet1;
     private javax.swing.JMenuItem miEditFolder;
     private javax.swing.JMenuItem miEditSet;
+    private javax.swing.JMenuItem miEditSet1;
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
+    private javax.swing.JMenuItem miOpenSet1;
     // End of variables declaration//GEN-END:variables
 }
