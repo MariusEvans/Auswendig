@@ -17,6 +17,8 @@ public class CreateSetGUI extends javax.swing.JFrame
     //OBJECTS
     CreateSet createSet = new CreateSet();
     
+    int min4Card=0;
+    
     public CreateSetGUI() 
     {
         System.out.println("Running CreateSetGUI.");
@@ -297,6 +299,7 @@ public class CreateSetGUI extends javax.swing.JFrame
 
     private void btnAddCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCardActionPerformed
         System.out.println("btnAddCard pressed.");
+        min4Card=min4Card+1;
         boolean validated = false;
         tfSetName.setEditable(false);
         tfDescription.setEditable(false);
@@ -353,18 +356,25 @@ public class CreateSetGUI extends javax.swing.JFrame
     private void btnCreateSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSetActionPerformed
         //this button press, titles and gives a description to the set when all cards have been added
         System.out.println("btnCreateSet pressed.");
-        String setName = tfSetName.getText();
-        String description = tfDescription.getText();
-        
-        System.out.println("//--- New Set");
-        System.out.println("Set Name: "+setName);
-        System.out.println("Description: "+description);
-        
-        createSet.makeSet();
-        createSet.createStarredSet();
-        createSet.createLeitnerSet();
-        tfSetName.setEditable(false);
-        JOptionPane.showMessageDialog(null, "Set successfully created, reload Auswendig to open set");
+        if(min4Card==4 || min4Card>4) //only allow a set to be made if it has a minimum of 4 cards (for Multi-Choice activity)
+        {
+            String setName = tfSetName.getText();
+            String description = tfDescription.getText();
+
+            System.out.println("//--- New Set");
+            System.out.println("Set Name: "+setName);
+            System.out.println("Description: "+description);
+
+            createSet.makeSet();
+            createSet.createStarredSet();
+            createSet.createLeitnerSet();
+            tfSetName.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Set successfully created, reload Auswendig to open set");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "You must add a minimum of 4 cards to a set in order to create it, try again");
+        }
     }//GEN-LAST:event_btnCreateSetActionPerformed
 
     private void miEditFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditFolderActionPerformed
