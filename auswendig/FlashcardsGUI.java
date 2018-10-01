@@ -30,8 +30,11 @@ public class FlashcardsGUI extends javax.swing.JFrame
     boolean showDefLEITNER = false;
     boolean showDefSTARRED = false;
     boolean swapTandD = false;
+    
     boolean isTrue = false;
     boolean isFalse = false;
+    boolean isA, isB, isC, isD, isNone = false;
+    
     boolean shuffleCards = false;
     boolean shuffleCardsSTARRED = false;
     boolean ifOpened = false;
@@ -587,12 +590,27 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         cbA.setBackground(new java.awt.Color(255, 255, 255));
         cbA.setText("a");
+        cbA.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAItemStateChanged(evt);
+            }
+        });
 
         cbB.setBackground(new java.awt.Color(255, 255, 255));
         cbB.setText("b");
+        cbB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbBItemStateChanged(evt);
+            }
+        });
 
         cbC.setBackground(new java.awt.Color(255, 255, 255));
         cbC.setText("c");
+        cbC.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbCItemStateChanged(evt);
+            }
+        });
 
         btnCheckCardMC.setText("Check Card");
         btnCheckCardMC.addActionListener(new java.awt.event.ActionListener() {
@@ -603,9 +621,19 @@ public class FlashcardsGUI extends javax.swing.JFrame
 
         cbD.setBackground(new java.awt.Color(255, 255, 255));
         cbD.setText("d");
+        cbD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbDItemStateChanged(evt);
+            }
+        });
 
         cbNone.setBackground(new java.awt.Color(255, 255, 255));
         cbNone.setText("None of the above");
+        cbNone.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbNoneItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1887,6 +1915,116 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private void btnCheckCardMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckCardMCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCheckCardMCActionPerformed
+
+    private void cbAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAItemStateChanged
+        System.out.println("cbA pressed");
+        if(isA==true)
+        {
+            isA=false;
+            cbA.setEnabled(true);
+            cbB.setEnabled(true);
+            cbC.setEnabled(true);
+            cbD.setEnabled(true);
+            cbNone.setEnabled(true);
+        }
+        else if(isA==false)
+        {
+           isA = true; 
+           cbA.setEnabled(true);
+           cbB.setEnabled(false);
+           cbC.setEnabled(false);
+           cbD.setEnabled(false);
+           cbNone.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbAItemStateChanged
+
+    private void cbBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBItemStateChanged
+        System.out.println("cbB pressed");
+        if(isB==true)
+        {
+            isB=false;
+            cbA.setEnabled(true);
+            cbB.setEnabled(true);
+            cbC.setEnabled(true);
+            cbD.setEnabled(true);
+            cbNone.setEnabled(true);
+        }
+        else if(isB==false)
+        {
+           isB= true; 
+           cbA.setEnabled(false);
+           cbB.setEnabled(true);
+           cbC.setEnabled(false);
+           cbD.setEnabled(false);
+           cbNone.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbBItemStateChanged
+
+    private void cbCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbCItemStateChanged
+        System.out.println("cbC pressed");
+        if(isC==true)
+        {
+            isC=false;
+            cbA.setEnabled(true);
+            cbB.setEnabled(true);
+            cbC.setEnabled(true);
+            cbD.setEnabled(true);
+            cbNone.setEnabled(true);
+        }
+        else if(isC==false)
+        {
+           isC = true; 
+           cbA.setEnabled(false);
+           cbB.setEnabled(false);
+           cbC.setEnabled(true);
+           cbD.setEnabled(false);
+           cbNone.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbCItemStateChanged
+
+    private void cbDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDItemStateChanged
+        System.out.println("cbD pressed");
+        if(isD==true)
+        {
+            isD=false;
+            cbA.setEnabled(true);
+            cbB.setEnabled(true);
+            cbC.setEnabled(true);
+            cbD.setEnabled(true);
+            cbNone.setEnabled(true);
+        }
+        else if(isD==false)
+        {
+           isD = true; 
+           cbA.setEnabled(false);
+           cbB.setEnabled(false);
+           cbC.setEnabled(false);
+           cbD.setEnabled(true);
+           cbNone.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbDItemStateChanged
+
+    private void cbNoneItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNoneItemStateChanged
+        System.out.println("cbNone pressed");
+        if(isNone==true)
+        {
+            isNone=false;
+            cbA.setEnabled(true);
+            cbB.setEnabled(true);
+            cbC.setEnabled(true);
+            cbD.setEnabled(true);
+            cbNone.setEnabled(true);
+        }
+        else if(isNone==false)
+        {
+           isNone = true; 
+           cbA.setEnabled(false);
+           cbB.setEnabled(false);
+           cbC.setEnabled(false);
+           cbD.setEnabled(false);
+           cbNone.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbNoneItemStateChanged
 
     
     /**
