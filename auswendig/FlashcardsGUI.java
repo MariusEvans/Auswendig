@@ -1500,8 +1500,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
                    cardNumMC=randomNum;
                    randomNum1 = cardNumMC;
 
-                   flashcards.readCard(cardNumMC);
-                   cbA.setText(cardvalues1[i]);
+                   randomNum = random.nextInt(maxCards);
+                   flashcards.readCard(randomNum);
+                   String cardvalues1V2[] = flashcards.cardvalues;
+                   cbA.setText(cardvalues1V2[i]);
                     //showCardMultiChoice();
 
                    randomNum = random.nextInt(maxCards);
@@ -1875,7 +1877,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnSkipCard pressed");
         btnSkipCardMC.setText("    Skip Card    ");
         System.out.println("cardNumMC "+cardNumMC);
-        if(cardNumTF>maxCards-1)
+        if(cardNumMC>maxCards-1)
         {
             cardNumMC=0;
         }
@@ -1913,7 +1915,147 @@ public class FlashcardsGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnShuffleCardsSTARREDActionPerformed
 
     private void btnCheckCardMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckCardMCActionPerformed
-        // TODO add your handling code here:
+        System.out.println("btnCheckCard pressed");
+        String term = tfDefinitionMC.getText();
+        String definitionA = cbA.getText();
+        String definitionB = cbB.getText();
+        String definitionC = cbC.getText();
+        String definitionD = cbD.getText();
+        
+        if(isA==false && isB==false && isC==false && isD==false && isNone==false)
+        {
+            JOptionPane.showMessageDialog(null,"Select one check box");
+        }
+        else
+        {
+            
+            flashcards.readCard(cardNumMC);
+            String cardvalues1[] = flashcards.cardvalues;
+            
+            for(int i=0; i<cardvalues1.length; i++)
+            {
+                if(i==4)
+                {
+                    System.out.println("");
+                    System.out.println("Card Number: "+cardNumMC);
+                    System.out.println("Term: "+term);
+                    System.out.println("Actual Def: "+cardvalues1[4]);
+                    
+                    System.out.println("");
+                    
+                    if(definitionA.equals(cardvalues1[i])==true && isA==true)
+                    {
+                        if(cardNumMC>maxCards-1)
+                        {
+                            cardNumMC=0;
+                        }
+                        else 
+                        {
+                           cardNumMC+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(cardNumMC);
+                        showCardMultiChoice();
+                    }
+                    
+                    if(definitionB.equals(cardvalues1[i])==true && isB==true)
+                    {
+                        if(cardNumMC>maxCards-1)
+                        {
+                            cardNumMC=0;
+                        }
+                        else 
+                        {
+                           cardNumMC+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(cardNumMC);
+                        showCardMultiChoice();
+                    }
+                    
+                    if(definitionC.equals(cardvalues1[i])==true && isC==true)
+                    {
+                        if(cardNumMC>maxCards-1)
+                        {
+                            cardNumMC=0;
+                        }
+                        else 
+                        {
+                           cardNumMC+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(cardNumMC);
+                        showCardMultiChoice();
+                    }
+                    
+                    if(definitionD.equals(cardvalues1[i])==true && isD==true)
+                    {
+                        if(cardNumMC>maxCards-1)
+                        {
+                            cardNumMC=0;
+                        }
+                        else 
+                        {
+                           cardNumMC+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(cardNumMC);
+                        showCardMultiChoice();
+                    }
+                    
+                    if(definitionA.equals(cardvalues1[i])==false && definitionB.equals(cardvalues1[i])==false && definitionC.equals(cardvalues1[i])==false && definitionD.equals(cardvalues1[i])==false && isNone==true)
+                    {
+                        if(cardNumMC>maxCards-1)
+                        {
+                            cardNumMC=0;
+                        }
+                        else 
+                        {
+                           cardNumMC+=1; 
+                        }
+                        try 
+                        {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } 
+                        catch (InterruptedException ex) 
+                        {
+                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        flashcards.readCard(cardNumMC);
+                        showCardMultiChoice();
+                    }
+                    
+                }
+            }
+        }
     }//GEN-LAST:event_btnCheckCardMCActionPerformed
 
     private void cbAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAItemStateChanged
