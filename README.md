@@ -21,7 +21,8 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 3. Auswendig features a "Multi-Choice" activity, unlike Anki. <br />
 4. Auswendig features more activites than Anki. <br />
 5. Auswendig includes a "Leitner" activity, unlike Quizlet. <br />
-6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki.
+6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki. <br />
+7. Flashcards in multiple sets containing an entered tag can be searched for.
 
 ## Context
 <br />
