@@ -12,7 +12,7 @@ public class OpenSetGUI extends javax.swing.JFrame
 {    
     //OBJECTS
     OpenSet openSet = new OpenSet();
-    FlashcardsGUI flashcardsGUI;
+    public static FlashcardsGUI flashcardsGUI;
     public static String selectedItemSet = "";
     
     public OpenSetGUI() 
@@ -44,6 +44,11 @@ public class OpenSetGUI extends javax.swing.JFrame
         miCreateSet = new javax.swing.JMenuItem();
         miEditSet = new javax.swing.JMenuItem();
         miDeleteSet = new javax.swing.JMenuItem();
+        menuOther = new javax.swing.JMenu();
+        miMergeFolders = new javax.swing.JMenuItem();
+        miMergeSets = new javax.swing.JMenuItem();
+        miSearchbyTag = new javax.swing.JMenuItem();
+        miSettings = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -154,6 +159,47 @@ public class OpenSetGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setText("Other");
+        menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+
+        miMergeFolders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
+        miMergeFolders.setText("Merge Folders");
+        miMergeFolders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miMergeFoldersActionPerformed(evt);
+            }
+        });
+        menuOther.add(miMergeFolders);
+
+        miMergeSets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
+        miMergeSets.setText("Merge Sets");
+        miMergeSets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miMergeSetsActionPerformed(evt);
+            }
+        });
+        menuOther.add(miMergeSets);
+
+        miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
+        miSearchbyTag.setText("Search by Tag");
+        miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSearchbyTagActionPerformed(evt);
+            }
+        });
+        menuOther.add(miSearchbyTag);
+
+        miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
+        miSettings.setText("Settings");
+        miSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSettingsActionPerformed(evt);
+            }
+        });
+        menuOther.add(miSettings);
+
+        MenuBar.add(menuOther);
+
         setJMenuBar(MenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,6 +268,24 @@ public class OpenSetGUI extends javax.swing.JFrame
         HomeGUI.editFolderGUI.setVisible(true);
     }//GEN-LAST:event_miEditFolderActionPerformed
 
+    private void miMergeFoldersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeFoldersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miMergeFoldersActionPerformed
+
+    private void miMergeSetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeSetsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miMergeSetsActionPerformed
+
+    private void miSearchbyTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchbyTagActionPerformed
+        System.out.println("miSearchbyTag pressed");
+        this.setVisible(false);
+        HomeGUI.searchTagGUI.setVisible(true);
+    }//GEN-LAST:event_miSearchbyTagActionPerformed
+
+    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miSettingsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,6 +315,7 @@ public class OpenSetGUI extends javax.swing.JFrame
     private javax.swing.JButton btnOpenSet;
     private javax.swing.JComboBox<String> cbxOpenSet;
     private javax.swing.JMenu menuFolders;
+    private javax.swing.JMenu menuOther;
     private javax.swing.JMenu menuSets;
     private javax.swing.JMenuItem miCreateFolder;
     private javax.swing.JMenuItem miCreateSet;
@@ -258,6 +323,10 @@ public class OpenSetGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miDeleteSet;
     private javax.swing.JMenuItem miEditFolder;
     private javax.swing.JMenuItem miEditSet;
+    private javax.swing.JMenuItem miMergeFolders;
+    private javax.swing.JMenuItem miMergeSets;
     private javax.swing.JMenuItem miOpenFolder;
+    private javax.swing.JMenuItem miSearchbyTag;
+    private javax.swing.JMenuItem miSettings;
     // End of variables declaration//GEN-END:variables
 }
