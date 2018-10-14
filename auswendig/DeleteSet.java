@@ -7,13 +7,15 @@
 package auswendig;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class DeleteSet 
 {
     public File[] listOfFiles;
-    public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 folders supported
+    List<String> listOfFileNames = new ArrayList<>();
     
     public DeleteSet()
     {
@@ -50,7 +52,7 @@ public class DeleteSet
                 System.out.println("Delete operation is failed.");
             }
             
-            if(leitnerSet.delete() && leitnerSet.exists()==true) //if a leitner set exists, delete it
+            if(leitnerSet.delete()) //if a leitner set exists, delete it
             {
                 System.out.println(leitnerSet.getName() + " is deleted!");
             }
@@ -74,8 +76,8 @@ public class DeleteSet
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");
-		
+        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");	
+        
 	if(folder.isDirectory())
         {
             if(folder.list().length>0)
@@ -88,7 +90,7 @@ public class DeleteSet
                   if (listOfFiles[i].isFile()) 
                   {
                     System.out.println("File " + listOfFiles[i].getName());
-                    listOfFileNames[i] = listOfFiles[i].getName();
+                    listOfFileNames.add(listOfFiles[i].getName());
                   } 
                 }
             }

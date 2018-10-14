@@ -12,12 +12,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class EditFolder 
 {
     public File[] listOfFiles;
-    public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 folders supported
+    List<String> listOfFileNames = new ArrayList<>();
     String[] values;
     
     Calendar calendar = Calendar.getInstance(); //varaible for the current time/date
@@ -43,7 +45,7 @@ public class EditFolder
                   if (listOfFiles[i].isFile()) 
                   {
                     System.out.println("File " + listOfFiles[i].getName());
-                    listOfFileNames[i] = listOfFiles[i].getName();
+                    listOfFileNames.add(listOfFiles[i].getName());
                   } 
                 }
             }

@@ -6,6 +6,7 @@
 
 package auswendig;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -19,10 +20,10 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         System.out.println("Running DeleteFolderGUI.");
         initComponents();
         deleteFolder.readFileNames();
-        String[] listOfFileNames1 = deleteFolder.listOfFileNames;
-        for(int i = 0; i<listOfFileNames1.length; i++)
+        List<String> listOfFileNames1 = deleteFolder.listOfFileNames;
+        for(int i = 0; i<listOfFileNames1.size(); i++)
         {
-            cbxDeleteFolder.addItem(""+listOfFileNames1[i]);
+            cbxDeleteFolder.addItem(""+listOfFileNames1.get(i));
         }
     }
 

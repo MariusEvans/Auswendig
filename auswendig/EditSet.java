@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -29,8 +30,9 @@ public class EditSet
     int cardNumber = 0;
     public File[] listOfFiles;
     public File[] listOfFilesStarred;
-    public String[] listOfFileNamesStarred = {"","","","","","","","","",""}; //10 sets supported;
-    public String[] listOfFileNames = {"","","","","","","","","",""}; //10 sets supported
+    List<String> listOfFileNamesStarred = new ArrayList<>();
+    List<String> listOfFileNames = new ArrayList<>();
+    
     String readLine[] = new String[6]; //array for read lines
     String[] cardvalues;
     Calendar calendar = Calendar.getInstance(); //varaible for the current time/date
@@ -53,7 +55,7 @@ public class EditSet
                   if (listOfFiles[i].isFile()) 
                   {
                     System.out.println("File " + listOfFiles[i].getName());
-                    listOfFileNames[i] = listOfFiles[i].getName();
+                    listOfFileNames.add(listOfFiles[i].getName());
                   } 
                 }
             }
@@ -79,7 +81,7 @@ public class EditSet
                   if (listOfFilesStarred[i].isFile()) 
                   {
                     System.out.println("File " + listOfFilesStarred[i].getName());
-                    listOfFileNamesStarred[i] = listOfFilesStarred[i].getName();
+                    listOfFileNamesStarred.add(listOfFilesStarred[i].getName());
                   } 
                 }
             }

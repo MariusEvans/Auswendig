@@ -6,6 +6,7 @@
 
 package auswendig;
 
+import java.util.List;
 import javax.swing.UIManager;
 
 public class OpenFolderGUI extends javax.swing.JFrame 
@@ -18,10 +19,10 @@ public class OpenFolderGUI extends javax.swing.JFrame
         System.out.println("Running OpenFolderGUI.");
         initComponents();
         openFolder.readFileNames();
-        String[] listOfFileNames1 = openFolder.listOfFileNames;
-        for(int i = 0; i<listOfFileNames1.length; i++)
+        List<String> listOfFileNames1 = openFolder.listOfFileNames;
+        for(int i = 0; i<listOfFileNames1.size(); i++)
         {
-            cbxOpenFolder.addItem(""+listOfFileNames1[i]);
+            cbxOpenFolder.addItem(""+listOfFileNames1.get(i));
         }
     }
 

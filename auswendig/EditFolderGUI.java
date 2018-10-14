@@ -6,6 +6,7 @@
 
 package auswendig;
 
+import java.util.List;
 import javax.swing.UIManager;
 
 public class EditFolderGUI extends javax.swing.JFrame 
@@ -18,10 +19,10 @@ public class EditFolderGUI extends javax.swing.JFrame
         System.out.println("Running EditFolderGUI.");
         initComponents();
         editFolder.readFileNames();
-        String[] listOfFileNames1 = editFolder.listOfFileNames;
-        for(int i = 0; i<listOfFileNames1.length; i++)
+        List<String> listOfFileNames1 = editFolder.listOfFileNames;
+        for(int i = 0; i<listOfFileNames1.size(); i++)
         {
-            cbxLoadFolder.addItem(""+listOfFileNames1[i]);
+            cbxLoadFolder.addItem(""+listOfFileNames1.get(i));
         }
         btnSaveFolder.setEnabled(false);
     }

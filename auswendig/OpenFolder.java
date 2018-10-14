@@ -7,12 +7,14 @@
 package auswendig;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class OpenFolder 
 {
     public File[] listOfFiles;
-    public String[] listOfFileNames = {"","","","","","","","","","",""}; //10 folders supported
+    List<String> listOfFileNames = new ArrayList<>();
     
     public OpenFolder()
     {
@@ -35,7 +37,7 @@ public class OpenFolder
                   if (listOfFiles[i].isFile()) 
                   {
                     System.out.println("File " + listOfFiles[i].getName());
-                    listOfFileNames[i] = listOfFiles[i].getName();
+                    listOfFileNames.add(listOfFiles[i].getName());
                   } 
                 }
             }

@@ -24,15 +24,15 @@ public class EditSetGUI extends javax.swing.JFrame
         System.out.println("Running EditSetGUI.");
         initComponents();
         editSet.readFileNames();
-        String[] listOfFileNames1 = editSet.listOfFileNames;
-        String[] listOfFileNamesStarred1 = editSet.listOfFileNamesStarred;
-        for(int i = 0; i<listOfFileNames1.length; i++)
+        List<String> listOfFileNames1 = editSet.listOfFileNames;
+        List<String> listOfFileNamesStarred1 = editSet.listOfFileNamesStarred;
+        for(int i = 0; i<listOfFileNames1.size(); i++)
         {
-            cbxLoadSet.addItem(""+listOfFileNames1[i]);
+            cbxLoadSet.addItem(""+listOfFileNames1.get(i));
         }
-        for(int z=0; z<listOfFileNamesStarred1.length; z++)
+        for(int z=0; z<listOfFileNamesStarred1.size(); z++)
         {
-            cbxLoadSet.addItem(""+listOfFileNamesStarred1[z]);
+            cbxLoadSet.addItem(""+listOfFileNamesStarred1.get(z));
         }
         sliderCards.setEnabled(false);
         btnAddCard.setEnabled(false);
