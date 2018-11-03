@@ -185,8 +185,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         miEditSet = new javax.swing.JMenuItem();
         miDeleteSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
-        miMergeFolders = new javax.swing.JMenuItem();
-        miMergeSets = new javax.swing.JMenuItem();
         miSearchbyTag = new javax.swing.JMenuItem();
         miSettings = new javax.swing.JMenuItem();
 
@@ -1051,24 +1049,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
-        miMergeFolders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
-        miMergeFolders.setText("Merge Folders");
-        miMergeFolders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miMergeFoldersActionPerformed(evt);
-            }
-        });
-        menuOther.add(miMergeFolders);
-
-        miMergeSets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
-        miMergeSets.setText("Merge Sets");
-        miMergeSets.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miMergeSetsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miMergeSets);
-
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
         miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
@@ -1246,7 +1226,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
         else
         {
-            String cardvalues1[] = flashcards.cardvalues;
+            String cardvalues1[] = flashcards.cardvaluesStarred;
             
             for(int i=0; i<cardvalues1.length; i++)
             {
@@ -2214,14 +2194,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_cbNoneItemStateChanged
 
-    private void miMergeFoldersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeFoldersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miMergeFoldersActionPerformed
-
-    private void miMergeSetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeSetsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miMergeSetsActionPerformed
-
     private void miSearchbyTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchbyTagActionPerformed
         System.out.println("miSearchbyTag pressed");
         this.setVisible(false);
@@ -2326,8 +2298,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miDeleteSet;
     private javax.swing.JMenuItem miEditFolder;
     private javax.swing.JMenuItem miEditSet;
-    private javax.swing.JMenuItem miMergeFolders;
-    private javax.swing.JMenuItem miMergeSets;
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSearchbyTag;
