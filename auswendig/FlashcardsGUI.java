@@ -967,8 +967,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
-        miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
-        miOpenFolder.setText("Open Folder");
+        miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
+        miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miOpenFolderActionPerformed(evt);

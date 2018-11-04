@@ -43,8 +43,6 @@ public class CreateFolderGUI extends javax.swing.JFrame
         miEditSet = new javax.swing.JMenuItem();
         miDeleteSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
-        miMergeFolders = new javax.swing.JMenuItem();
-        miMergeSets = new javax.swing.JMenuItem();
         miSearchbyTag = new javax.swing.JMenuItem();
         miSettings = new javax.swing.JMenuItem();
 
@@ -121,8 +119,8 @@ public class CreateFolderGUI extends javax.swing.JFrame
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
-        miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
-        miOpenFolder.setText("Open Folder");
+        miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
+        miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miOpenFolderActionPerformed(evt);
@@ -193,24 +191,6 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-
-        miMergeFolders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
-        miMergeFolders.setText("Merge Folders");
-        miMergeFolders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miMergeFoldersActionPerformed(evt);
-            }
-        });
-        menuOther.add(miMergeFolders);
-
-        miMergeSets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/join-icon.png"))); // NOI18N
-        miMergeSets.setText("Merge Sets");
-        miMergeSets.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miMergeSetsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miMergeSets);
 
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
@@ -291,14 +271,25 @@ public class CreateFolderGUI extends javax.swing.JFrame
         String folderName = tfFolderName.getText();
         String description = tfDescription.getText();
         String sets = tfSets.getText();
-                
-        System.out.println("//--- New Folder");
-        System.out.println("Name: "+folderName);
-        System.out.println("Description: "+description);
-        System.out.println("Sets: "+sets);
+        String eachSet[] = sets.split("/");
         
-        createFolder.makeFolder(folderName, description, sets);
-        JOptionPane.showMessageDialog(null,"Successfully created folder");
+        int lengthWithSlash = sets.length();
+        int lengthWithoutSlash = sets.replace("/", "").length();
+
+        if(lengthWithSlash-lengthWithoutSlash>3) 
+        {
+            JOptionPane.showMessageDialog(null, "You can create a folder of a maximum of three sets, try again.");
+        }
+        else
+        {
+            System.out.println("//--- New Folder");
+            System.out.println("Name: "+folderName);
+            System.out.println("Description: "+description);
+            System.out.println("Sets: "+sets);
+
+            createFolder.makeFolder(folderName, description, sets);
+            JOptionPane.showMessageDialog(null,"Successfully created folder");
+        }
     }//GEN-LAST:event_btnCreateFolderActionPerformed
 
     private void miEditFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditFolderActionPerformed
@@ -307,23 +298,15 @@ public class CreateFolderGUI extends javax.swing.JFrame
         HomeGUI.editFolderGUI.setVisible(true);
     }//GEN-LAST:event_miEditFolderActionPerformed
 
-    private void miMergeFoldersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeFoldersActionPerformed
+    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_miMergeFoldersActionPerformed
-
-    private void miMergeSetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMergeSetsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miMergeSetsActionPerformed
+    }//GEN-LAST:event_miSettingsActionPerformed
 
     private void miSearchbyTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchbyTagActionPerformed
         System.out.println("miSearchbyTag pressed");
         this.setVisible(false);
         HomeGUI.searchTagGUI.setVisible(true);
     }//GEN-LAST:event_miSearchbyTagActionPerformed
-
-    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miSettingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,8 +346,6 @@ public class CreateFolderGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miDeleteSet;
     private javax.swing.JMenuItem miEditFolder;
     private javax.swing.JMenuItem miEditSet;
-    private javax.swing.JMenuItem miMergeFolders;
-    private javax.swing.JMenuItem miMergeSets;
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSearchbyTag;
