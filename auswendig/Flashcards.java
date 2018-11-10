@@ -109,105 +109,10 @@ public class Flashcards
             if(sliderValue>0)
             {
                 readLine = linesStarred.get(sliderValue-1);
-                /*System.out.println(sliderValue+". "+readLine);
-                String cardvaluesStarred[] = readLine.split(",");
-                String cardvalueString = Arrays.toString(cardvaluesStarred);
-                char cardvalueChars[] = cardvalueString.toCharArray();
-                char cardValueChar = cardvalueChars[1];
-                String cardValueString = cardValueChar+"";
-                char possibleComma = cardvalueChars[2];
-                char possibleComma2 = cardvalueChars[3];
-             
-                String possibleCommaString = possibleComma+"";//card num within range of 10-99
-                String possibleComma2String = possibleComma2+"";//card num within range of 100-200
-                if(possibleCommaString.equals(",")) //0-9 cardNum
-                {
-                   cardNum = Character.getNumericValue(cardValueChar);
-                }
-                else
-                {
-                    if(possibleComma2String.equals(",")) //10-99 card number
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(cardValueChar);
-                        sb.append(possibleComma);
-                        String cardNum10to99 = sb.toString();
-                        cardNum = Integer.parseInt(cardNum10to99);
-                    }
-                    else //100-200 card number
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(cardValueChar);
-                        sb.append(possibleComma);
-                        sb.append(possibleComma2);
-                        String cardNum10to99 = sb.toString();
-                        cardNum = Integer.parseInt(cardNum10to99);
-                    }
-                }
-                
-                
-                if(sliderValue!=cardNum)
-                {
-                    System.out.println(sliderValue+" is not the same number as card "+cardNum);
-                    System.out.println("sliderValue "+sliderValue+" +1");
-                    newCard=true;
-                    sliderValue=sliderValue+1;
-                    readCardSTARRED(sliderValue);
-                }
-                else
-                {
-                    newCard=false;
-                }*/
             }
             else
             {
                readLine = linesStarred.get(sliderValue);
-                String cardvaluesStarred[] = readLine.split(",");/*
-                String cardvalueString = Arrays.toString(cardvaluesStarred);
-                char cardvalueChars[] = cardvalueString.toCharArray();
-                char cardValueChar = cardvalueChars[1];
-                String cardValueString = cardValueChar+"";
-                char possibleComma = cardvalueChars[2];
-                char possibleComma2 = cardvalueChars[3];
-             
-                String possibleCommaString = possibleComma+"";//card num within range of 10-99
-                String possibleComma2String = possibleComma2+"";//card num within range of 100-200
-                if(possibleCommaString.equals(",")) //0-9 cardNum
-                {
-                   cardNum = Character.getNumericValue(cardValueChar);
-                }
-                else
-                {
-                    if(possibleComma2String.equals(",")) //10-99 card number
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(cardValueChar);
-                        sb.append(possibleComma);
-                        String cardNum10to99 = sb.toString();
-                        cardNum = Integer.parseInt(cardNum10to99);
-                    }
-                    else //100-200 card number
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(cardValueChar);
-                        sb.append(possibleComma);
-                        sb.append(possibleComma2);
-                        String cardNum10to99 = sb.toString();
-                        cardNum = Integer.parseInt(cardNum10to99);
-                    }
-                }
-                
-                
-                if(sliderValue!=cardNum)
-                {
-                    newCard=true;
-                    sliderValue=sliderValue+1;
-                    readCardSTARRED(sliderValue);
-                }
-                else
-                {
-                    newCard=false;
-                }*/
             }
            
               cardvaluesStarred = readLine.split(",");
@@ -293,13 +198,19 @@ public class Flashcards
             String extraLine = sliderValue+","+term+","+example+","+tags+","+definition;
             System.out.println(""+extraLine);
             
-            FileWriter fw = new FileWriter(path1, true);
-            BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
-
-            bw.write(""+extraLine);
-            bw.write("\r\n");
-            
-            bw.close(); //close buffered writer
+            boolean emptyFile;
+            emptyFile = linesStarred.get(0).contains("Empty");
+            if(emptyFile==true)
+            {
+                linesStarred.remove(0);
+                linesStarred.add(0, extraLine);
+                Files.write(path, linesStarred, StandardCharsets.UTF_8);
+            }
+            else
+            {
+                linesStarred.add(extraLine);
+                Files.write(path, linesStarred, StandardCharsets.UTF_8);
+            }
         }
         catch(Exception exc)
         {

@@ -107,7 +107,7 @@ public class CreateSet
                 FileWriter fw = new FileWriter(filenameStarred, true);
                 BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
 
-                bw.write("");
+                bw.write("Empty");
 
                 bw.close(); //close buffered writer
                 System.out.println("Successfully created empty starred set.");

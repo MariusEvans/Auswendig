@@ -51,6 +51,8 @@ public class SearchTagGUI extends javax.swing.JFrame
 
         STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
+        tfTag.setMinimumSize(new java.awt.Dimension(4, 26));
+
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,10 +79,9 @@ public class SearchTagGUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(STYLEPANELLayout.createSequentialGroup()
-                        .addComponent(tfTag, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfTag, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch)
-                        .addGap(0, 248, Short.MAX_VALUE))
+                        .addComponent(btnSearch))
                     .addComponent(cbxResults, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -89,14 +90,14 @@ public class SearchTagGUI extends javax.swing.JFrame
             .addGroup(STYLEPANELLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTerm))
+                    .addComponent(btnSearch)
+                    .addComponent(lblTerm)
+                    .addComponent(tfTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblResults))
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addGap(318, 318, 318))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));

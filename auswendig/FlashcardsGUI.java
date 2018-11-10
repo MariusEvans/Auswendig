@@ -73,7 +73,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             String selectedItemNOTXT = selectedItem.replace(".txt", "");
             Path pathStarred = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt");
             List<String> linesStarred = Files.readAllLines(pathStarred, StandardCharsets.UTF_8);
-            
             sliderCards.setMaximum(lines.size()-2);
             sliderCardsSTARRED.setMaximum(linesStarred.size());
             maxCards = lines.size()-2;
@@ -199,16 +198,19 @@ public class FlashcardsGUI extends javax.swing.JFrame
         LEARNPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
         tfTags.setEditable(false);
+        tfTags.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblTags.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTags.setText("Tags:");
 
         tfExample.setEditable(false);
+        tfExample.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblExample.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblExample.setText("Example:");
 
         tfTerm.setEditable(false);
+        tfTerm.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblTerm.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTerm.setText("Term:");
@@ -229,6 +231,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblDefinition.setText("Definition:");
 
         tfDefinition.setEditable(false);
+        tfDefinition.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnShowDef.setText("Show Definition");
         btnShowDef.addActionListener(new java.awt.event.ActionListener() {
@@ -256,46 +259,42 @@ public class FlashcardsGUI extends javax.swing.JFrame
         LEARNPANELLayout.setHorizontalGroup(
             LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LEARNPANELLayout.createSequentialGroup()
-                .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LEARNPANELLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnStarCard)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
+                .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LEARNPANELLayout.createSequentialGroup()
+                        .addComponent(btnStarCard, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnShuffleCards))
-                    .addGroup(LEARNPANELLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblDefinition)
+                        .addGroup(LEARNPANELLayout.createSequentialGroup()
+                            .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTerm)
+                                .addComponent(lblExample)
+                                .addComponent(lblTags))
+                            .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(LEARNPANELLayout.createSequentialGroup()
-                                    .addComponent(lblTerm)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(tfTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(163, 163, 163)
+                                    .addComponent(btnShowDef))
                                 .addGroup(LEARNPANELLayout.createSequentialGroup()
-                                    .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblTags)
-                                        .addComponent(lblExample)
-                                        .addComponent(lblDefinition))
-                                    .addGap(30, 30, 30)
+                                    .addGap(73, 73, 73)
                                     .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTags)
+                                        .addComponent(tfDefinition)
                                         .addComponent(tfExample)
-                                        .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCardCount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sliderCards, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(LEARNPANELLayout.createSequentialGroup()
-                                .addGap(145, 145, 145)
-                                .addComponent(btnShowDef)))))
-                .addContainerGap(180, Short.MAX_VALUE))
+                                        .addComponent(tfTerm)
+                                        .addComponent(tfTags)
+                                        .addComponent(lblCardCount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sliderCards, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)))))))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         LEARNPANELLayout.setVerticalGroup(
             LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LEARNPANELLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(lblCardCount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sliderCards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTerm)
                     .addComponent(tfTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -313,10 +312,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinition)
                     .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(LEARNPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStarCard)
-                    .addComponent(btnShuffleCards))
+                    .addComponent(btnShuffleCards)
+                    .addComponent(btnStarCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -338,10 +337,13 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblCardCountSTARRED.setText("Card: START");
 
         tfTermSTARRED.setEditable(false);
+        tfTermSTARRED.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         tfExampleSTARRED.setEditable(false);
+        tfExampleSTARRED.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         tfTagsSTARRED.setEditable(false);
+        tfTagsSTARRED.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnShowDefSTARRED.setText("Show Definition");
         btnShowDefSTARRED.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +353,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         });
 
         tfDefinitionSTARRED.setEditable(false);
+        tfDefinitionSTARRED.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblDefinitionSTARRED.setText("Definition:");
 
@@ -376,43 +379,46 @@ public class FlashcardsGUI extends javax.swing.JFrame
             STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STARREDPANELLayout.createSequentialGroup()
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(STARREDPANELLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tfExampleSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(STARREDPANELLayout.createSequentialGroup()
-                                    .addComponent(lblTermSTARRED)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(tfTermSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(146, 146, 146)
+                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCardCountSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(STARREDPANELLayout.createSequentialGroup()
-                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblTagsSTARRED)
-                                        .addComponent(lblExampleSTARRED)
-                                        .addComponent(lblDefinitionSTARRED))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTagsSTARRED)
-                                        .addComponent(tfExampleSTARRED)
-                                        .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(146, 146, 146)
+                                    .addComponent(tfTagsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, STARREDPANELLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
                                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCardCountSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(STARREDPANELLayout.createSequentialGroup()
-                                .addGap(145, 145, 145)
-                                .addComponent(btnShowDefSTARRED))))
+                                    .addComponent(btnShuffleCardsSTARRED)
+                                    .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblExampleSTARRED)
+                                        .addGroup(STARREDPANELLayout.createSequentialGroup()
+                                            .addComponent(lblTermSTARRED)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(tfTermSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblTagsSTARRED)
+                                        .addGroup(STARREDPANELLayout.createSequentialGroup()
+                                            .addComponent(lblDefinitionSTARRED)
+                                            .addGap(69, 69, 69)
+                                            .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(STARREDPANELLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnShuffleCardsSTARRED)))
-                .addContainerGap(182, Short.MAX_VALUE))
+                        .addGap(231, 231, 231)
+                        .addComponent(btnShowDefSTARRED)))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         STARREDPANELLayout.setVerticalGroup(
             STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STARREDPANELLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(16, 16, 16)
                 .addComponent(lblCardCountSTARRED)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sliderCardsSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTermSTARRED)
                     .addComponent(tfTermSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -430,7 +436,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(STARREDPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinitionSTARRED)
                     .addComponent(tfDefinitionSTARRED, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btnShuffleCardsSTARRED)
                 .addContainerGap())
         );
@@ -454,8 +460,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTagsLEITNER.setText("Tags:");
 
         tfTagsLEITNER.setEditable(false);
+        tfTagsLEITNER.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         tfExampleLEITNER.setEditable(false);
+        tfExampleLEITNER.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblDefinitionLEITNER.setText("Definition:");
 
@@ -467,8 +475,10 @@ public class FlashcardsGUI extends javax.swing.JFrame
         });
 
         tfTermLEITNER.setEditable(false);
+        tfTermLEITNER.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         tfDefinitionLEITNER.setEditable(false);
+        tfDefinitionLEITNER.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnExcellent.setText("5 days");
         btnExcellent.addActionListener(new java.awt.event.ActionListener() {
@@ -512,27 +522,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             .addGroup(LEITNERPANELLayout.createSequentialGroup()
                 .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LEITNERPANELLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(LEITNERPANELLayout.createSequentialGroup()
-                                    .addComponent(lblTermLEITNER)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(tfTermLEITNER, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(LEITNERPANELLayout.createSequentialGroup()
-                                    .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblTagsLEITNER)
-                                        .addComponent(lblExampleLEITNER)
-                                        .addComponent(lblDefinitionLEITNER))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTagsLEITNER)
-                                        .addComponent(tfExampleLEITNER)
-                                        .addComponent(tfDefinitionLEITNER, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(LEITNERPANELLayout.createSequentialGroup()
-                                .addGap(145, 145, 145)
-                                .addComponent(btnShowDefLEITNER))))
-                    .addGroup(LEITNERPANELLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(btnExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -542,7 +531,27 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPoor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHorrible, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnHorrible, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LEITNERPANELLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDefinitionLEITNER)
+                            .addGroup(LEITNERPANELLayout.createSequentialGroup()
+                                .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTermLEITNER)
+                                    .addComponent(lblExampleLEITNER)
+                                    .addComponent(lblTagsLEITNER))
+                                .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(LEITNERPANELLayout.createSequentialGroup()
+                                        .addGap(166, 166, 166)
+                                        .addComponent(btnShowDefLEITNER))
+                                    .addGroup(LEITNERPANELLayout.createSequentialGroup()
+                                        .addGap(81, 81, 81)
+                                        .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tfExampleLEITNER, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                            .addComponent(tfTermLEITNER)
+                                            .addComponent(tfTagsLEITNER, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(tfDefinitionLEITNER))))))))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         LEITNERPANELLayout.setVerticalGroup(
@@ -566,7 +575,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDefinitionLEITNER)
                     .addComponent(tfDefinitionLEITNER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(LEITNERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcellent)
                     .addComponent(btnGood)
@@ -583,6 +592,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblDefinitionLISTEN.setText("means/is:");
 
         tfDefinitionMC.setEditable(false);
+        tfDefinitionMC.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnSkipCardMC.setText("START");
         btnSkipCardMC.addActionListener(new java.awt.event.ActionListener() {
@@ -642,25 +652,24 @@ public class FlashcardsGUI extends javax.swing.JFrame
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(165, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbNone)
-                    .addComponent(tfDefinitionMC, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSkipCardMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDefinitionLISTEN)
-                        .addComponent(cbC)
-                        .addComponent(cbB)
-                        .addComponent(cbA)
-                        .addComponent(btnCheckCardMC, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbD))
-                .addGap(173, 173, 173))
+                    .addComponent(cbC)
+                    .addComponent(cbB)
+                    .addComponent(cbA)
+                    .addComponent(cbD)
+                    .addComponent(lblDefinitionLISTEN)
+                    .addComponent(tfDefinitionMC)
+                    .addComponent(btnCheckCardMC, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                    .addComponent(btnSkipCardMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(tfDefinitionMC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(lblDefinitionLISTEN)
@@ -674,16 +683,18 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addComponent(cbD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbNone)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCheckCardMC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSkipCardMC)
-                .addGap(42, 42, 42))
+                .addGap(49, 49, 49))
         );
 
         TABBEDPANE.addTab("Multi-Choice", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        tfDefinitionWRITE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblDefinitionWRITE.setText("Definition:");
 
@@ -691,16 +702,19 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTermWRITE.setText("Term:");
 
         tfTermWRITE.setEditable(false);
+        tfTermWRITE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblExampleWRITE.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblExampleWRITE.setText("Example:");
 
         tfExampleWRITE.setEditable(false);
+        tfExampleWRITE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblTagsWRITE.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTagsWRITE.setText("Tags:");
 
         tfTagsWRITE.setEditable(false);
+        tfTagsWRITE.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnSkipCardWRITE.setText("START");
         btnSkipCardWRITE.addActionListener(new java.awt.event.ActionListener() {
@@ -733,28 +747,28 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         .addContainerGap()
                         .addComponent(btnSwap))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblTermWRITE)
-                                .addGap(30, 30, 30)
-                                .addComponent(tfTermWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTagsWRITE)
-                                    .addComponent(lblExampleWRITE)
-                                    .addComponent(lblDefinitionWRITE))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfTagsWRITE)
-                                    .addComponent(tfExampleWRITE)
-                                    .addComponent(tfDefinitionWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSkipCardWRITE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCheckCard, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTermWRITE)
+                            .addComponent(lblDefinitionWRITE)
+                            .addComponent(lblTagsWRITE)
+                            .addComponent(lblExampleWRITE))
+                        .addGap(80, 80, 80)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(99, 99, 99)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnSkipCardWRITE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnCheckCard, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(79, 79, 79))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfDefinitionWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfTagsWRITE, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfTermWRITE)
+                                .addComponent(tfExampleWRITE)))))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -779,7 +793,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addComponent(btnCheckCard)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSkipCardWRITE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(btnSwap)
                 .addContainerGap())
         );
@@ -808,20 +822,24 @@ public class FlashcardsGUI extends javax.swing.JFrame
         lblTermTF.setText("Term:");
 
         tfTermTF.setEditable(false);
+        tfTermTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblExampleTF.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblExampleTF.setText("Example:");
 
         tfExampleTF.setEditable(false);
+        tfExampleTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblTagsTF.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTagsTF.setText("Tags:");
 
         tfTagsTF.setEditable(false);
+        tfTagsTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblDefinitionTF.setText("Definition:");
 
         tfDefinitionTF.setEditable(false);
+        tfDefinitionTF.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         lblMeans.setText("means");
 
@@ -844,41 +862,38 @@ public class FlashcardsGUI extends javax.swing.JFrame
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSkipCardTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCheckCardTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfTermTF, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfExampleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTagsTF, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTermTF)
+                    .addComponent(lblExampleTF)
+                    .addComponent(lblTagsTF)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addComponent(lblDefinitionTF)
+                        .addGap(72, 72, 72)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(lblTermTF)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(tfTermTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblTagsTF)
-                                        .addComponent(lblExampleTF))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTagsTF)
-                                        .addComponent(tfExampleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(lblDefinitionTF)
-                                    .addGap(30, 30, 30)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(cbTrue)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cbFalse))
-                                        .addComponent(tfDefinitionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(lblMeans))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSkipCardTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCheckCardTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(170, Short.MAX_VALUE))
+                                .addComponent(cbTrue)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbFalse))
+                            .addComponent(tfDefinitionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(lblMeans)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -909,7 +924,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addComponent(btnCheckCardTF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSkipCardTF)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         TABBEDPANE.addTab("True/False", jPanel3);
@@ -959,7 +974,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
                 .addComponent(TITLEPANEL, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TABBEDPANE))
+                .addComponent(TABBEDPANE, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
@@ -1296,6 +1311,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 //btnStarCard.setText(" Unstar Card ");
                 System.out.println("btnStarCard not selected");
                 flashcards.UnstarCard(selectedItem,sliderValue);
+                JOptionPane.showMessageDialog(null, "Unstarred card. You may have to reload to see changes.");
             }
         }
     }//GEN-LAST:event_btnStarCardActionPerformed
