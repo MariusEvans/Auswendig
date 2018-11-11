@@ -33,7 +33,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     
     boolean isTrue = false;
     boolean isFalse = false;
-    boolean isA, isB, isC, isD, isNone = false;
+    boolean isA, isB, isC, isD = false;
     
     boolean shuffleCards = false;
     boolean shuffleCardsSTARRED = false;
@@ -145,7 +145,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
         cbC = new javax.swing.JCheckBox();
         btnCheckCardMC = new javax.swing.JButton();
         cbD = new javax.swing.JCheckBox();
-        cbNone = new javax.swing.JCheckBox();
         lblTermMC = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         tfDefinitionWRITE = new javax.swing.JTextField();
@@ -708,15 +707,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             }
         });
 
-        cbNone.setBackground(new java.awt.Color(255, 255, 255));
-        cbNone.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cbNone.setText("None of the above");
-        cbNone.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNoneItemStateChanged(evt);
-            }
-        });
-
         lblTermMC.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTermMC.setForeground(new java.awt.Color(204, 204, 204));
         lblTermMC.setText("Term:");
@@ -735,7 +725,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbNone)
                             .addComponent(cbC)
                             .addComponent(cbB)
                             .addComponent(cbA)
@@ -764,9 +753,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 .addComponent(cbC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbNone)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSkipCardMC)
                     .addComponent(btnCheckCardMC))
@@ -1647,6 +1634,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
     {
         String cardvalues1[] = flashcards.cardvalues;
         int randomNum = random.nextInt(maxCards);
+        int randomBox = random.nextInt(4);
         int cardNumMC1 = cardNumMC;
         for(int i=0; i<cardvalues1.length; i++)
         {
@@ -1663,29 +1651,61 @@ public class FlashcardsGUI extends javax.swing.JFrame
                 }
                 else 
                 {
+                   flashcards.readCard(cardNumMC1);
+                   String cardvaluesActual[] = flashcards.cardvalues;
+                   
                    cardNumMC=randomNum;
                    randomNum1 = cardNumMC;
-
+                   
                    randomNum = random.nextInt(maxCards);
                    flashcards.readCard(randomNum);
                    String cardvalues1V2[] = flashcards.cardvalues;
-                   cbA.setText(cardvalues1V2[i]);
+                   if(randomBox==0)
+                   {
+                       cbA.setText(cardvaluesActual[i]);
+                   }
+                   else
+                   {
+                      cbA.setText(cardvalues1V2[i]); 
+                   }
+                   
                     //showCardMultiChoice();
 
                    randomNum = random.nextInt(maxCards);
                    flashcards.readCard(randomNum);
                    String cardvalues2[] = flashcards.cardvalues;
-                   cbB.setText(cardvalues2[i]);
+                   if(randomBox==1)
+                   {
+                       cbB.setText(cardvaluesActual[i]);
+                   }
+                   else
+                   {
+                      cbB.setText(cardvalues2[i]); 
+                   }
 
                    randomNum = random.nextInt(maxCards);
                    flashcards.readCard(randomNum);
                    String cardvalues3[] = flashcards.cardvalues;
-                   cbC.setText(cardvalues3[i]);
+                   if(randomBox==2)
+                   {
+                       cbC.setText(cardvaluesActual[i]);
+                   }
+                   else
+                   {
+                      cbC.setText(cardvalues3[i]); 
+                   }
 
                    randomNum = random.nextInt(maxCards);
                    flashcards.readCard(randomNum);
                    String cardvalues4[] = flashcards.cardvalues;
-                   cbD.setText(cardvalues4[i]);
+                   if(randomBox==3)
+                   {
+                       cbD.setText(cardvaluesActual[i]);
+                   }
+                   else
+                   {
+                      cbD.setText(cardvalues4[i]); 
+                   }
                 }
 
                 //showCardMultiChoice();
@@ -1751,7 +1771,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         System.out.println("btnPoor pressed.");
         String daysTillReview = "*1"; //5,3,2,1,0
         
-        flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
+        //flashcards.SaveCardLEITNER(selectedItem, cardNumLeitner, daysTillReview); 
         
         if(cardNumLeitner>maxCards)
         {
@@ -1798,6 +1818,9 @@ public class FlashcardsGUI extends javax.swing.JFrame
             cardNumTF=0;
             flashcards.readCard(cardNumTF);
             cardNumTF+=1;
+            cardNumMC = 0;
+            flashcards.readCard(cardNumMC);
+            showCardMultiChoice();
             ifOpened=true;
         }
     }//GEN-LAST:event_LEITNERPANELComponentShown
@@ -2088,7 +2111,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
         String definitionC = cbC.getText();
         String definitionD = cbD.getText();
         
-        if(isA==false && isB==false && isC==false && isD==false && isNone==false)
+        if(isA==false && isB==false && isC==false && isD==false)
         {
             JOptionPane.showMessageDialog(null,"Select one check box");
         }
@@ -2195,30 +2218,7 @@ public class FlashcardsGUI extends javax.swing.JFrame
                         }
                         flashcards.readCard(cardNumMC);
                         showCardMultiChoice();
-                    }
-                    
-                    if(definitionA.equals(cardvalues1[i])==false && definitionB.equals(cardvalues1[i])==false && definitionC.equals(cardvalues1[i])==false && definitionD.equals(cardvalues1[i])==false && isNone==true)
-                    {
-                        if(cardNumMC>maxCards-1)
-                        {
-                            cardNumMC=0;
-                        }
-                        else 
-                        {
-                           cardNumMC+=1; 
-                        }
-                        try 
-                        {
-                            TimeUnit.MILLISECONDS.sleep(50);
-                        } 
-                        catch (InterruptedException ex) 
-                        {
-                            Logger.getLogger(FlashcardsGUI.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        flashcards.readCard(cardNumMC);
-                        showCardMultiChoice();
-                    }
-                    
+                    }                    
                 }
             }
         }
@@ -2233,7 +2233,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             cbB.setEnabled(true);
             cbC.setEnabled(true);
             cbD.setEnabled(true);
-            cbNone.setEnabled(true);
         }
         else if(isA==false)
         {
@@ -2242,7 +2241,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
            cbB.setEnabled(false);
            cbC.setEnabled(false);
            cbD.setEnabled(false);
-           cbNone.setEnabled(false);
         }
     }//GEN-LAST:event_cbAItemStateChanged
 
@@ -2255,7 +2253,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             cbB.setEnabled(true);
             cbC.setEnabled(true);
             cbD.setEnabled(true);
-            cbNone.setEnabled(true);
         }
         else if(isB==false)
         {
@@ -2264,7 +2261,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
            cbB.setEnabled(true);
            cbC.setEnabled(false);
            cbD.setEnabled(false);
-           cbNone.setEnabled(false);
         }
     }//GEN-LAST:event_cbBItemStateChanged
 
@@ -2277,7 +2273,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             cbB.setEnabled(true);
             cbC.setEnabled(true);
             cbD.setEnabled(true);
-            cbNone.setEnabled(true);
         }
         else if(isC==false)
         {
@@ -2286,7 +2281,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
            cbB.setEnabled(false);
            cbC.setEnabled(true);
            cbD.setEnabled(false);
-           cbNone.setEnabled(false);
         }
     }//GEN-LAST:event_cbCItemStateChanged
 
@@ -2299,7 +2293,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
             cbB.setEnabled(true);
             cbC.setEnabled(true);
             cbD.setEnabled(true);
-            cbNone.setEnabled(true);
         }
         else if(isD==false)
         {
@@ -2308,31 +2301,8 @@ public class FlashcardsGUI extends javax.swing.JFrame
            cbB.setEnabled(false);
            cbC.setEnabled(false);
            cbD.setEnabled(true);
-           cbNone.setEnabled(false);
         }
     }//GEN-LAST:event_cbDItemStateChanged
-
-    private void cbNoneItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNoneItemStateChanged
-        System.out.println("cbNone pressed");
-        if(isNone==true)
-        {
-            isNone=false;
-            cbA.setEnabled(true);
-            cbB.setEnabled(true);
-            cbC.setEnabled(true);
-            cbD.setEnabled(true);
-            cbNone.setEnabled(true);
-        }
-        else if(isNone==false)
-        {
-           isNone = true; 
-           cbA.setEnabled(false);
-           cbB.setEnabled(false);
-           cbC.setEnabled(false);
-           cbD.setEnabled(false);
-           cbNone.setEnabled(true);
-        }
-    }//GEN-LAST:event_cbNoneItemStateChanged
 
     private void miSearchbyTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchbyTagActionPerformed
         System.out.println("miSearchbyTag pressed");
@@ -2399,7 +2369,6 @@ public class FlashcardsGUI extends javax.swing.JFrame
     private javax.swing.JCheckBox cbC;
     private javax.swing.JCheckBox cbD;
     private javax.swing.JCheckBox cbFalse;
-    private javax.swing.JCheckBox cbNone;
     private javax.swing.JCheckBox cbTrue;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

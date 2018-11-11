@@ -507,6 +507,7 @@ public class Flashcards
            LineNumberReader rdr = new LineNumberReader(new FileReader(path1));
            LineNumberReader rdr1 = new LineNumberReader(new FileReader(filenameOrig));
            boolean flag = false;
+           char cardValueChar;
            
             while((line = rdr.readLine()) != null && flag==false) //while there are lines to read
             {
@@ -516,15 +517,40 @@ public class Flashcards
                   for(int z=lastLineNum; z<sliderValue+1; z++)
                   {
                       int linenumber = rdr.getLineNumber();
-                      System.out.println("CARD NUM: "+z);
+                      //System.out.println("CARD NUM: "+z);
                       if(linenumber==sliderValue+1 && flag==false)
                       {
                           String cardvalues4[] = line.split(",");
-                          String cardvalueString = Arrays.toString(cardvalues4);
-                          char cardvalueChars[] = cardvalueString.toCharArray();
-                          char cardValueChar = cardvalueChars[5];
-                          String cardValueString = cardValueChar+"";
-                          if(cardValueString.contains("*"))
+                          String cardvaluesString = Arrays.toString(cardvalues4);
+                          System.out.println(cardvaluesString);
+                          char cardvalueChars[] = cardvaluesString.toCharArray();
+                          //String cardValueString = cardValueChar+"";
+                          
+                          
+                          char possibleComma = cardvalueChars[2];
+                          char possibleComma2 = cardvalueChars[3];
+                          
+                          String possibleCommaString = possibleComma+"";//card num within range of 10-99
+                            String possibleComma2String = possibleComma2+"";//card num within range of 100-200
+                            if(possibleCommaString.equals(",")) //0-9 cardNum
+                            {
+                               cardValueChar = cardvalueChars[5];
+                            }
+                            else
+                            {
+                                if(possibleComma2String.equals(",")) //10-99 card number
+                                {
+                                    cardValueChar = cardvalueChars[6];
+                                }
+                                else //100-200 card number
+                                {
+                                    cardValueChar = cardvalueChars[7];
+                                }
+                            }
+                            String cardvalueString = cardValueChar+"";
+                            System.out.println("!!!! days till review is: "+cardvalueString);
+                          
+                          /*if(cardValueString.contains("*"))
                           {
                             cardValueChar = cardvalueChars[6];
                             cardValueString = cardValueChar+"";
@@ -532,25 +558,25 @@ public class Flashcards
                             {
                                 cardValueChar = cardvalueChars[6];
                             }
-                          }
+                          }*/
 
                           int daysTillReviewCard = Character.getNumericValue(cardValueChar);
                           System.out.println("");
                           System.out.println(linenumber+" daysTillReviewCard is "+daysTillReviewCard);
                           if(daysTillReviewCard==0)
                           {
-                              System.out.println("FOUND 0. CARD NUM: "+z);
+                              //System.out.println("FOUND 0. CARD NUM: "+z);
                               String readLineSelectedItem = linesSelectedItem.get(z-1);
                               cardvalues = readLineSelectedItem.split(",");
                               String cardvalueString1 = Arrays.toString(cardvalues);
-                              System.out.println("Arrays.toString "+cardvalueString1);
+                              //System.out.println("Arrays.toString "+cardvalueString1);
                               lastLineNum=sliderValue;
                               OpenSetGUI.flashcardsGUI.cardNumLeitner = sliderValue;
                               //SaveCardLEITNER(selectedItem, sliderValue, daysTillReview);
                           }
                           else
                           {
-                              System.out.println("line number: "+linenumber+"daysTillReview is not 0");
+                              //System.out.println("line number: "+linenumber+"daysTillReview is not 0");
                               sliderValue+=1;
                               lastLineNum=sliderValue;
                               readCardLEITNER(selectedItem, sliderValue);
