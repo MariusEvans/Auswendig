@@ -36,6 +36,7 @@ public class ExportFolderGUI extends javax.swing.JFrame
         btnExport = new javax.swing.JButton();
         lblFileName = new javax.swing.JLabel();
         tfFileName = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miCreateFolder = new javax.swing.JMenuItem();
@@ -54,11 +55,12 @@ public class ExportFolderGUI extends javax.swing.JFrame
         setTitle("Auswendig");
         setBackground(new java.awt.Color(153, 153, 255));
 
-        STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
+        STYLEPANEL.setBackground(new java.awt.Color(102, 153, 255));
 
         cbxFolder.setMinimumSize(new java.awt.Dimension(4, 20));
         cbxFolder.setPreferredSize(new java.awt.Dimension(4, 20));
 
+        btnExport.setBackground(new java.awt.Color(255, 255, 255));
         btnExport.setText("Export");
         btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,41 +68,54 @@ public class ExportFolderGUI extends javax.swing.JFrame
             }
         });
 
-        lblFileName.setText("Filename of Export:");
+        lblFileName.setForeground(new java.awt.Color(255, 255, 255));
+        lblFileName.setText("Filename:");
+
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setText("Export.");
 
         javax.swing.GroupLayout STYLEPANELLayout = new javax.swing.GroupLayout(STYLEPANEL);
         STYLEPANEL.setLayout(STYLEPANELLayout);
         STYLEPANELLayout.setHorizontalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(STYLEPANELLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(lblFileName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfFileName)
-                    .addComponent(cbxFolder, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(92, 92, 92))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbxFolder, 0, 433, Short.MAX_VALUE)
+                    .addComponent(tfFileName))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(STYLEPANELLayout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
-                .addContainerGap(285, Short.MAX_VALUE)
-                .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(251, 251, 251))
+                .addContainerGap(261, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210))
         );
         STYLEPANELLayout.setVerticalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFileName)
                     .addComponent(tfFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnExport)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
@@ -133,6 +148,8 @@ public class ExportFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuFolders);
 
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
@@ -174,6 +191,8 @@ public class ExportFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
@@ -310,6 +329,7 @@ public class ExportFolderGUI extends javax.swing.JFrame
     private javax.swing.JButton btnExport;
     private javax.swing.JComboBox<String> cbxFolder;
     private javax.swing.JLabel lblFileName;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JMenu menuFolders;
     private javax.swing.JMenu menuOther;
     private javax.swing.JMenu menuSets;

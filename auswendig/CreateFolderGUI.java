@@ -32,6 +32,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         lblDescription = new javax.swing.JLabel();
         tfFolderName = new javax.swing.JTextField();
         tfSets = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miOpenFolder = new javax.swing.JMenuItem();
@@ -52,6 +53,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         btnCreateFolder.setText("Create Folder");
         btnCreateFolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,32 +74,42 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         tfSets.setText("Separate sets with \"/\"");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setText("Create Folder.");
+
         javax.swing.GroupLayout STYLEPANELLayout = new javax.swing.GroupLayout(STYLEPANEL);
         STYLEPANEL.setLayout(STYLEPANELLayout);
         STYLEPANELLayout.setHorizontalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(225, 225, 225))
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(22, 22, 22)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(STYLEPANELLayout.createSequentialGroup()
-                        .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDescription)
-                            .addComponent(lblSets))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfSets)
-                            .addComponent(tfFolderName)
-                            .addComponent(tfDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(STYLEPANELLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(btnCreateFolder)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDescription)
+                    .addComponent(lblSets))
+                .addGap(71, 71, 71)
+                .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tfFolderName)
+                        .addComponent(tfDescription)
+                        .addComponent(tfSets, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreateFolder)
+                        .addGap(104, 104, 104)))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         STYLEPANELLayout.setVerticalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfFolderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName))
@@ -111,14 +123,18 @@ public class CreateFolderGUI extends javax.swing.JFrame
                     .addComponent(tfSets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateFolder)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        menuFolders.setBackground(new java.awt.Color(255, 255, 255));
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenFolder.setBackground(new java.awt.Color(255, 255, 255));
         miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
         miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +144,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuFolders.add(miOpenFolder);
 
+        miEditFolder.setBackground(new java.awt.Color(255, 255, 255));
         miEditFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditFolder.setText("Edit Folder");
         miEditFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +154,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuFolders.add(miEditFolder);
 
+        miDeleteFolder.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteFolder.setText("Delete Folder");
         miDeleteFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -148,9 +166,13 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuFolders);
 
+        menuSets.setBackground(new java.awt.Color(255, 255, 255));
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenSet.setBackground(new java.awt.Color(255, 255, 255));
         miOpenSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
         miOpenSet.setText("Open Set");
         miOpenSet.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +182,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miOpenSet);
 
+        miCreateSet.setBackground(new java.awt.Color(255, 255, 255));
         miCreateSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateSet.setText("Create Set");
         miCreateSet.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +192,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miCreateSet);
 
+        miEditSet.setBackground(new java.awt.Color(255, 255, 255));
         miEditSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditSet.setText("Edit Set");
         miEditSet.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +202,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miEditSet);
 
+        miDeleteSet.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteSet.setText("Delete Set");
         miDeleteSet.addActionListener(new java.awt.event.ActionListener() {
@@ -189,9 +214,13 @@ public class CreateFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setBackground(new java.awt.Color(255, 255, 255));
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miSearchbyTag.setBackground(new java.awt.Color(255, 255, 255));
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
         miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +230,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
+        miSettings.setBackground(new java.awt.Color(255, 255, 255));
         miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
         miSettings.setText("Settings");
         miSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -267,20 +297,66 @@ public class CreateFolderGUI extends javax.swing.JFrame
     private void btnCreateFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateFolderActionPerformed
         System.out.println("btnAddCard pressed.");
         tfFolderName.setEditable(false);
+        boolean validated=false;
         
         String folderName = tfFolderName.getText();
+        if(folderName.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Name field cannot be longer than 32 characters, try again");
+        }
+        if(folderName.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain ',', try again");
+        }
+        if(folderName.contains(".txt"))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain '.txt', try again");
+        }
+        
         String description = tfDescription.getText();
+        if(description.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Description field cannot be longer than 32 characters, try again");
+        }
+        if(description.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Descriptions cannot contain ',', try again");
+        }
+        
         String sets = tfSets.getText();
+        if(sets.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Sets field cannot be longer than 32 characters, try again");
+        }
+        if(sets.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Sets cannot contain ',', try again");
+        }
+        if(sets.contains(".txt"))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Sets field cannot contain '.txt', try again");
+        }
+        
         String eachSet[] = sets.split("/");
         
         int lengthWithSlash = sets.length();
         int lengthWithoutSlash = sets.replace("/", "").length();
-
+        
         if(lengthWithSlash-lengthWithoutSlash>3) 
         {
             JOptionPane.showMessageDialog(null, "You can create a folder of a maximum of three sets, try again.");
+            validated=true;
         }
-        else
+        
+        if(validated==false)
         {
             System.out.println("//--- New Folder");
             System.out.println("Name: "+folderName);
@@ -335,6 +411,7 @@ public class CreateFolderGUI extends javax.swing.JFrame
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JPanel STYLEPANEL;
     private javax.swing.JButton btnCreateFolder;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSets;

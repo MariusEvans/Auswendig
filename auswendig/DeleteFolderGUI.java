@@ -34,6 +34,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         STYLEPANEL = new javax.swing.JPanel();
         cbxDeleteFolder = new javax.swing.JComboBox<>();
         btnDeleteFolder = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miOpenFolder = new javax.swing.JMenuItem();
@@ -52,14 +53,19 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         setTitle("Auswendig");
         setBackground(new java.awt.Color(153, 153, 255));
 
-        STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
+        STYLEPANEL.setBackground(new java.awt.Color(102, 153, 255));
 
+        btnDeleteFolder.setBackground(new java.awt.Color(255, 255, 255));
         btnDeleteFolder.setText("Delete");
         btnDeleteFolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteFolderActionPerformed(evt);
             }
         });
+
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setText("Delete Folder.");
 
         javax.swing.GroupLayout STYLEPANELLayout = new javax.swing.GroupLayout(STYLEPANEL);
         STYLEPANEL.setLayout(STYLEPANELLayout);
@@ -71,22 +77,31 @@ public class DeleteFolderGUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDeleteFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(206, 206, 206))
         );
         STYLEPANELLayout.setVerticalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(175, 175, 175)
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbxDeleteFolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeleteFolder))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenFolder.setBackground(new java.awt.Color(255, 255, 255));
         miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
         miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +111,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuFolders.add(miOpenFolder);
 
+        miEditFolder.setBackground(new java.awt.Color(255, 255, 255));
         miEditFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditFolder.setText("Edit Folder");
         miEditFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +121,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuFolders.add(miEditFolder);
 
+        miCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         miCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateFolder.setText("Create Folder");
         miCreateFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -116,9 +133,12 @@ public class DeleteFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuFolders);
 
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenSet.setBackground(new java.awt.Color(255, 255, 255));
         miOpenSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
         miOpenSet.setText("Open Set");
         miOpenSet.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +148,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miOpenSet);
 
+        miCreateSet.setBackground(new java.awt.Color(255, 255, 255));
         miCreateSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateSet.setText("Create Set");
         miCreateSet.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +158,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miCreateSet);
 
+        miEditSet.setBackground(new java.awt.Color(255, 255, 255));
         miEditSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditSet.setText("Edit Set");
         miEditSet.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +168,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuSets.add(miEditSet);
 
+        miDeleteSet.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteSet.setText("Delete Set");
         miDeleteSet.addActionListener(new java.awt.event.ActionListener() {
@@ -157,9 +180,12 @@ public class DeleteFolderGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miSearchbyTag.setBackground(new java.awt.Color(255, 255, 255));
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
         miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +195,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
+        miSettings.setBackground(new java.awt.Color(255, 255, 255));
         miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
         miSettings.setText("Settings");
         miSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -290,6 +317,7 @@ public class DeleteFolderGUI extends javax.swing.JFrame
     private javax.swing.JPanel STYLEPANEL;
     private javax.swing.JButton btnDeleteFolder;
     private javax.swing.JComboBox<String> cbxDeleteFolder;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JMenu menuFolders;
     private javax.swing.JMenu menuOther;
     private javax.swing.JMenu menuSets;

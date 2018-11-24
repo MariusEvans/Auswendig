@@ -34,8 +34,9 @@ public class HomeGUI extends javax.swing.JFrame
     {
         System.out.println("Running HomeGUI.");
         String destAddress = Paths.get(".").toAbsolutePath().normalize().toString(); //get current directory
-        String destAddressSRC = destAddress+"\\src\\auswendig\\";
+        //String destAddress1 = destAddress.replace
         System.out.println(destAddress);
+        //JOptionPane.showMessageDialog(null,destAddress);
         initComponents();
     }
 
@@ -44,11 +45,9 @@ public class HomeGUI extends javax.swing.JFrame
     private void initComponents() {
 
         RECENTPANEL = new javax.swing.JPanel();
-        PANELDESIGN = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         TITLEPANEL = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miOpenFolder = new javax.swing.JMenuItem();
@@ -70,77 +69,63 @@ public class HomeGUI extends javax.swing.JFrame
 
         RECENTPANEL.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout RECENTPANELLayout = new javax.swing.GroupLayout(RECENTPANEL);
-        RECENTPANEL.setLayout(RECENTPANELLayout);
-        RECENTPANELLayout.setHorizontalGroup(
-            RECENTPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        RECENTPANELLayout.setVerticalGroup(
-            RECENTPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 447, Short.MAX_VALUE)
-        );
+        TITLEPANEL.setBackground(new java.awt.Color(102, 153, 255));
 
-        PANELDESIGN.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Auswendig has been written and created by Marius Evans. ");
-        jTextArea1.setAutoscrolls(false);
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        TITLEPANEL.setBackground(new java.awt.Color(51, 51, 255));
-
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("Auswendig");
+        lblTitle.setText("Auswendig.");
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Yu Mincho Demibold", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Auswendig has been written and created by Marius Evans.");
 
         javax.swing.GroupLayout TITLEPANELLayout = new javax.swing.GroupLayout(TITLEPANEL);
         TITLEPANEL.setLayout(TITLEPANELLayout);
         TITLEPANELLayout.setHorizontalGroup(
             TITLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TITLEPANELLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addGroup(TITLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TITLEPANELLayout.createSequentialGroup()
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(163, 163, 163))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TITLEPANELLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(41, 41, 41))))
         );
         TITLEPANELLayout.setVerticalGroup(
             TITLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TITLEPANELLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout PANELDESIGNLayout = new javax.swing.GroupLayout(PANELDESIGN);
-        PANELDESIGN.setLayout(PANELDESIGNLayout);
-        PANELDESIGNLayout.setHorizontalGroup(
-            PANELDESIGNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout RECENTPANELLayout = new javax.swing.GroupLayout(RECENTPANEL);
+        RECENTPANEL.setLayout(RECENTPANELLayout);
+        RECENTPANELLayout.setHorizontalGroup(
+            RECENTPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(TITLEPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PANELDESIGNLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
         );
-        PANELDESIGNLayout.setVerticalGroup(
-            PANELDESIGNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PANELDESIGNLayout.createSequentialGroup()
-                .addComponent(TITLEPANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        RECENTPANELLayout.setVerticalGroup(
+            RECENTPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TITLEPANEL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         menu.setBackground(java.awt.Color.white);
         menu.setBorder(null);
+        menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menu.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
 
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenFolder.setBackground(new java.awt.Color(255, 255, 255));
         miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
         miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +135,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuFolders.add(miOpenFolder);
 
+        miCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         miCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateFolder.setText("Create Folder");
         miCreateFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +145,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuFolders.add(miCreateFolder);
 
+        miEditFolder.setBackground(new java.awt.Color(255, 255, 255));
         miEditFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditFolder.setText("Edit Folder");
         miEditFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +155,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuFolders.add(miEditFolder);
 
+        miDeleteFolder.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteFolder.setText("Delete Folder");
         miDeleteFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -179,9 +167,12 @@ public class HomeGUI extends javax.swing.JFrame
 
         menu.add(menuFolders);
 
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenSet.setBackground(new java.awt.Color(255, 255, 255));
         miOpenSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
         miOpenSet.setText("Open Set");
         miOpenSet.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +182,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuSets.add(miOpenSet);
 
+        miCreateSet.setBackground(new java.awt.Color(255, 255, 255));
         miCreateSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateSet.setText("Create Set");
         miCreateSet.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +192,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuSets.add(miCreateSet);
 
+        miEditSet.setBackground(new java.awt.Color(255, 255, 255));
         miEditSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditSet.setText("Edit Set");
         miEditSet.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +202,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuSets.add(miEditSet);
 
+        miDeleteSet.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteSet.setText("Delete Set");
         miDeleteSet.addActionListener(new java.awt.event.ActionListener() {
@@ -220,9 +214,12 @@ public class HomeGUI extends javax.swing.JFrame
 
         menu.add(menuSets);
 
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miSearchbyTag.setBackground(new java.awt.Color(255, 255, 255));
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
         miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +229,7 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
+        miSettings.setBackground(new java.awt.Color(255, 255, 255));
         miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
         miSettings.setText("Settings");
         miSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -249,15 +247,11 @@ public class HomeGUI extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(RECENTPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PANELDESIGN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(RECENTPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(RECENTPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PANELDESIGN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -345,11 +339,9 @@ public class HomeGUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PANELDESIGN;
     private javax.swing.JPanel RECENTPANEL;
     private javax.swing.JPanel TITLEPANEL;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuFolders;

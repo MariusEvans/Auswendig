@@ -44,6 +44,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         lblDescription = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         tfSetName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miOpenFolder = new javax.swing.JMenuItem();
@@ -64,6 +65,7 @@ public class CreateSetGUI extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnAddCard.setBackground(new java.awt.Color(255, 255, 255));
         btnAddCard.setText("Add Card");
         btnAddCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +87,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         lblTerm.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblTerm.setText("Term:");
 
+        btnCreateSet.setBackground(new java.awt.Color(255, 255, 255));
         btnCreateSet.setText("Create Set");
         btnCreateSet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,84 +103,101 @@ public class CreateSetGUI extends javax.swing.JFrame
 
         tfSetName.setText("Spaces must be separted with \"_\"");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setText("Create Set.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(btnCreateSet))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblDescription))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfSetName)
-                                .addComponent(tfDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblTerm)
-                            .addGap(30, 30, 30)
-                            .addComponent(tfTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblTags)
-                                .addComponent(lblExample))
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfTags, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfExample, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblDefinition)
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnAddCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTerm)
+                                    .addComponent(lblTags)
+                                    .addComponent(lblExample)
+                                    .addComponent(lblDefinition))
+                                .addGap(106, 106, 106)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfExample)
+                                    .addComponent(tfTerm)
+                                    .addComponent(tfTags, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                    .addComponent(tfDefinition)
+                                    .addComponent(btnAddCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDescription))
+                                .addGap(72, 72, 72)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfSetName, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                    .addComponent(tfDescription))))
+                        .addContainerGap(143, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(234, 234, 234))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCreateSet)
+                .addGap(239, 239, 239))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfSetName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDescription)
-                    .addComponent(tfDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTerm)
-                    .addComponent(tfTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblExample)
-                    .addComponent(tfExample, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTags)
-                    .addComponent(tfTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDefinition)
-                    .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tfSetName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDescription)))
+                        .addGap(31, 31, 31)
+                        .addComponent(tfTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfExample, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfDefinition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(52, 52, 52)
+                            .addComponent(lblTags)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lblDefinition))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblTerm)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lblExample))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddCard)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnCreateSet)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenFolder.setBackground(new java.awt.Color(255, 255, 255));
         miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
         miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +207,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuFolders.add(miOpenFolder);
 
+        miCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         miCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateFolder.setText("Create Folder");
         miCreateFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +217,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuFolders.add(miCreateFolder);
 
+        miEditFolder.setBackground(new java.awt.Color(255, 255, 255));
         miEditFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditFolder.setText("Edit Folder");
         miEditFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +227,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuFolders.add(miEditFolder);
 
+        miDeleteFolder.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteFolder.setText("Delete Folder");
         miDeleteFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -216,9 +239,12 @@ public class CreateSetGUI extends javax.swing.JFrame
 
         MenuBar.add(menuFolders);
 
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenSet.setBackground(new java.awt.Color(255, 255, 255));
         miOpenSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
         miOpenSet.setText("Open Set");
         miOpenSet.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +254,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuSets.add(miOpenSet);
 
+        miEditSet.setBackground(new java.awt.Color(255, 255, 255));
         miEditSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditSet.setText("Edit Set");
         miEditSet.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +264,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuSets.add(miEditSet);
 
+        miDeleteSet.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteSet.setText("Delete Set");
         miDeleteSet.addActionListener(new java.awt.event.ActionListener() {
@@ -248,9 +276,12 @@ public class CreateSetGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miSearchbyTag.setBackground(new java.awt.Color(255, 255, 255));
         miSearchbyTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/search-icon.png"))); // NOI18N
         miSearchbyTag.setText("Search by Tag");
         miSearchbyTag.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +291,7 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
+        miSettings.setBackground(new java.awt.Color(255, 255, 255));
         miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
         miSettings.setText("Settings");
         miSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +363,32 @@ public class CreateSetGUI extends javax.swing.JFrame
         tfDescription.setEditable(false);
         
         String setName = tfSetName.getText();
+        if(setName.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Name field cannot be longer than 32 characters, try again");
+        }
+        if(setName.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain ',', try again");
+        }
+        if(setName.contains(".txt"))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain '.txt', try again");
+        }
         String description = tfDescription.getText();
+        if(description.length()>32)
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Description field cannot be longer than 32 characters, try again");
+        }
+        if(description.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Descriptions cannot contain ',', try again");
+        }
         
         String term = tfTerm.getText();
         if(term.length()>32)
@@ -339,11 +396,21 @@ public class CreateSetGUI extends javax.swing.JFrame
             validated=true;
             JOptionPane.showMessageDialog(null,"Term field cannot be longer than 32 characters, try again");
         }
+        if(term.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Terms cannot be contain ',', try again");
+        }
         String example = tfExample.getText();
         if(example.length()>32)
         {
             validated=true;
             JOptionPane.showMessageDialog(null,"Example field cannot be longer than 32 characters, try again");
+        }
+        if(example.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Examples cannot be contain ',', try again");
         }
         String tags = tfTags.getText();
         if(tags.length()>32)
@@ -361,6 +428,11 @@ public class CreateSetGUI extends javax.swing.JFrame
         {
             validated=true;
             JOptionPane.showMessageDialog(null,"Definition field cannot be longer than 32 characters, try again");
+        }
+        if(definition.contains(","))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Definitions cannot be contain ',', try again");
         }
         System.out.println("//--- New Card");
         System.out.println("Term: "+term);
@@ -446,6 +518,7 @@ public class CreateSetGUI extends javax.swing.JFrame
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JButton btnAddCard;
     private javax.swing.JButton btnCreateSet;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDefinition;
     private javax.swing.JLabel lblDescription;

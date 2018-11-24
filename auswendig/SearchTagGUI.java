@@ -30,8 +30,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         tfTag = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         cbxResults = new javax.swing.JComboBox<>();
-        lblTerm = new javax.swing.JLabel();
-        lblResults = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuFolders = new javax.swing.JMenu();
         miOpenFolder = new javax.swing.JMenuItem();
@@ -49,10 +48,19 @@ public class SearchTagGUI extends javax.swing.JFrame
         setTitle("Auswendig");
         setBackground(new java.awt.Color(153, 153, 255));
 
-        STYLEPANEL.setBackground(new java.awt.Color(255, 255, 255));
+        STYLEPANEL.setBackground(new java.awt.Color(102, 153, 255));
 
+        tfTag.setBorder(btnSearch.getBorder());
+        tfTag.setCaretColor(new java.awt.Color(102, 102, 102));
         tfTag.setMinimumSize(new java.awt.Dimension(4, 26));
+        tfTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTagActionPerformed(evt);
+            }
+        });
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,48 +71,52 @@ public class SearchTagGUI extends javax.swing.JFrame
         cbxResults.setMaximumRowCount(100);
         cbxResults.setEnabled(false);
 
-        lblTerm.setText("Tag:");
-
-        lblResults.setText("Results:");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setText("Search by Tag.");
 
         javax.swing.GroupLayout STYLEPANELLayout = new javax.swing.GroupLayout(STYLEPANEL);
         STYLEPANEL.setLayout(STYLEPANELLayout);
         STYLEPANELLayout.setHorizontalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTerm, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblResults, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(STYLEPANELLayout.createSequentialGroup()
-                        .addComponent(tfTag, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
-                    .addComponent(cbxResults, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
+                        .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(STYLEPANELLayout.createSequentialGroup()
+                                .addComponent(tfTag, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSearch))
+                            .addComponent(cbxResults, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STYLEPANELLayout.createSequentialGroup()
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(229, 229, 229))))
         );
         STYLEPANELLayout.setVerticalGroup(
             STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(STYLEPANELLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(lblTerm)
-                    .addComponent(tfTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblResults))
-                .addGap(318, 318, 318))
+                    .addComponent(btnSearch)
+                    .addComponent(tfTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxResults, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(303, 303, 303))
         );
 
         MenuBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        menuFolders.setBackground(new java.awt.Color(204, 204, 204));
+        menuFolders.setBorder(null);
+        menuFolders.setForeground(new java.awt.Color(204, 204, 204));
         menuFolders.setText("Folders");
         menuFolders.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miOpenFolder.setBackground(new java.awt.Color(255, 255, 255));
         miOpenFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/export-icon.png"))); // NOI18N
         miOpenFolder.setText("Export Folder");
         miOpenFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +126,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         });
         menuFolders.add(miOpenFolder);
 
+        miCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         miCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateFolder.setText("Create Folder");
         miCreateFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +136,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         });
         menuFolders.add(miCreateFolder);
 
+        miEditFolder.setBackground(new java.awt.Color(255, 255, 255));
         miEditFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditFolder.setText("Edit Folder");
         miEditFolder.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +146,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         });
         menuFolders.add(miEditFolder);
 
+        miDeleteSet.setBackground(new java.awt.Color(255, 255, 255));
         miDeleteSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/delete-icon.png"))); // NOI18N
         miDeleteSet.setText("Delete Folder");
         miDeleteSet.addActionListener(new java.awt.event.ActionListener() {
@@ -143,9 +158,13 @@ public class SearchTagGUI extends javax.swing.JFrame
 
         MenuBar.add(menuFolders);
 
+        menuSets.setBackground(new java.awt.Color(255, 255, 255));
+        menuSets.setBorder(null);
+        menuSets.setForeground(new java.awt.Color(204, 204, 204));
         menuSets.setText("Sets");
         menuSets.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        miOpenSet.setBackground(new java.awt.Color(255, 255, 255));
         miOpenSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/folder-open-icon.png"))); // NOI18N
         miOpenSet.setText("Open Set");
         miOpenSet.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +174,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         });
         menuSets.add(miOpenSet);
 
+        miCreateSet.setBackground(new java.awt.Color(255, 255, 255));
         miCreateSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/plus-icon.png"))); // NOI18N
         miCreateSet.setText("Create Set");
         miCreateSet.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +184,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         });
         menuSets.add(miCreateSet);
 
+        miEditSet.setBackground(new java.awt.Color(255, 255, 255));
         miEditSet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/edit-icon.png"))); // NOI18N
         miEditSet.setText("Edit Set");
         miEditSet.addActionListener(new java.awt.event.ActionListener() {
@@ -175,9 +196,12 @@ public class SearchTagGUI extends javax.swing.JFrame
 
         MenuBar.add(menuSets);
 
+        menuOther.setBorder(null);
+        menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
 
+        miSettings.setBackground(new java.awt.Color(255, 255, 255));
         miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
         miSettings.setText("Settings");
         miSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +219,7 @@ public class SearchTagGUI extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(STYLEPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(STYLEPANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,6 +290,10 @@ public class SearchTagGUI extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_miSettingsActionPerformed
 
+    private void tfTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTagActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,8 +322,7 @@ public class SearchTagGUI extends javax.swing.JFrame
     private javax.swing.JPanel STYLEPANEL;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cbxResults;
-    private javax.swing.JLabel lblResults;
-    private javax.swing.JLabel lblTerm;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JMenu menuFolders;
     private javax.swing.JMenu menuOther;
     private javax.swing.JMenu menuSets;

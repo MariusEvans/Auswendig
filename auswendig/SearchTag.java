@@ -23,8 +23,10 @@ public class SearchTag
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");
-		
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"; //get current directory
+        File folder = new File(destAddress);
+	//File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");
+        
 	if(folder.isDirectory())
         {
             if(folder.list().length>0)
@@ -60,15 +62,19 @@ public class SearchTag
         {
             try
             {
-                Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+listOfFileNames[z]);
+                String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+listOfFileNames[z]; //get current directory
+                Path pathSelectedItem = Paths.get(destAddress);
+                //Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+listOfFileNames[z]);
                 List<String> linesSelectedItem = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
                 int amountOfLines = linesSelectedItem.size();
                 for(int b=0; b<amountOfLines; b++)
                 {
                     String line = linesSelectedItem.get(b);
+                    String lines[] = line.split(",");
+                    String linesExceptTags = lines[0].toString()+","+lines[1].toString()+","+lines[2].toString()+","+lines[4].toString();
                     if(line.contains(tag))
                     {
-                        listOfResults.add("Set: "+listOfFileNames[z]+" | "+line);
+                        listOfResults.add(listOfFileNames[z].replace(".txt", "")+" | "+linesExceptTags);
                     }
                 }
                 

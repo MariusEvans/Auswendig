@@ -46,7 +46,35 @@ public class CreateSet
         this.definition = definition;
         
         File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
-        //AMEND DATA TO FILE
+    
+        try
+        {
+            if(filename.exists()==false) //write first card
+            {
+                FileWriter fw = new FileWriter(filename, true);
+                BufferedWriter bw = new BufferedWriter(fw); //temporary store for data
+
+                bw.write("");
+
+                bw.close(); //close buffered writer
+            }
+            else //change encoding to UTF-8
+            {
+                Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+                List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+                String addedLine = cardNumber+","+term+","+example+","+tags+","+definition;
+                lines.add(addedLine);
+                Files.write(path, lines, StandardCharsets.UTF_8);
+            }
+        }
+            
+        catch(Exception exc) //catch errors
+        {
+            System.out.println("ERROR ADDING CAR");
+            System.out.println(exc);
+        }
+        
+        /*
         System.out.println("Attempting to create card.");
         try
         {
@@ -63,7 +91,7 @@ public class CreateSet
         {
                 System.out.println("Error creating card.");
                 System.out.println(exc);
-        } 
+        }*/
     }
     
     public void makeSet()
