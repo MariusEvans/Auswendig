@@ -1,6 +1,0 @@
-1,Schon,Ich habe es schon mal gelernt,german,Already
-2,Noch nie,Du warst doch noch nie in Berlin,german,Never
-3,Oben,Er wohnt oben,german,Above
-
-Sat Jul 21 14:24:33 BST 2018
-This is the fifth set which I have created.
