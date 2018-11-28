@@ -1,13 +1,10 @@
 
-![GitHub (Pre-)Release Date](https://img.shields.io/badge/release%20date-november-brightgreen.svg?style=flat-square)
 ![GitHub Licence](https://img.shields.io/badge/licence-copyright-red.svg?style=flat-square)
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
 **Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
 
-**This project is a work-in-process, I would like feedback. All source code is within the "auswendig" folder!** <br />
-**Auswendig is to be released in November 2018.**
 
 ## Information
 <br />
@@ -23,6 +20,8 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 5. Auswendig includes a "Leitner" activity, unlike Quizlet. <br />
 6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki. <br />
 7. Flashcards in multiple sets containing an entered tag can be searched for.
+8. All activites can be shuffled! <br />
+9. Up to three sets can be exported to actual flashcards which can be printed.
 
 ## Context
 <br />
