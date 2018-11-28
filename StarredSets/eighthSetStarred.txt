@@ -1,9 +1,0 @@
-4,Erwartungen,Er hat keine Erwartungen,german/hard,Expectations
-12,Protzig,Wie protzig,german/hard,Pretencious
-8,WLAN,Haben Sie WLAN?,german/hard,Wifi
-14,Irgendwann,Wir machen es irgendwann,german/hard,Sometime
-1,Deswegen,Deswegen hatte ich keine Ahnung,german/hard,Because of that
-5,Bisher,Bisher jetzt gut,german/hard,Until now
-4,Erwartungen,Er hat keine Erwartungen,german/hard,Expectations
-5,Bisher,Bisher jetzt gut,german/hard,Until now
-7,Verdienen,Du musst dein Geld verdienen!,german/hard,To earn
