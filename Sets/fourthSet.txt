@@ -1,6 +1,0 @@
-1,Auswendig,Ich habe es ausendig gelernt,german,By heart
-2,Ohne,Gehst du ohne mich?,german,Without
-3,Basteln,Er hat es im August gebastelt,german,To tinker/craft
-
-Thu Jul 19 15:26:31 BST 2018
-This set contains German vocabulary.
