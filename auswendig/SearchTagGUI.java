@@ -42,7 +42,6 @@ public class SearchTagGUI extends javax.swing.JFrame
         miCreateSet = new javax.swing.JMenuItem();
         miEditSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
-        miSettings = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -200,17 +199,6 @@ public class SearchTagGUI extends javax.swing.JFrame
         menuOther.setForeground(new java.awt.Color(204, 204, 204));
         menuOther.setText("Other");
         menuOther.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-
-        miSettings.setBackground(new java.awt.Color(255, 255, 255));
-        miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
-        miSettings.setText("Settings");
-        miSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSettingsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miSettings);
-
         MenuBar.add(menuOther);
 
         setJMenuBar(MenuBar);
@@ -286,10 +274,6 @@ public class SearchTagGUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miSettingsActionPerformed
-
     private void tfTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTagActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTagActionPerformed
@@ -333,7 +317,6 @@ public class SearchTagGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miEditSet;
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
-    private javax.swing.JMenuItem miSettings;
     private javax.swing.JTextField tfTag;
     // End of variables declaration//GEN-END:variables
 }

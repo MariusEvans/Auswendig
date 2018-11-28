@@ -30,6 +30,9 @@ public class ExportFolder
     String selectedItem;
     String filename;
     String[] eachSet;
+    boolean sets1=false;
+    ArrayList<String> list = new ArrayList<>();
+    
     public File[] listOfFiles;
     List<String> listOfFileNames = new ArrayList<>();
     
@@ -40,7 +43,9 @@ public class ExportFolder
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"; //get current directory
+        File folder = new File(destAddress);
+        //File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");
 		
 	if(folder.isDirectory())
         {
@@ -74,7 +79,9 @@ public class ExportFolder
         String selectedItemNOTXT = selectedItem.replace(".txt", "");
         try
         {
-            Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
+            String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+selectedItem; //get current directory
+            Path pathSelectedItem = Paths.get(destAddress);
+            //Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
             linesSelectedItem = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
         }
         catch(Exception exc)
@@ -92,6 +99,10 @@ public class ExportFolder
             String[] cardvalues = readLine.split(",");
             String sets = cardvalues[2];
             eachSet = sets.split("/");
+            if(sets.contains("/")==false)
+            {
+                sets1=true;
+            }
             System.out.println(""+readLine);
         }
         catch(Exception exc)
@@ -108,7 +119,9 @@ public class ExportFolder
         boolean sets2 = false;
         boolean sets3 = false;
         String setOneString = eachSet[0]+"";
-        String filename1 = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt";
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\ExportedFolders\\"+filename+".txt"; //get current directory
+        String filename1 = destAddress;
+        //String filename1 = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt";
         
         try
         {
@@ -117,23 +130,31 @@ public class ExportFolder
             bw.write("");
             bw.close(); //close buffered writer
             
-            Path exportFile = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt");
+            String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\ExportedFolders\\"+filename+".txt"; //get current directory
+            Path exportFile = Paths.get(destAddress1);
+            //Path exportFile = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt");
             linesExportFile = Files.readAllLines(exportFile, StandardCharsets.UTF_8);
             
-            Path setOne = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setOneString+".txt");
+            String destAddress2 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setOneString+".txt"; //get current directory
+            Path setOne = Paths.get(destAddress2);
+            //Path setOne = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setOneString+".txt");
             linesSetOne = Files.readAllLines(setOne, StandardCharsets.UTF_8);
-            if(eachSet.length>0 && eachSet.length<2)
+            if(eachSet.length>0 && eachSet.length<2 && sets1==false)
             {
                 sets2=true;
                 String setTwoString = eachSet[1];
-                Path setTwo = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setTwoString+".txt");
+                String destAddress3 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setTwoString+".txt"; //get current directory
+                Path setTwo = Paths.get(destAddress3);
+                //Path setTwo = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setTwoString+".txt");
                 linesSetTwo = Files.readAllLines(setTwo, StandardCharsets.UTF_8);
             }
-            if(eachSet.length>2)
+            if(eachSet.length>2 && sets1==false)
             {
                 sets3=true;
                 String setThreeString = eachSet[2];
-                Path setThree = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setThreeString+".txt");
+                String destAddress4 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setThreeString+".txt"; //get current directory
+                Path setThree = Paths.get(destAddress4);
+                //Path setThree = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setThreeString+".txt");
                 linesSetThree = Files.readAllLines(setThree, StandardCharsets.UTF_8);
             }
         }
@@ -147,7 +168,9 @@ public class ExportFolder
         //EXPORT FILE
         try
         {
-           Path exportFile = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt");
+           String destAddress5 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\ExportedFolders\\"+filename+".txt"; //get current directory
+           Path exportFile = Paths.get(destAddress5);
+           //Path exportFile = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\ExportedFolders\\"+filename+".txt");
            //linesExportFile.add(0, " Term     Example     Tags        Definition");
            for(int z=0; z<linesSetOne.size()-2;z++)
            {
@@ -193,7 +216,7 @@ public class ExportFolder
 
                            +splitValues[0]+"."+" Term: "+splitValues[1]+"                                               Definition: "+splitValues[4]+
                            "\r\n"+"   Example: "+splitValues[2]+"\r\n"+"   "+splitValues[3]
-                           +"\r\n"+"\r\n"+"\r\n"+"------------------------------------------------------------------------------------------------------";
+                           +"\r\n"+"\r\n"+"\r\n"+"__________________________________________________________________________________________________________";
 
                    System.out.println("completeLine: "+completeLine);
                    linesExportFile.add(z, completeLine);

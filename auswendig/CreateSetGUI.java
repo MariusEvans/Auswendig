@@ -57,7 +57,6 @@ public class CreateSetGUI extends javax.swing.JFrame
         miDeleteSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
         miSearchbyTag = new javax.swing.JMenuItem();
-        miSettings = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -291,16 +290,6 @@ public class CreateSetGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
-        miSettings.setBackground(new java.awt.Color(255, 255, 255));
-        miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
-        miSettings.setText("Settings");
-        miSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSettingsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miSettings);
-
         MenuBar.add(menuOther);
 
         setJMenuBar(MenuBar);
@@ -377,6 +366,11 @@ public class CreateSetGUI extends javax.swing.JFrame
         {
             validated=true;
             JOptionPane.showMessageDialog(null,"Names cannot contain '.txt', try again");
+        }
+        if(setName.contains(" "))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain spaces, replace them with '_'");
         }
         String description = tfDescription.getText();
         if(description.length()>32)
@@ -487,10 +481,6 @@ public class CreateSetGUI extends javax.swing.JFrame
         HomeGUI.searchTagGUI.setVisible(true);
     }//GEN-LAST:event_miSearchbyTagActionPerformed
 
-    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miSettingsActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -537,7 +527,6 @@ public class CreateSetGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSearchbyTag;
-    private javax.swing.JMenuItem miSettings;
     private javax.swing.JTextField tfDefinition;
     private javax.swing.JTextField tfDescription;
     private javax.swing.JTextField tfExample;

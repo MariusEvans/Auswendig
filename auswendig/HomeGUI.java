@@ -61,7 +61,6 @@ public class HomeGUI extends javax.swing.JFrame
         miDeleteSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
         miSearchbyTag = new javax.swing.JMenuItem();
-        miSettings = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -229,16 +228,6 @@ public class HomeGUI extends javax.swing.JFrame
         });
         menuOther.add(miSearchbyTag);
 
-        miSettings.setBackground(new java.awt.Color(255, 255, 255));
-        miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
-        miSettings.setText("Settings");
-        miSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSettingsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miSettings);
-
         menu.add(menuOther);
 
         setJMenuBar(menu);
@@ -311,10 +300,6 @@ public class HomeGUI extends javax.swing.JFrame
         searchTagGUI.setVisible(true);
     }//GEN-LAST:event_miSearchbyTagActionPerformed
 
-    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miSettingsActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -356,6 +341,5 @@ public class HomeGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSearchbyTag;
-    private javax.swing.JMenuItem miSettings;
     // End of variables declaration//GEN-END:variables
 }

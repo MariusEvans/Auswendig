@@ -80,7 +80,6 @@ public class EditSetGUI extends javax.swing.JFrame
         miDeleteSet = new javax.swing.JMenuItem();
         menuOther = new javax.swing.JMenu();
         miSearchbyTag = new javax.swing.JMenuItem();
-        miSettings = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Auswendig");
@@ -92,6 +91,8 @@ public class EditSetGUI extends javax.swing.JFrame
                 STYLEPANELComponentShown(evt);
             }
         });
+
+        tfSetName.setText("Editing name will affect starred and leitner sets");
 
         lblName.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         lblName.setText("Name:");
@@ -247,7 +248,6 @@ public class EditSetGUI extends javax.swing.JFrame
                 .addComponent(lblCardCount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sliderCards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(STYLEPANELLayout.createSequentialGroup()
                         .addGroup(STYLEPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -376,16 +376,6 @@ public class EditSetGUI extends javax.swing.JFrame
             }
         });
         menuOther.add(miSearchbyTag);
-
-        miSettings.setBackground(new java.awt.Color(255, 255, 255));
-        miSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/auswendig/res/settings-icon.png"))); // NOI18N
-        miSettings.setText("Settings");
-        miSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSettingsActionPerformed(evt);
-            }
-        });
-        menuOther.add(miSettings);
 
         MenuBar.add(menuOther);
 
@@ -608,6 +598,11 @@ public class EditSetGUI extends javax.swing.JFrame
             validated=true;
             JOptionPane.showMessageDialog(null,"Names cannot contain '.txt', try again");
         }
+        if(setName.contains(" "))
+        {
+            validated=true;
+            JOptionPane.showMessageDialog(null,"Names cannot contain spaces, replace them with '_'");
+        }
         String description = tfDescription.getText();
         if(description.length()>32)
         {
@@ -808,10 +803,6 @@ public class EditSetGUI extends javax.swing.JFrame
         JOptionPane.showMessageDialog(null,"Please note that editing a set will not automatically change cards in the corresponding starred or leitner set");
     }//GEN-LAST:event_STYLEPANELComponentShown
 
-    private void miSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miSettingsActionPerformed
-
     private void miSearchbyTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchbyTagActionPerformed
         System.out.println("miSearchbyTag pressed");
         this.setVisible(false);
@@ -870,7 +861,6 @@ public class EditSetGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem miOpenFolder;
     private javax.swing.JMenuItem miOpenSet;
     private javax.swing.JMenuItem miSearchbyTag;
-    private javax.swing.JMenuItem miSettings;
     private javax.swing.JSlider sliderCards;
     private javax.swing.JTextField tfDefinition;
     private javax.swing.JTextField tfDescription;

@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -32,7 +33,9 @@ public class CreateFolder
         this.description = description;
         this.sets = sets;
       
-        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+folderName+".txt");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+folderName+".txt"; //get current directory
+        File filename = new File(destAddress);
+        //File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+folderName+".txt");
         //AMEND DATA TO FILE
         System.out.println("Attempting to create folder.");
         try

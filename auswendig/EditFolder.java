@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Array;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -31,8 +32,10 @@ public class EditFolder
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");
-		
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"; //get current directory
+        File folder = new File(destAddress);
+	//File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");
+        
 	if(folder.isDirectory())
         {
             if(folder.list().length>0)
@@ -62,8 +65,9 @@ public class EditFolder
     
      public void readFolder(String selectedItem)
     {
-        String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem;
-        
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+selectedItem; //get current directory
+        String filename = destAddress;
+        //String filename = "C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem;
         try
         {
             BufferedReader br = new BufferedReader(new FileReader(filename)); //for reading data
@@ -93,8 +97,10 @@ public class EditFolder
         //DELETE ORIGINAL
         try
         {
-            File filenameDelete = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
-
+            String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+selectedItem; //get current directory
+            File filenameDelete = new File(destAddress);
+            //File filenameDelete = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
+            
             if(filenameDelete.delete())
             {
                 System.out.println(filenameDelete.getName() + " is deleted!");
@@ -112,8 +118,9 @@ public class EditFolder
         
         //^^^^^^^^^^^^^^^^^^^^^^
         
-        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+folderName+".txt");
-        
+        String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+folderName+".txt"; //get current directory
+        File filename = new File(destAddress1);
+        //File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+folderName+".txt");
         //AMEND DATA TO FILE
         System.out.println("Attempting to create folder.");
         try

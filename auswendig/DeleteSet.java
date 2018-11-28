@@ -7,6 +7,7 @@
 package auswendig;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,9 +28,18 @@ public class DeleteSet
         String selectedItemNOTXT = selectedItem.replace(".txt","");
         try
         {
-            File set = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
-            File starredSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt");
-            File leitnerSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+            String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+selectedItem; //get current directory
+            String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt"; //get current directory
+            String destAddress2 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt"; //get current directory
+            
+            File set = new File(destAddress);
+            File starredSet = new File(destAddress1);
+            File leitnerSet = new File(destAddress2);
+            
+            //File set = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+selectedItem);
+            //File starredSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+selectedItemNOTXT+"Starred.txt");
+            //File leitnerSet = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+selectedItemNOTXT+"Leitner.txt");
+            
             System.out.println(set);
             System.out.println(starredSet);
             System.out.println(leitnerSet);
@@ -76,7 +86,9 @@ public class DeleteSet
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");	
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"; //get current directory
+        File folder = new File(destAddress);	
+        //File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\");	
         
 	if(folder.isDirectory())
         {

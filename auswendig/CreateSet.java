@@ -45,7 +45,9 @@ public class CreateSet
         this.tags = tags;
         this.definition = definition;
         
-        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setName+".txt"; //get current directory
+        File filename = new File(destAddress);
+        //File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
     
         try
         {
@@ -60,7 +62,9 @@ public class CreateSet
             }
             else //change encoding to UTF-8
             {
-                Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+                String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setName+".txt"; //get current directory
+                Path path = Paths.get(destAddress1);
+                //Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
                 List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
                 String addedLine = cardNumber+","+term+","+example+","+tags+","+definition;
                 lines.add(addedLine);
@@ -96,7 +100,9 @@ public class CreateSet
     
     public void makeSet()
     {
-        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setName+".txt"; //get current directory
+        File filename = new File(destAddress);
+        //File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
         
         //AMEND RECEIPT DATA TO FILE
         System.out.println("Attempting to create set.");
@@ -120,8 +126,13 @@ public class CreateSet
     
     public void createStarredSet() //add 1 line to a starred set if not created, prevents errors
     {
-        File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
-        File filenameStarred = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+setName+"Starred.txt");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setName+".txt"; //get current directory
+        String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\StarredSets\\"+setName+"Starred.txt"; //get current directory
+        
+        File filename = new File(destAddress);
+        File filenameStarred = new File(destAddress1);
+        //File filename = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+        //File filenameStarred = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\StarredSets\\"+setName+"Starred.txt");
         //AMEND RECEIPT DATA TO FILE
         System.out.println("Attempting to create empty starred set.");
         try
@@ -150,14 +161,18 @@ public class CreateSet
     
     public void createLeitnerSet()
     {
-        Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+setName+"Leitner.txt");
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Leitner\\"+setName+"Leitner.txt"; //get current directory
+        Path path = Paths.get(destAddress);
+        //Path path = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Leitner\\"+setName+"Leitner.txt");
         File filename = path.toFile();
         String pathLeitner = path.toString();
         
         int maxCards = 0;
         try //get size of deck (number of cards)
         {
-            Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
+            String destAddress1 = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Sets\\"+setName+".txt"; //get current directory
+            Path pathSelectedItem = Paths.get(destAddress1);
+            //Path pathSelectedItem = Paths.get("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Sets\\"+setName+".txt");
             List<String> linesLeitner = Files.readAllLines(pathSelectedItem, StandardCharsets.UTF_8);
             maxCards = linesLeitner.size()-2;
         }

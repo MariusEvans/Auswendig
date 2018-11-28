@@ -7,6 +7,7 @@
 package auswendig;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,7 +27,9 @@ public class DeleteFolder
     {
         try
         {
-            File file = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
+            String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"+selectedItem; //get current directory
+            File file = new File(destAddress);
+            //File file = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\"+selectedItem);
 
             if(file.delete())
             {
@@ -48,8 +51,9 @@ public class DeleteFolder
     
     public void readFileNames()
     {
-        File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");
-		
+        String destAddress = Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\Folders\\"; //get current directory
+        File folder = new File(destAddress);
+	//File folder = new File("C:\\Users\\Marius Evans\\Documents\\NetBeansProjects\\Auswendig\\src\\Folders\\");	
 	if(folder.isDirectory())
         {
             if(folder.list().length>0)
