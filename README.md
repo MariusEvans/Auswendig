@@ -3,13 +3,13 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-**Licence: Copyright (C) Septemeber 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
+**Licence: Copyright (C) September 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
 
 
 ## Information
 <br />
 Auswendig is memorisation software built using Netbeans and written in Java. It is inspired from Quizlet and Anki. 
-I am currently writing Auswendig by myself, it is a year-long project that will hopefully produce a flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Multi-Choice (a user has to select the correct term/definition for a card out of four choices), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
+Auswendig is flexible memorisation software with multipe activities - Learn (regular flashcards), Starred (starred flashcards only), *Leitner* (flashcards sorted and displayed by a user's familiarity with them), Multi-Choice (a user has to select the correct term/definition for a card out of four choices), Write (a user writes the definition/term of a flashcard) and True/False (a user is asked whether the definition of a term is the correct one for that card).
 
 ### Why Auswendig and not Quizlet, Anki or Memorise?
 <br />
@@ -19,14 +19,15 @@ I am currently writing Auswendig by myself, it is a year-long project that will 
 4. Auswendig features more activites than Anki. <br />
 5. Auswendig includes a "Leitner" activity, unlike Quizlet. <br />
 6. Auswendig allows cards to be read in order or shuffled as well as starred, unlike Anki. <br />
-7. Flashcards in multiple sets containing an entered tag can be searched for.
+7. Flashcards in multiple sets containing an entered tag can be searched for. <br />
 8. All activites can be shuffled! <br />
-9. Up to three sets can be exported to actual flashcards which can be printed.
+9. Up to three sets can be exported to actual flashcards which can be printed. <br />
+10. Cards can be searched for my tags entered. <br />
 
 ## Context
 <br />
 1. A set containing cards can be created, edited, deleted and opened (for activities). <br />
-2. A folder containing sets can be created, edited, deleted and opened (for activites). <br />
+2. A folder containing sets can be created, edited, deleted and exported. <br />
 3. A card does not have a "front" or "back" like a physical flashcard, it has fields, this avoids flipping cards constantly. <br />
 4. One card contains a card number, term, example, tag(s) and definition. <br />
 5. One set contains multiple cards (a maximum of 200 so far). <br />
