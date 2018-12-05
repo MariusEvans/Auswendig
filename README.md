@@ -3,7 +3,7 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-**Licence: Copyright (C) September 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
+**Licence: Copyright (C) September 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.** <br />
 **Auswendig has been released, download the .zip file on the releases tab.**
 
 ## Information
