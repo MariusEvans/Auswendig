@@ -4,7 +4,7 @@
 
 # Auswendig
 **Licence: Copyright (C) September 2018, Marius Evans, All Rights Reserved. See LICENECE.md for more details.**
-
+**Auswendig has been released, download the .zip file on the releases tab.**
 
 ## Information
 <br />
