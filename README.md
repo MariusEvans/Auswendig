@@ -35,8 +35,11 @@ A new version of Auswendig (GUI) will be released soon, the previous release has
 8. AuswendigLite is completely performance-friendly.<br />
 
 ## Screenshots
-
+### AuswendigLite
+#### Main menu:<br />
 ![Main menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/main%20menu.JPG)
-![Study cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study%20cards.JPG)
+#### Studying cards:<br />
+![Study cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study%20cards.JPG)<br />
+#### An exported deck of cards:<br />
 ![Exporting a deck of cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/export%20deck.JPG)
 
