@@ -3,11 +3,11 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-**Licence: Copyright (C) July 2020, Marius Evans, All Rights Reserved.** <br />
-**AuswendigLite has been released, download the .zip file on the releases tab.**
+Licence: Copyright (C) July 2020, Marius Evans, All Rights Reserved.** <br />
+AuswendigLite has been released, download the .zip file on the releases tab.
 
 ## Introduction
-Auswendig is flexible memorisation software written in Java. It is inspired from Quizlet and Anki. 
+Auswendig is flexible memorisation software written in Java. It is inspired by Quizlet and Anki. 
 Auswendig offers multiple activities for a deck of flashcards:
 1. Study regular cards (either shuffled, reversed order, or normal order)<br/>
 2. Star important cards and study them only (either shuffled, reversed order, or normal order)<br/>
@@ -16,14 +16,12 @@ Auswendig offers multiple activities for a deck of flashcards:
 5. Do a multiple choice quiz - pick the correct definition for a card<br/>
 
 ### AuswendigLite (command-line)
-<br />
 Do all of this in the command-line! This is a performance-friendly version of Auswendig that runs directly in the command-line and still offers the functionality expected.
 
 ### Auswendig (GUI)
 A new version of Auswendig (GUI) will be released soon, the previous release has been removed so that it could be rebuilt from the ground up to be more efficient, useable and less bugy.
 
 ### Why Auswendig and not Quizlet, Anki or Memorise?
-<br />
 1. Auswendig is free, can be accessed offline and has greater ease of use than Quizlet;
 2. The write activity enables a user to write the definition of a term for a card.<br />
 3. Auswendig features a multiple choice activity, unlike Anki.<br />
