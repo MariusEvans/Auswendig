@@ -35,4 +35,5 @@ A new version of Auswendig (GUI) will be released soon, the previous release has
 
 ## Screenshots
 
-![create set GUI](https://raw.githubusercontent.com/MariusEvans/Auswendig/master/SCREENSHOTS/export_deck.JPG)
+![create set GUI](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/export%20deck.JPG)
+
