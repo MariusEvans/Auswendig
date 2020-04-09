@@ -3,7 +3,7 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-Licence: Copyright (C) April 2020, Marius Evans, All Rights Reserved.** <br />
+Licence: Copyright (C) April 2020, Marius Evans, All Rights Reserved.<br />
 AuswendigLite has been released, download the .zip file on the releases tab. <br />
 A new version Auswendig (GUI) will be released soon.
 
