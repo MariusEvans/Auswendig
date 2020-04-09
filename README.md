@@ -35,5 +35,7 @@ A new version of Auswendig (GUI) will be released soon, the previous release has
 
 ## Screenshots
 
-![create set GUI](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/export%20deck.JPG)
+![Main menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/main%20menu.JPG)
+![Study cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study%20cards.JPG)
+![Exporting a deck of cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/export%20deck.JPG)
 
