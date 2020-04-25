@@ -3,8 +3,8 @@
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
 
 # Auswendig
-Auswendig is flexible flashcard software written in Java, it is similar to Quizlet and Anki.
-You can go to the releases tab now and download either a lite (command-line) or GUI version of Auwendig.
+Auswendig is flexible flashcard software written in Java, it is similar to Quizlet and Anki.<br />
+You can go to the releases tab now and download either a lite (command-line) or GUI version of Auwendig.<br />
 Auswendig offers multiple activities for a deck of flashcards:
 1. Study regular cards (either shuffled, reversed, or normal order)<br/>
 2. Star important cards and study them only (either shuffled, reversed order, or normal order)<br/>
@@ -33,6 +33,11 @@ Do all of this in the command-line! This is a performance-friendly version of Au
 
 ## Screenshots
 ### Auswendig
+![Main menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/main_menu_GUI.JPG)
+![Study menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study_menu_GUI.JPG)
+![Studying cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study_mode_GUI.JPG)
+![Write activity](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/write_activity_GUI.JPG)
+![Multiple choice activity](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/multichoice_quiz_GUI.JPG)
 
 ### AuswendigLite
 #### Main menu:<br />
