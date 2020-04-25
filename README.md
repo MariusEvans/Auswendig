@@ -33,10 +33,15 @@ Do all of this in the command-line! This is a performance-friendly version of Au
 
 ## Screenshots
 ### Auswendig
+#### Main menu:<br />
 ![Main menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/main_menu_GUI.JPG)
+#### The study menu:<br />
 ![Study menu](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study_menu_GUI.JPG)
+#### Studying flashcards:<br />
 ![Studying cards](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/study_mode_GUI.JPG)
+#### The writing activity:<br />
 ![Write activity](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/write_activity_GUI.JPG)
+#### The multiple choice activity:<br />
 ![Multiple choice activity](https://github.com/MariusEvans/Auswendig/blob/master/SCREENSHOTS/multichoice_quiz_GUI.JPG)
 
 ### AuswendigLite
