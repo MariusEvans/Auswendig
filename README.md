@@ -1,8 +1,11 @@
 
 ![GitHub Licence](https://img.shields.io/badge/licence-copyright-red.svg?style=flat-square)
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/Version-2.1-blue)
 
 # Auswendig
+**Version 2.1 has just been released, go to the releases tab!**<br />
+
 Auswendig is flexible flashcard software written in Java, it is similar to Quizlet and Anki.<br />
 You can go to the releases tab now and download either a lite (command-line) or GUI version of Auwendig.<br />
 Auswendig offers multiple activities for a deck of flashcards:
