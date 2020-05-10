@@ -9,7 +9,7 @@ Auswendig offers multiple activities for a deck of flashcards:
 1. Study regular cards (either shuffled, reversed, or normal order)<br/>
 2. Star important cards and study them only (either shuffled, reversed order, or normal order)<br/>
 3. Study cards that contain a specific tag, for example: "german" (either shuffled, reversed or normal order)<br/>
-4. Do a writing activity - write the definition for a random card shown<br/>
+4. Do a writing activity - write the term or definition for a random card shown<br/>
 5. Do a multiple choice quiz - pick the correct definition for a card<br/>
 
 ## Versions of Auswendig
