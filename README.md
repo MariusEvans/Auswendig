@@ -11,6 +11,7 @@ Auswendig offers multiple activities for a deck of flashcards:
 3. Study cards that contain a specific tag, for example: "german" (either shuffled, reversed or normal order)<br/>
 4. Do a writing activity - write the term or definition for a random card shown<br/>
 5. Do a multiple choice quiz - pick the correct definition for a card<br/>
+6. You can export your deck of flashcards to a readable text file that can be printed.<br/>
 
 ## Versions of Auswendig
 
