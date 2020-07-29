@@ -1,7 +1,7 @@
 
 ![GitHub Licence](https://img.shields.io/badge/licence-copyright-red.svg?style=flat-square)
 ![GitHub Platform](https://img.shields.io/badge/platform-windows-blue.svg?style=flat-square)
-![Version](https://img.shields.io/badge/Version-2.1-blue)
+![Version](https://img.shields.io/badge/Version-2.2-blue)
 
 # Auswendig
 **Version 2.2 has just been released, go to the releases tab!**<br />
@@ -13,7 +13,7 @@ Auswendig offers multiple activities for a deck of flashcards:
 2. Star important cards and study them only (either shuffled, reversed order, or normal order)<br/>
 3. Study cards that contain a specific tag, for example: "german" (either shuffled, reversed or normal order)<br/>
 4. Do a writing activity - write the term or definition for a random card shown<br/>
-5. Do a multiple choice quiz - pick the correct definition for a card<br/>
+5. Do a multiple choice quiz - pick the correct definition or term for a card<br/>
 6. You can export your deck of flashcards to a readable text file that can be printed.<br/>
 
 ## Versions of Auswendig
